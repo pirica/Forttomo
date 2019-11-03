@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+}
+
+.App {
+    text-align: center;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.card {
+    width: 80%;
+    background: white;
+    color: #000;
+}
+
+.section:first-of-type {
+    margin-top: 2em;
+}
+
+.section {
+    margin-top: 1em;
+}
