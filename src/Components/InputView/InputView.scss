@@ -1,5 +1,14 @@
 .input_view {
-    input[type='text'] {
-        width: 40%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.input_container {
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+
+    label {
+        font-size: 0.55em;
     }
 }

@@ -1,9 +1,9 @@
 * {
     margin: 0;
+    box-sizing: border-box;
 }
 
 .App {
-    text-align: center;
     background-color: #282c34;
     min-height: 100vh;
     display: flex;
@@ -14,8 +14,10 @@
 }
 
 .card {
-    width: 80%;
+    padding: 1em;
     background: white;
+    text-align: center;
+    border-radius: 2px;
     color: #000;
 }
 
@@ -25,4 +27,7 @@
 
 .section {
     margin-top: 1em;
+    width: 80%;
+    max-width: 900px;
+    text-align: left;
 }

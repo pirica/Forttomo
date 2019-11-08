@@ -3,7 +3,10 @@ import './WishlistView.scss';
 
 function WishlistView() {
     return (
-        <div className='timeline_view card section'>This is the wishlist.</div>
+        <div className='section'>
+            <h3>Wishlist</h3>
+            <div className='timeline_view card'>This is the wishlist.</div>
+        </div>
     );
 }
 
