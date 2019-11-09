@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './TimelineView.scss';
 
+import DayView from './DayView';
+
 import Timeline from '../../model/Timeline';
 import { endOfSeasonDate } from './../../data/General';
 import InfoContext from './../../context/AccountInfo';
@@ -35,14 +37,7 @@ function TimelineView() {
         <div className='timeline_view section'>
             <h3>Timeline</h3>
             {timeline.map((day, index) => {
-                return (
-                    <div key={`Day-${index}`}>
-                        {day.date} | {day.vbucks} | Level {day.level}
-                        {day.logs.map(log => {
-                            return ` | ${log.amount} ${log.type}`;
-                        })}
-                    </div>
-                );
+                return <DayView day={day} key={`day-${index}`} />;
             })}
         </div>
     );
