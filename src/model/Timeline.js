@@ -41,7 +41,13 @@ function Timeline(_vbucks, level, _experience, _loginDay, amountOfDays) {
         experience += punchCardXP;
         if (currentDate.getDay() === 4) experience += 520000;
         const currentLevel = Math.floor(level + experience / 80000);
-        const bpVbucks = vbucksFromLevel(currentLevel);
+        const yesterdaysLevel = timeline[timeline.length - 1].level;
+
+        let bpVbucks = 0;
+        for (let lvl = yesterdaysLevel + 1; lvl <= currentLevel; lvl++) {
+            bpVbucks += vbucksFromLevel(lvl);
+        }
+
         if (bpVbucks) {
             vbucks += bpVbucks;
             logs.push(new VbuckLog(bpVbucks, 'Battle Pass'));
