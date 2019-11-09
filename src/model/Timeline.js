@@ -1,12 +1,6 @@
 import { vbucksFromLevel, vbucksFromLogin } from './reference';
 
-function Timeline(_vbucks, level, _experience, _loginDay, amountOfDays) {
-    let vbucks = _vbucks;
-    let experience = _experience;
-    let loginDay = _loginDay;
-    const punchCardXP = (8 + 8 + 8 + 8 + 16) * 2 * 1000;
-
-    const dayMilliseconds = 24 * 60 * 60 * 1000;
+function Timeline(vbucks, level, experience, loginDay, amountOfDays) {
     const dateFormat = {
         weekday: 'long',
         month: 'short',
@@ -14,53 +8,50 @@ function Timeline(_vbucks, level, _experience, _loginDay, amountOfDays) {
         timeZone: 'UTC'
     };
 
+    let xpGained = experience;
     const timeline = [new Day('NOW', vbucks, level, [])];
 
     for (let day = 0; day < amountOfDays; day++) {
         const logs = [];
+        let newVbucks = 0;
 
         const missions = 50;
-        vbucks += missions;
+        newVbucks += missions;
         logs.push(new VbuckLog(missions, 'Missions'));
 
         const daily = 50;
-        vbucks += daily;
+        newVbucks += daily;
         logs.push(new VbuckLog(daily, 'Daily'));
 
-        loginDay += 1;
-        const loginVbucks = vbucksFromLogin(loginDay);
+        const loginVbucks = vbucksFromLogin(loginDay + day + 1);
         if (loginVbucks) {
-            vbucks += loginVbucks;
+            newVbucks += loginVbucks;
             logs.push(new VbuckLog(loginVbucks, 'Login'));
         }
 
-        const currentDate = new Date(
-            new Date().getTime() + day * dayMilliseconds
-        );
+        const currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() + day);
 
-        experience += punchCardXP;
-        if (currentDate.getDay() === 4) experience += 520000;
-        const currentLevel = Math.floor(level + experience / 80000);
+        // XP gained from the daily punch card
+        xpGained += (8 + 8 + 8 + 8 + 16) * 2 * 1000;
+        // XP gained from each weekly
+        if (currentDate.getDay() === 4) xpGained += 520000;
+
+        const currentLevel = Math.floor(level + xpGained / 80000);
         const yesterdaysLevel = timeline[timeline.length - 1].level;
-
         let bpVbucks = 0;
         for (let lvl = yesterdaysLevel + 1; lvl <= currentLevel; lvl++) {
             bpVbucks += vbucksFromLevel(lvl);
         }
 
         if (bpVbucks) {
-            vbucks += bpVbucks;
+            newVbucks += bpVbucks;
             logs.push(new VbuckLog(bpVbucks, 'Battle Pass'));
         }
 
-        timeline.push(
-            new Day(
-                currentDate.toLocaleString('en-US', dateFormat),
-                vbucks,
-                currentLevel,
-                logs
-            )
-        );
+        const dateString = currentDate.toLocaleString('en-US', dateFormat);
+        const newTotal = timeline[timeline.length - 1].vbucks + newVbucks;
+        timeline.push(new Day(dateString, newTotal, currentLevel, logs));
     }
 
     return timeline;
