@@ -1,0 +1,39 @@
+.day_view {
+    display: flex;
+}
+
+.date {
+    width: 250px;
+}
+
+.timeline_vbucks,
+.timeline_level,
+.timeline_logs {
+    margin-left: 25px;
+}
+
+.timeline_vbucks,
+.timeline_level {
+    width: 90px;
+}
+
+.timeline_logs {
+    display: flex;
+    font-size: 0.75em;
+
+    .daily {
+        color: red;
+    }
+
+    .mission {
+        color: blue;
+    }
+
+    .login {
+        color: green;
+    }
+
+    .battle_pass {
+        color: orange;
+    }
+}

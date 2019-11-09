@@ -6,7 +6,7 @@ function DayView({ day }) {
         <div className='day_view'>
             <div className='date'>{day.date}</div>
             <div className='timeline_vbucks'>{day.vbucks}</div>
-            <div className='timeline_level'>Level {day.level}</div>
+            <div className='timeline_level'>Lv {day.level}</div>
             <LogView logs={day.logs} />
         </div>
     );

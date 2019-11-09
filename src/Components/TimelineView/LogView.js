@@ -5,11 +5,8 @@ function LogView({ logs }) {
         <div className='timeline_logs'>
             {logs.map((log, index) => {
                 return (
-                    <div
-                        key={`log-${index}`}
-                        className={`log ${log.type.toLowerCase()}`}
-                    >
-                        {log.amount} {log.type}
+                    <div key={`log-${index}`} className={`log ${log.type}`}>
+                        +{log.amount}
                     </div>
                 );
             })}
