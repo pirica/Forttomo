@@ -17,16 +17,16 @@ function Timeline(vbucks, level, experience, loginDay, amountOfDays) {
 
         const daily = 50;
         newVbucks += daily;
-        logs.push(new VbuckLog(daily, 'Daily'));
+        logs.push(new VbuckLog(daily, 'daily'));
 
         const missions = 50;
         newVbucks += missions;
-        logs.push(new VbuckLog(missions, 'Missions'));
+        logs.push(new VbuckLog(missions, 'mission'));
 
         const loginVbucks = vbucksFromLogin(loginDay + day + 1);
         if (loginVbucks) {
             newVbucks += loginVbucks;
-            logs.push(new VbuckLog(loginVbucks, 'Login'));
+            logs.push(new VbuckLog(loginVbucks, 'login'));
         }
 
         const currentDate = new Date();
@@ -46,7 +46,7 @@ function Timeline(vbucks, level, experience, loginDay, amountOfDays) {
 
         if (bpVbucks) {
             newVbucks += bpVbucks;
-            logs.push(new VbuckLog(bpVbucks, 'Battle Pass'));
+            logs.push(new VbuckLog(bpVbucks, 'battle_pass'));
         }
 
         const dateString = currentDate.toLocaleString('en-US', dateFormat);
