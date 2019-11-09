@@ -15,13 +15,13 @@ function Timeline(vbucks, level, experience, loginDay, amountOfDays) {
         const logs = [];
         let newVbucks = 0;
 
-        const missions = 50;
-        newVbucks += missions;
-        logs.push(new VbuckLog(missions, 'Missions'));
-
         const daily = 50;
         newVbucks += daily;
         logs.push(new VbuckLog(daily, 'Daily'));
+
+        const missions = 50;
+        newVbucks += missions;
+        logs.push(new VbuckLog(missions, 'Missions'));
 
         const loginVbucks = vbucksFromLogin(loginDay + day + 1);
         if (loginVbucks) {
