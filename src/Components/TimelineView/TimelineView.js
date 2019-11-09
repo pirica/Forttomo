@@ -37,8 +37,7 @@ function TimelineView() {
             {timeline.map((day, index) => {
                 return (
                     <div key={`Day-${index}`}>
-                        {day.date.toISOString().split('T')[0]} | {day.vbucks} |
-                        Level {day.level}
+                        {day.date} | {day.vbucks} | Level {day.level}
                         {day.logs.map(log => {
                             return ` | ${log.amount} ${log.type}`;
                         })}

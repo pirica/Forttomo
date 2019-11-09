@@ -6,7 +6,15 @@ function Timeline(_vbucks, level, _experience, _loginDay, amountOfDays) {
     let loginDay = _loginDay;
     const punchCardXP = (8 + 8 + 8 + 8 + 16) * 2 * 1000;
 
-    const timeline = [new Day(new Date(), vbucks, level, [])];
+    const dayMilliseconds = 24 * 60 * 60 * 1000;
+    const dateFormat = {
+        weekday: 'long',
+        month: 'short',
+        day: 'numeric',
+        timeZone: 'UTC'
+    };
+
+    const timeline = [new Day('NOW', vbucks, level, [])];
 
     for (let day = 0; day < amountOfDays; day++) {
         const logs = [];
@@ -26,7 +34,12 @@ function Timeline(_vbucks, level, _experience, _loginDay, amountOfDays) {
             logs.push(new VbuckLog(loginVbucks, 'Login'));
         }
 
+        const currentDate = new Date(
+            new Date().getTime() + day * dayMilliseconds
+        );
+
         experience += punchCardXP;
+        if (currentDate.getDay() === 4) experience += 520000;
         const currentLevel = Math.floor(level + experience / 80000);
         const bpVbucks = vbucksFromLevel(currentLevel);
         if (bpVbucks) {
@@ -34,11 +47,14 @@ function Timeline(_vbucks, level, _experience, _loginDay, amountOfDays) {
             logs.push(new VbuckLog(bpVbucks, 'Battle Pass'));
         }
 
-        const previousDate = timeline[timeline.length - 1].date;
-        const currentDate = new Date(
-            previousDate.getTime() + 24 * 60 * 60 * 1000
+        timeline.push(
+            new Day(
+                currentDate.toLocaleString('en-US', dateFormat),
+                vbucks,
+                currentLevel,
+                logs
+            )
         );
-        timeline.push(new Day(currentDate, vbucks, currentLevel, logs));
     }
 
     return timeline;
