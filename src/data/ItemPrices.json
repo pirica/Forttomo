@@ -1,0 +1,90 @@
+[
+    {
+        "type": "Uncommon Outfit",
+        "cost": 800
+    },
+    {
+        "type": "Rare Outfit",
+        "cost": 1200
+    },
+    {
+        "type": "Epic Outfit",
+        "cost": 1500
+    },
+    {
+        "type": "Legendary Outfit",
+        "cost": 2000
+    },
+    {
+        "type": "Uncommon Pickaxe",
+        "cost": 500
+    },
+    {
+        "type": "Rare Pickaxe",
+        "cost": 500
+    },
+    {
+        "type": "Epic Pickaxe",
+        "cost": 1200
+    },
+    {
+        "type": "Uncommon Glider",
+        "cost": 500
+    },
+    {
+        "type": "Rare Glider",
+        "cost": 800
+    },
+    {
+        "type": "Epic Glider",
+        "cost": 1200
+    },
+    {
+        "type": "Legendary Glider",
+        "cost": 1500
+    },
+    {
+        "type": "Uncommon Emote",
+        "cost": 200
+    },
+    {
+        "type": "Rare Emote",
+        "cost": 500
+    },
+    {
+        "type": "Epic Emote",
+        "cost": 800
+    },
+    {
+        "type": "Uncommon Wrap",
+        "cost": 300
+    },
+    {
+        "type": "Rare Wrap",
+        "cost": 500
+    },
+    {
+        "type": "Epic Wrap",
+        "cost": 700
+    },
+    {
+        "type": "Uncommon Backbling",
+        "cost": 200
+    },
+    {
+        "type": "Rare Backbling",
+        "cost": 400
+    },
+    {
+        "type": "Epic Backbling",
+        "cost": 600
+    },
+    {
+        "type": "Contrail",
+        "cost": 400
+    },
+    {
+        "type": "Music",
+        "cost": 200
+    }
+]
