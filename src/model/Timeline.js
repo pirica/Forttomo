@@ -1,6 +1,13 @@
 import { vbucksFromLevel, vbucksFromLogin } from './reference';
 
-function Timeline(vbucks, level, experience, loginDay, amountOfDays) {
+function Timeline(
+    vbucks,
+    level,
+    experience,
+    punchCardDays,
+    loginDay,
+    amountOfDays
+) {
     const dateFormat = {
         weekday: 'long',
         month: 'short',
@@ -33,7 +40,9 @@ function Timeline(vbucks, level, experience, loginDay, amountOfDays) {
         currentDate.setDate(currentDate.getDate() + day);
 
         // XP gained from the daily punch card
-        xpGained += (8 + 8 + 8 + 8 + 16) * 2 * 1000;
+        if (punchCardDays[currentDate.getDay()]) {
+            xpGained += (8 + 8 + 8 + 8 + 16) * 2 * 1000;
+        }
         // XP gained from each weekly
         if (currentDate.getDay() === 4) xpGained += 520000;
 
