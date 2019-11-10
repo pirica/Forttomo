@@ -6,10 +6,12 @@ import AccountInfo from './../../context/AccountInfo';
 function PunchCardInput() {
     const { punchCardStates, setPunchCardStates } = useContext(AccountInfo);
 
-    const updateStates = (position, state) => {
-        punchCardStates[position] = state;
+    const updateStates = (position, newState) => {
+        const newStates = punchCardStates.map((state, index) => {
+            return position === index ? newState : state;
+        });
 
-        setPunchCardStates(punchCardStates);
+        setPunchCardStates(newStates);
     };
 
     return (
