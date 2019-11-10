@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import './InputView.scss';
 
 import InfoContext from './../../context/AccountInfo';
+import PunchCardInput from './PunchCardInput';
 
 function InputView() {
     const {
@@ -80,6 +81,9 @@ function InputView() {
                     onChange={e => setLoginDay(parseInt(e.target.value) | 0)}
                     placeholder='Login Day'
                 />
+            </div>
+            <div className='input_container punch_card_container'>
+                <PunchCardInput />
             </div>
         </div>
     );

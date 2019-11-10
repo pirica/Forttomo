@@ -8,17 +8,24 @@ import InfoContext from './context/AccountInfo';
 import './App.scss';
 
 function App() {
-    const [vbucks, setVbucks] = useState(localStorage.getItem('vbucks') | 0);
-    const [dailies, setDailies] = useState(localStorage.getItem('dailies') | 0);
-    const [missions, setMissions] = useState(
-        localStorage.getItem('missions') | 0
-    );
-    const [level, setLevel] = useState(localStorage.getItem('level') | 0);
+    const [vbucks, setVbucks] = useState(+localStorage.getItem('vbucks'));
+    const [dailies, setDailies] = useState(+localStorage.getItem('dailies'));
+    const [missions, setMissions] = useState(+localStorage.getItem('missions'));
+    const [level, setLevel] = useState(+localStorage.getItem('level'));
     const [experience, setExperience] = useState(
-        localStorage.getItem('experience') | 0
+        +localStorage.getItem('experience')
     );
-    const [loginDay, setLoginDay] = useState(
-        localStorage.getItem('loginDay') | 0
+    const [loginDay, setLoginDay] = useState(+localStorage.getItem('loginDay'));
+    const [punchCardStates, setPunchCardStates] = useState(
+        JSON.parse(localStorage.getItem('punchCardStates')) || [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ]
     );
 
     useEffect(() => {
@@ -39,6 +46,12 @@ function App() {
     useEffect(() => {
         localStorage.setItem('loginDay', loginDay);
     }, [loginDay]);
+    useEffect(() => {
+        localStorage.setItem(
+            'punchCardStates',
+            JSON.stringify(punchCardStates)
+        );
+    }, [punchCardStates]);
 
     return (
         <InfoContext.Provider
@@ -49,12 +62,14 @@ function App() {
                 level,
                 experience,
                 loginDay,
+                punchCardStates,
                 setVbucks,
                 setDailies,
                 setMissions,
                 setLevel,
                 setExperience,
-                setLoginDay
+                setLoginDay,
+                setPunchCardStates
             }}
         >
             <div className='App'>

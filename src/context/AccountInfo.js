@@ -14,5 +14,7 @@ export default React.createContext({
     loginDay: null,
     setLoginDay: loginDay => {},
     syncDate: null,
-    setSyncDate: syncDate => {}
+    setSyncDate: syncDate => {},
+    punchCardStates: [],
+    setPunchCardStates: states => {}
 });
