@@ -1,0 +1,49 @@
+.wishlist_item {
+    display: flex;
+    width: 100%;
+}
+
+.wishlist_input {
+    background: none;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.wishlist_input:focus {
+    border: 2px solid #8bb5f5;
+    color: rgb(97, 96, 96);
+    font-weight: 700;
+    outline: none;
+}
+
+select {
+    background: none;
+    border: none;
+    font-size: 0.9em;
+    outline: none;
+}
+
+.item_cost_input {
+    width: 150px;
+}
+
+.uncommon {
+    background-color: rgb(131, 184, 131);
+}
+
+.rare {
+    background-color: rgb(154, 215, 255);
+}
+
+.epic {
+    background-color: rgb(190, 119, 190);
+}
+
+.legendary {
+    background-color: rgb(238, 191, 104);
+}
+
+.other {
+    background-color: rgb(206, 206, 206);
+}
