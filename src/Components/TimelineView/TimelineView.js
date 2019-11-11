@@ -14,6 +14,7 @@ function TimelineView() {
         level,
         experience,
         loginDay,
+        syncDate,
         punchCardStates
     } = useContext(InfoContext);
     const totalVbucks = vbucks + dailies + missions;
@@ -29,10 +30,11 @@ function TimelineView() {
             experience,
             punchCardStates,
             loginDay,
+            syncDate,
             amountOfDays
         );
         setTimeline(newTimeline);
-    }, [totalVbucks, level, experience, punchCardStates, loginDay]);
+    }, [totalVbucks, level, experience, punchCardStates, loginDay, syncDate]);
 
     return (
         <div className='timeline_view section'>

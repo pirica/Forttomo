@@ -6,6 +6,7 @@ function Timeline(
     experience,
     punchCardDays,
     loginDay,
+    syncDate,
     amountOfDays
 ) {
     const dateFormat = {
@@ -17,6 +18,9 @@ function Timeline(
 
     let xpGained = experience;
     const timeline = [new Day('NOW', vbucks, level, [])];
+    const syncDateDistance =
+        (new Date() - new Date(syncDate)) / (1000 * 60 * 60 * 24);
+    const baseLoginDay = Math.floor(syncDateDistance) + loginDay;
 
     for (let day = 0; day < amountOfDays; day++) {
         const logs = [];
@@ -30,7 +34,7 @@ function Timeline(
         newVbucks += missions;
         logs.push(new VbuckLog(missions, 'mission'));
 
-        const loginVbucks = vbucksFromLogin(loginDay + day + 1);
+        const loginVbucks = vbucksFromLogin(baseLoginDay + day + 1);
         if (loginVbucks) {
             newVbucks += loginVbucks;
             logs.push(new VbuckLog(loginVbucks, 'login'));
