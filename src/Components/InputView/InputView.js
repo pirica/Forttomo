@@ -24,7 +24,7 @@ function InputView() {
 
     return (
         <div className='input_view card section'>
-            <div className='input_container'>
+            <div className='input_container vbucks_section'>
                 <label htmlFor='vbucks_input'>Vbucks</label>
                 <input
                     id='vbucks_input'
@@ -34,7 +34,7 @@ function InputView() {
                     placeholder='Vbucks'
                 />
             </div>
-            <div className='input_container'>
+            <div className='input_container dailies_section'>
                 <label htmlFor='dailies_input'>Dailies</label>
                 <input
                     id='dailies_input'
@@ -44,7 +44,7 @@ function InputView() {
                     placeholder='Dailies'
                 />
             </div>
-            <div className='input_container'>
+            <div className='input_container missions_section'>
                 <label htmlFor='missions_input'>Missions</label>
                 <input
                     id='missions_input'
@@ -54,7 +54,7 @@ function InputView() {
                     placeholder='Missions'
                 />
             </div>
-            <div className='input_container'>
+            <div className='input_container level_section'>
                 <label htmlFor='level_input'>Level</label>
                 <input
                     id='level_input'
@@ -64,7 +64,7 @@ function InputView() {
                     placeholder='Battle Pass Level'
                 />
             </div>
-            <div className='input_container'>
+            <div className='input_container experience_section'>
                 <label htmlFor='experience_input'>Experience</label>
                 <input
                     id='experience_input'
@@ -74,7 +74,7 @@ function InputView() {
                     placeholder='XP'
                 />
             </div>
-            <div className='input_container'>
+            <div className='input_container login_day_section'>
                 <label htmlFor='login_day_input'>Login Day</label>
                 <input
                     id='login_day_input'
@@ -84,7 +84,7 @@ function InputView() {
                     placeholder='Login Day'
                 />
             </div>
-            <div className='input_container'>
+            <div className='input_container sync_date_section'>
                 <label htmlFor='sync_date_input'>Sync Date</label>
                 <input
                     id='sync_date_input'
@@ -95,7 +95,7 @@ function InputView() {
                     }}
                 />
             </div>
-            <div className='input_container punch_card_container'>
+            <div className='input_container punch_card_section'>
                 <PunchCardInput />
             </div>
         </div>
