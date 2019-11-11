@@ -12,12 +12,14 @@ function InputView() {
         level,
         experience,
         loginDay,
+        syncDate,
         setVbucks,
         setDailies,
         setMissions,
         setLevel,
         setExperience,
-        setLoginDay
+        setLoginDay,
+        setSyncDate
     } = useContext(InfoContext);
 
     return (
@@ -80,6 +82,17 @@ function InputView() {
                     value={loginDay}
                     onChange={e => setLoginDay(parseInt(e.target.value) | 0)}
                     placeholder='Login Day'
+                />
+            </div>
+            <div className='input_container'>
+                <label htmlFor='sync_date_input'>Sync Date</label>
+                <input
+                    id='sync_date_input'
+                    type='date'
+                    value={syncDate.toISOString().split('T')[0]}
+                    onChange={e => {
+                        setSyncDate(new Date(e.target.value));
+                    }}
                 />
             </div>
             <div className='input_container punch_card_container'>
