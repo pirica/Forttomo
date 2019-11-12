@@ -38,7 +38,7 @@ function TimelineView() {
 
     return (
         <div className='timeline_view section'>
-            <h3>Timeline</h3>
+            <h1>Timeline</h1>
             {timeline.map((day, index) => {
                 return <DayView day={day} key={`day-${index}`} />;
             })}

@@ -37,7 +37,7 @@ function WishlistView() {
 
     return (
         <div className='section'>
-            <h3>Wishlist</h3>
+            <h1>Wishlist</h1>
             <div className='timeline_view card'>
                 {wishlist.map((item, index) => {
                     return (
