@@ -1,13 +1,14 @@
 .wishlist_item {
     display: flex;
     width: 100%;
+    font-size: 2rem;
 }
 
 .wishlist_input {
     background: none;
     border: 2px solid transparent;
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 2rem;
 }
 
 .wishlist_input:focus {

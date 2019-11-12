@@ -6,6 +6,12 @@
     width: 250px;
 }
 
+.date,
+.timeline_vbucks,
+.timeline_level {
+    font-size: 1.5rem;
+}
+
 .timeline_vbucks,
 .timeline_level,
 .timeline_logs {
@@ -19,7 +25,6 @@
 
 .timeline_logs {
     display: flex;
-    font-size: 0.75em;
 
     .daily {
         color: red;
