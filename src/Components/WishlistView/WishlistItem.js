@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 
+import ItemPrices from './../../data/ItemPrices';
+
 function WishlistItem({ name, category, price }) {
     const itemRef = React.createRef();
+    const priceRef = React.createRef();
 
     const setBackground = className => {
         // All contrails and music packs are rare only
@@ -13,16 +16,28 @@ function WishlistItem({ name, category, price }) {
         itemRef.current.classList.add(className);
     };
 
-    const updateBackground = e => {
+    const setDefaultPrice = newCategory => {
+        let price = 0;
+
+        for (const item of ItemPrices) {
+            if (item.category === newCategory) price = item.cost;
+        }
+
+        priceRef.current.value = price;
+    };
+
+    const updateItemProperties = e => {
         let rarity = e.target.value.split(' ')[0].toLowerCase();
 
         setBackground(rarity);
+        setDefaultPrice(e.target.value.toLowerCase());
     };
 
     useEffect(() => {
         let rarity = category.split(' ')[0].toLowerCase();
 
         setBackground(rarity);
+        setDefaultPrice(category);
     });
 
     return (
@@ -32,7 +47,7 @@ function WishlistItem({ name, category, price }) {
                 className='wishlist_input item_name_input'
                 defaultValue={name}
             />
-            <select onChange={updateBackground}>
+            <select onChange={updateItemProperties}>
                 <optgroup label='Outfit'>
                     <option>Uncommon Outfit</option>
                     <option>Rare Outfit</option>
@@ -73,6 +88,7 @@ function WishlistItem({ name, category, price }) {
             </select>
             <input
                 type='text'
+                ref={priceRef}
                 className='wishlist_input item_cost_input'
                 defaultValue={price}
             />

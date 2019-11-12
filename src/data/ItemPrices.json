@@ -1,90 +1,90 @@
 [
     {
-        "type": "Uncommon Outfit",
+        "category": "uncommon outfit",
         "cost": 800
     },
     {
-        "type": "Rare Outfit",
+        "category": "rare outfit",
         "cost": 1200
     },
     {
-        "type": "Epic Outfit",
+        "category": "epic outfit",
         "cost": 1500
     },
     {
-        "type": "Legendary Outfit",
+        "category": "legendary outfit",
         "cost": 2000
     },
     {
-        "type": "Uncommon Pickaxe",
+        "category": "uncommon pickaxe",
         "cost": 500
     },
     {
-        "type": "Rare Pickaxe",
+        "category": "rare pickaxe",
         "cost": 500
     },
     {
-        "type": "Epic Pickaxe",
+        "category": "epic pickaxe",
         "cost": 1200
     },
     {
-        "type": "Uncommon Glider",
+        "category": "uncommon glider",
         "cost": 500
     },
     {
-        "type": "Rare Glider",
+        "category": "rare glider",
         "cost": 800
     },
     {
-        "type": "Epic Glider",
+        "category": "epic glider",
         "cost": 1200
     },
     {
-        "type": "Legendary Glider",
+        "category": "legendary glider",
         "cost": 1500
     },
     {
-        "type": "Uncommon Emote",
+        "category": "uncommon emote",
         "cost": 200
     },
     {
-        "type": "Rare Emote",
+        "category": "rare emote",
         "cost": 500
     },
     {
-        "type": "Epic Emote",
+        "category": "epic emote",
         "cost": 800
     },
     {
-        "type": "Uncommon Wrap",
+        "category": "uncommon wrap",
         "cost": 300
     },
     {
-        "type": "Rare Wrap",
+        "category": "rare wrap",
         "cost": 500
     },
     {
-        "type": "Epic Wrap",
+        "category": "epic wrap",
         "cost": 700
     },
     {
-        "type": "Uncommon Backbling",
+        "category": "uncommon backbling",
         "cost": 200
     },
     {
-        "type": "Rare Backbling",
+        "category": "rare backbling",
         "cost": 400
     },
     {
-        "type": "Epic Backbling",
+        "category": "epic backbling",
         "cost": 600
     },
     {
-        "type": "Contrail",
+        "category": "contrail",
         "cost": 400
     },
     {
-        "type": "Music",
+        "category": "music",
         "cost": 200
     }
 ]
