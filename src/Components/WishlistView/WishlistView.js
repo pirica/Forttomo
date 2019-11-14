@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
+import uuid from 'uuidv4';
+
 import WishlistItem from './WishlistItem/WishlistItem';
 import WantedItem from './WantedItem';
-
 import './WishlistView.scss';
 
 function WishlistView() {
@@ -42,7 +44,7 @@ function WishlistView() {
         {wishlist.map((item, index) => {
           return (
             <WishlistItem
-              key={`${index}`}
+              key={uuid()}
               position={index}
               name={item.name}
               category={item.category}
