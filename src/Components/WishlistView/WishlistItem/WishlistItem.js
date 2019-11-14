@@ -11,15 +11,7 @@ function WishlistItem(props) {
 
   const itemRef = React.createRef();
 
-  const setBackground = className => {
-    // All contrails and music packs are rare only
-    className = ["contrail", "music"].includes(className) ? "rare" : className;
-
-    itemRef.current.classList = "wishlist_item";
-    itemRef.current.classList.add(className);
-  };
-
-  const setDefaultPrice = category => {
+  const getDefaultPrice = category => {
     let defaultPrice = 0;
     category = category.toLowerCase();
 
@@ -27,24 +19,31 @@ function WishlistItem(props) {
       if (item.category === category) defaultPrice = item.cost;
     }
 
-    setPrice(defaultPrice);
+    return defaultPrice;
   };
 
   const updateItem = (name, category, price) => {
     const updatedItem = new WantedItem(name, category, price);
 
-    props.onChange(props.position, updatedItem);
+    if (category !== props.category) {
+      price = getDefaultPrice(category);
+    }
+
     setName(name);
     setCategory(category);
     setPrice(price);
+    props.onChange(props.position, updatedItem);
   };
 
   useEffect(() => {
     let rarity = category.split(" ")[0].toLowerCase();
 
-    setBackground(rarity);
-    setDefaultPrice(category);
-  });
+    // All contrails and music packs are rare only
+    rarity = ["contrail", "music"].includes(rarity) ? "rare" : rarity;
+
+    itemRef.current.classList = "wishlist_item";
+    itemRef.current.classList.add(rarity);
+  }, [category, itemRef]);
 
   return (
     <div className="wishlist_item" ref={itemRef}>
@@ -57,7 +56,6 @@ function WishlistItem(props) {
       <CategorySelect
         category={category}
         onChange={e => {
-          setDefaultPrice(e.target.value);
           updateItem(name, e.target.value, price);
         }}
       />
