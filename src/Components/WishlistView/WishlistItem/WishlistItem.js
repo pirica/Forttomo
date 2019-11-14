@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import WantedItem from "../WantedItem";
-import ItemPrices from "./../../../data/ItemPrices";
-import CategorySelect from "./CategorySelect";
+import WantedItem from '../WantedItem';
+import ItemPrices from './../../../data/ItemPrices';
+import CategorySelect from './CategorySelect';
 
 function WishlistItem(props) {
-  const [name, setName] = useState(props.name || "ITEM NAME");
-  const [category, setCategory] = useState(props.category || "Uncommon Outfit");
-  const [price, setPrice] = useState(props.price || "0");
+  const [name, setName] = useState(props.name || 'ITEM NAME');
+  const [category, setCategory] = useState(props.category || 'Uncommon Outfit');
+  const [price, setPrice] = useState(props.price || '0');
 
   const itemRef = React.createRef();
 
@@ -23,11 +23,9 @@ function WishlistItem(props) {
   };
 
   const updateItem = (name, category, price) => {
-    const updatedItem = new WantedItem(name, category, price);
+    if (category !== props.category) price = getDefaultPrice(category);
 
-    if (category !== props.category) {
-      price = getDefaultPrice(category);
-    }
+    const updatedItem = new WantedItem(name, category, price);
 
     setName(name);
     setCategory(category);
@@ -36,20 +34,20 @@ function WishlistItem(props) {
   };
 
   useEffect(() => {
-    let rarity = category.split(" ")[0].toLowerCase();
+    let rarity = category.split(' ')[0].toLowerCase();
 
     // All contrails and music packs are rare only
-    rarity = ["contrail", "music"].includes(rarity) ? "rare" : rarity;
+    rarity = ['contrail', 'music'].includes(rarity) ? 'rare' : rarity;
 
-    itemRef.current.classList = "wishlist_item";
+    itemRef.current.classList = 'wishlist_item';
     itemRef.current.classList.add(rarity);
   }, [category, itemRef]);
 
   return (
-    <div className="wishlist_item" ref={itemRef}>
+    <div className='wishlist_item' ref={itemRef}>
       <input
-        type="text"
-        className="wishlist_input item_name_input"
+        type='text'
+        className='wishlist_input item_name_input'
         defaultValue={props.name}
         onChange={e => updateItem(e.target.value, category, price)}
       />
@@ -60,18 +58,18 @@ function WishlistItem(props) {
         }}
       />
       <input
-        type="text"
-        className="wishlist_input item_cost_input"
+        type='text'
+        className='wishlist_input item_cost_input'
         value={price}
         onChange={e => updateItem(name, category, e.target.value)}
       />
       <div
-        className="wishlist_delete"
+        className='wishlist_delete'
         onClick={() => props.removeItem(props.position)}
       >
         x
       </div>
-      <div className="wishlist_handler">=</div>
+      <div className='wishlist_handler'>=</div>
     </div>
   );
 }
