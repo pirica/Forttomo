@@ -39,13 +39,6 @@ function WishlistItem(props) {
     setPrice(price);
   };
 
-  const updateItemProperties = e => {
-    let rarity = e.target.value.split(" ")[0].toLowerCase();
-
-    setBackground(rarity);
-    setDefaultPrice(e.target.value.toLowerCase());
-  };
-
   useEffect(() => {
     let rarity = category.split(" ")[0].toLowerCase();
 
