@@ -49,7 +49,7 @@ function WishlistItem(props) {
         type='text'
         className='wishlist_input item_name_input'
         defaultValue={props.name}
-        onChange={e => updateItem(e.target.value, category, price)}
+        onBlur={e => updateItem(e.target.value, category, price)}
       />
       <CategorySelect
         category={category}
@@ -60,8 +60,8 @@ function WishlistItem(props) {
       <input
         type='text'
         className='wishlist_input item_cost_input'
-        value={price}
-        onChange={e => updateItem(name, category, e.target.value)}
+        defaultValue={price}
+        onBlur={e => updateItem(name, category, e.target.value)}
       />
       <div
         className='wishlist_delete'
