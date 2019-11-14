@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import WishlistItem from "./WishlistItem/WishlistItem";
-import WantedItem from "./WantedItem";
+import React, { useState, useEffect } from 'react';
+import WishlistItem from './WishlistItem/WishlistItem';
+import WantedItem from './WantedItem';
 
-import "./WishlistView.scss";
+import './WishlistView.scss';
 
 function WishlistView() {
-  const storedWishlist = JSON.parse(localStorage.getItem("wishlist"));
+  const storedWishlist = JSON.parse(localStorage.getItem('wishlist'));
   const [wishlist, setWishlist] = useState(storedWishlist || []);
 
   const addNewItem = () => {
     setWishlist([
       ...wishlist,
-      new WantedItem("TEXT", "Uncommon Outfit", "800")
+      new WantedItem('ITEM NAME', 'Uncommon Outfit', '800')
     ]);
   };
 
@@ -23,22 +23,22 @@ function WishlistView() {
   };
 
   const updateItem = (position, item) => {
-    const updatedWishlist = [...wishlist];
-    updatedWishlist[position] = item;
+    const newWishlist = [...wishlist];
+    newWishlist[position] = item;
 
-    setWishlist(updatedWishlist);
+    setWishlist(newWishlist);
   };
 
   useEffect(() => {
     const wishlistString = JSON.stringify(wishlist);
 
-    localStorage.setItem("wishlist", wishlistString);
+    localStorage.setItem('wishlist', wishlistString);
   }, [wishlist]);
 
   return (
-    <div className="section">
+    <div className='section'>
       <h1>Wishlist</h1>
-      <div className="timeline_view card">
+      <div className='timeline_view card'>
         {wishlist.map((item, index) => {
           return (
             <WishlistItem
