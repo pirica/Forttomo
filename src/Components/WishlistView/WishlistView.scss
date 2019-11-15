@@ -26,6 +26,14 @@ select {
   outline: none;
 }
 
+.wishlist_delete,
+.wishlist_handler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
 .uncommon {
   background-color: rgb(131, 184, 131);
 }
@@ -46,7 +54,20 @@ select {
   background-color: rgb(206, 206, 206);
 }
 
+.wishlist_add_button {
+  $dimension: 50px;
+  margin-top: 5px;
+  height: $dimension;
+  width: $dimension;
+  background: none;
+  border: none;
+  font-size: 2rem;
+}
+
 .wishlist_data {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  width: 50%;
+  margin: auto;
+  margin-top: 25px;
 }

@@ -51,11 +51,15 @@ function WishlistView() {
             />
           );
         })}
+        <button className='wishlist_add_button' onClick={addNewItem}>
+          <i className='fas fa-plus'></i>
+        </button>
         <div className='wishlist_data'>
+          <div>Completion Date</div>
+          <div>Total</div>
           <div className='completion_date'>{completionDate}</div>
           <div className='wishlist_total'>{`Total: ${wishlistTotal}`}</div>
         </div>
-        <button onClick={addNewItem}>Add Item</button>
       </div>
     </div>
   );
