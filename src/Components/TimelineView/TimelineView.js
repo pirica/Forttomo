@@ -4,46 +4,73 @@ import './TimelineView.scss';
 import DayView from './DayView';
 import Timeline from '../../model/Timeline';
 import { endOfSeasonDate } from './../../data/General';
-import InfoContext from './../../context/AccountInfo';
+import InputContext from '../../context/InputContext';
+import WishlistContext from './../../context/WishlistContext';
 
 function TimelineView() {
-    const {
-        vbucks,
-        dailies,
-        missions,
-        level,
-        experience,
-        loginDay,
-        syncDate,
-        punchCardStates
-    } = useContext(InfoContext);
-    const totalVbucks = vbucks + dailies + missions;
-    const [timeline, setTimeline] = useState([]);
+  const {
+    vbucks,
+    dailies,
+    missions,
+    level,
+    experience,
+    loginDay,
+    syncDate,
+    punchCardStates
+  } = useContext(InputContext);
+  const { wishlistTotal, setCompletionDate } = useContext(WishlistContext);
+  const totalVbucks = vbucks + dailies + missions;
+  const [timeline, setTimeline] = useState([]);
 
-    useEffect(() => {
-        const amountOfDays = Math.ceil(
-            (new Date(endOfSeasonDate) - new Date()) / (1000 * 60 * 60 * 24)
-        );
-        const newTimeline = Timeline(
-            totalVbucks,
-            level,
-            experience,
-            punchCardStates,
-            loginDay,
-            syncDate,
-            amountOfDays
-        );
-        setTimeline(newTimeline);
-    }, [totalVbucks, level, experience, punchCardStates, loginDay, syncDate]);
-
-    return (
-        <div className='timeline_view section'>
-            <h1>Timeline</h1>
-            {timeline.map((day, index) => {
-                return <DayView day={day} key={`day-${index}`} />;
-            })}
-        </div>
+  useEffect(() => {
+    const day = 1000 * 60 * 60 * 24;
+    const amountOfDays = Math.ceil(
+      (new Date(endOfSeasonDate) - new Date()) / day
     );
+
+    const newTimeline = Timeline(
+      totalVbucks,
+      level,
+      experience,
+      punchCardStates,
+      loginDay,
+      syncDate,
+      amountOfDays
+    );
+
+    console.log(newTimeline);
+    let completionDate = `NA`;
+    for (const day of newTimeline) {
+      console.log(
+        `Day vbucks: ${day.vbucks}, Wishlist total: ${wishlistTotal}`
+      );
+      if (day.vbucks >= wishlistTotal) {
+        completionDate = day.date;
+        break;
+      }
+    }
+    console.log(completionDate);
+    setTimeline(newTimeline);
+    setCompletionDate(completionDate);
+  }, [
+    totalVbucks,
+    level,
+    experience,
+    punchCardStates,
+    loginDay,
+    syncDate,
+    wishlistTotal,
+    setCompletionDate
+  ]);
+
+  return (
+    <div className='timeline_view section'>
+      <h1>Timeline</h1>
+      {timeline.map((day, index) => {
+        return <DayView day={day} key={`day-${index}`} />;
+      })}
+    </div>
+  );
 }
 
 export default TimelineView;
