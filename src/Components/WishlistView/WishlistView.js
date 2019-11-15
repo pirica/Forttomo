@@ -6,12 +6,15 @@ import WishlistItem from './WishlistItem/WishlistItem';
 import WantedItem from './WantedItem';
 
 import WishlistContext from './../../context/WishlistContext';
+import InputContext from './../../context/InputContext';
 import './WishlistView.scss';
 
 function WishlistView() {
   const { wishlist, wishlistTotal, completionDate, setWishlist } = useContext(
     WishlistContext
   );
+  const { vbucks, missions, dailies } = useContext(InputContext);
+  const vbucksTotal = vbucks + missions + dailies;
 
   const addNewItem = () => {
     setWishlist([
@@ -56,9 +59,13 @@ function WishlistView() {
         </button>
         <div className='wishlist_data'>
           <div>Completion Date</div>
+          <div>Needed</div>
           <div>Total</div>
           <div className='completion_date'>{completionDate}</div>
-          <div className='wishlist_total'>{`Total: ${wishlistTotal}`}</div>
+          <div className='wishlist_needed_vbucks'>
+            {wishlistTotal - vbucksTotal > 0 ? wishlistTotal - vbucksTotal : 0}
+          </div>
+          <div className='wishlist_total'>{wishlistTotal}</div>
         </div>
       </div>
     </div>
