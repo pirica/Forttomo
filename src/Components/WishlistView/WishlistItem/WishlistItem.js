@@ -67,9 +67,11 @@ function WishlistItem(props) {
         className='wishlist_delete'
         onClick={() => props.removeItem(props.position)}
       >
-        x
+        <i className='fas fa-times'></i>
       </div>
-      <div className='wishlist_handler'>=</div>
+      <div className='wishlist_handler'>
+        <i className='fas fa-grip-lines'></i>
+      </div>
     </div>
   );
 }
