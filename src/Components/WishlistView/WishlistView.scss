@@ -45,3 +45,8 @@ select {
 .other {
   background-color: rgb(206, 206, 206);
 }
+
+.wishlist_data {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}

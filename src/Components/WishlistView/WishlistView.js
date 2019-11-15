@@ -40,7 +40,7 @@ function WishlistView() {
   return (
     <div className='section'>
       <h1>Wishlist</h1>
-      <div className='timeline_view card'>
+      <div className='wishlist_view card'>
         {wishlist.map((item, index) => {
           return (
             <WishlistItem
@@ -54,6 +54,15 @@ function WishlistView() {
             />
           );
         })}
+        <div className='wishlist_data'>
+          <div className='completion_date'>DATE</div>
+          <div className='wishlist_total'>
+            {'Total: '}
+            {wishlist
+              .map(el => +el.price)
+              .reduce((sum, current) => sum + current)}
+          </div>
+        </div>
         <button onClick={addNewItem}>Add Item</button>
       </div>
     </div>
