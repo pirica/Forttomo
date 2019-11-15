@@ -38,18 +38,15 @@ function TimelineView() {
       amountOfDays
     );
 
-    console.log(newTimeline);
     let completionDate = `NA`;
+
     for (const day of newTimeline) {
-      console.log(
-        `Day vbucks: ${day.vbucks}, Wishlist total: ${wishlistTotal}`
-      );
       if (day.vbucks >= wishlistTotal) {
         completionDate = day.date;
         break;
       }
     }
-    console.log(completionDate);
+
     setTimeline(newTimeline);
     setCompletionDate(completionDate);
   }, [
