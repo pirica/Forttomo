@@ -2,7 +2,10 @@
   display: grid;
   width: 100%;
   font-size: 2rem;
-  grid-template-columns: 45% 30% 15% 5% 5%;
+  grid-template-columns: 50% 30% 10% 5% 5%;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 2px;
 }
 
 .wishlist_input {
@@ -15,7 +18,7 @@
 .wishlist_input:focus {
   border: 2px solid #8bb5f5;
   color: rgb(97, 96, 96);
-  font-weight: 700;
+  font-weight: 500;
   outline: none;
 }
 
