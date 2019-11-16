@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import uuid from 'uuidv4';
 
 import WishlistItem from './WishlistItem/WishlistItem';
+import WishlistData from './WishlistData';
 import WantedItem from './WantedItem';
 
 import WishlistContext from './../../context/WishlistContext';
@@ -57,16 +58,11 @@ function WishlistView() {
         <button className='wishlist_add_button' onClick={addNewItem}>
           <i className='fas fa-plus'></i>
         </button>
-        <div className='wishlist_data'>
-          <div>Completion Date</div>
-          <div>Needed</div>
-          <div>Total</div>
-          <div className='completion_date'>{completionDate}</div>
-          <div className='wishlist_needed_vbucks'>
-            {wishlistTotal - vbucksTotal > 0 ? wishlistTotal - vbucksTotal : 0}
-          </div>
-          <div className='wishlist_total'>{wishlistTotal}</div>
-        </div>
+        <WishlistData
+          completionDate={completionDate}
+          wishlistTotal={wishlistTotal}
+          vbucksTotal={vbucksTotal}
+        />
       </div>
     </div>
   );
