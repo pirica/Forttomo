@@ -22,29 +22,11 @@ function WishlistView() {
     ]);
   };
 
-  const removeItem = position => {
-    const updatedWishlist = [...wishlist];
-    updatedWishlist.splice(position, 1);
-
-    setWishlist(updatedWishlist);
-  };
-
-  const updateItem = (position, item) => {
-    const newWishlist = [...wishlist];
-    newWishlist[position] = item;
-
-    setWishlist(newWishlist);
-  };
-
   return (
     <div className='section'>
       <h1>Wishlist</h1>
       <div className='wishlist_view card'>
-        <WishlistList
-          wishlist={wishlist}
-          onDelete={removeItem}
-          onChange={updateItem}
-        />
+        <WishlistList />
         <button className='wishlist_add_button' onClick={addNewItem}>
           <i className='fas fa-plus'></i>
         </button>
