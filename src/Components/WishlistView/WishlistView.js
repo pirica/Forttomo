@@ -1,14 +1,12 @@
 import React, { useContext } from 'react';
 
-import uuid from 'uuidv4';
-
-import WishlistItem from './WishlistItem/WishlistItem';
 import WishlistData from './WishlistData';
 import WantedItem from './WantedItem';
 
 import WishlistContext from './../../context/WishlistContext';
 import InputContext from './../../context/InputContext';
 import './WishlistView.scss';
+import WishlistList from './WishlistList';
 
 function WishlistView() {
   const { wishlist, wishlistTotal, completionDate, setWishlist } = useContext(
@@ -42,19 +40,11 @@ function WishlistView() {
     <div className='section'>
       <h1>Wishlist</h1>
       <div className='wishlist_view card'>
-        {wishlist.map((item, index) => {
-          return (
-            <WishlistItem
-              key={uuid()}
-              position={index}
-              name={item.name}
-              category={item.category}
-              price={item.price}
-              removeItem={removeItem}
-              onChange={updateItem}
-            />
-          );
-        })}
+        <WishlistList
+          wishlist={wishlist}
+          onDelete={removeItem}
+          onChange={updateItem}
+        />
         <button className='wishlist_add_button' onClick={addNewItem}>
           <i className='fas fa-plus'></i>
         </button>
