@@ -29,7 +29,6 @@ export const expectedXPOnDay = date => {
   const formattedDate = year + '-' + month + '-' + day;
   let expectedXP = 0;
 
-  //   console.log(formattedDate);
   for (const challengeDate in KnownChallenges) {
     if (formattedDate === challengeDate) {
       for (const challenge of KnownChallenges[challengeDate]) {
@@ -38,7 +37,5 @@ export const expectedXPOnDay = date => {
     }
   }
 
-  console.log(date.toUTCString());
-  console.log(expectedXP);
   return expectedXP;
 };
