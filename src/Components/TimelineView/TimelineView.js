@@ -16,7 +16,8 @@ function TimelineView() {
     experience,
     loginDay,
     syncDate,
-    punchCardStates
+    punchCardStates,
+    dailyChallengeStates
   } = useContext(InputContext);
   const { wishlistTotal, setCompletionDate } = useContext(WishlistContext);
   const totalVbucks = vbucks + dailies + missions;
@@ -33,6 +34,7 @@ function TimelineView() {
       level,
       experience,
       punchCardStates,
+      dailyChallengeStates,
       loginDay,
       syncDate,
       amountOfDays
@@ -54,6 +56,7 @@ function TimelineView() {
     level,
     experience,
     punchCardStates,
+    dailyChallengeStates,
     loginDay,
     syncDate,
     wishlistTotal,

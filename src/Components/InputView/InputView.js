@@ -3,6 +3,7 @@ import './InputView.scss';
 
 import InputContext from '../../context/InputContext';
 import PunchCardInput from './PunchCardInput';
+import DailyChallengeInput from './DailyChallengeInput';
 
 function InputView() {
   const {
@@ -95,8 +96,11 @@ function InputView() {
           }}
         />
       </div>
-      <div className='input_container punch_card_section'>
+      <div className='input_container day_select_section'>
         <PunchCardInput />
+      </div>
+      <div className='input_container day_select_section'>
+        <DailyChallengeInput />
       </div>
     </div>
   );

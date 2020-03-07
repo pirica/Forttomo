@@ -5,6 +5,7 @@ function Timeline(
   level,
   experience,
   punchCardDays,
+  dailyChallengeDays,
   loginDay,
   syncDate,
   amountOfDays
@@ -47,11 +48,14 @@ function Timeline(
     if (punchCardDays[currentDate.getUTCDay()]) {
       xpGained += (5 + 5 + 5 + 5 + 10) * 2 * 1000;
     }
-    // XP gained from each weekly
-    if (currentDate.getUTCDay() === 4) xpGained += 400000;
 
     // XP from daily challenge
-    xpGained += 31000;
+    if (dailyChallengeDays[currentDate.getUTCDay()]) {
+      xpGained += 31000;
+    }
+
+    // XP gained from each weekly
+    if (currentDate.getUTCDay() === 4) xpGained += 400000;
 
     const currentLevel = Math.floor(level + xpGained / 80000);
     const yesterdaysLevel = timeline[timeline.length - 1].level;
