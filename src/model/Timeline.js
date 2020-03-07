@@ -1,4 +1,4 @@
-import { vbucksFromLevel, vbucksFromLogin } from './reference';
+import { vbucksFromLevel, vbucksFromLogin, expectedXPOnDay } from './reference';
 
 function Timeline(
   vbucks,
@@ -55,7 +55,7 @@ function Timeline(
     }
 
     // XP gained from each weekly
-    if (currentDate.getUTCDay() === 4) xpGained += 400000;
+    xpGained += expectedXPOnDay(currentDate);
 
     const currentLevel = Math.floor(level + xpGained / 80000);
     const yesterdaysLevel = timeline[timeline.length - 1].level;
