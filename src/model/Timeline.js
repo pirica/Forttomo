@@ -1,4 +1,4 @@
-import { vbucksFromLevel, vbucksFromLogin } from "./reference";
+import { vbucksFromLevel, vbucksFromLogin } from './reference';
 
 function Timeline(
   vbucks,
@@ -10,14 +10,14 @@ function Timeline(
   amountOfDays
 ) {
   const dateFormat = {
-    weekday: "long",
-    month: "short",
-    day: "numeric",
-    timeZone: "UTC"
+    weekday: 'long',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC'
   };
 
   let xpGained = experience;
-  const timeline = [new Day("NOW", vbucks, level, [])];
+  const timeline = [new Day('NOW', vbucks, level, [])];
   const syncDateDistance =
     (new Date() - new Date(syncDate)) / (1000 * 60 * 60 * 24);
   const baseLoginDay = Math.floor(syncDateDistance) + loginDay;
@@ -28,16 +28,16 @@ function Timeline(
 
     const daily = 50;
     newVbucks += daily;
-    logs.push(new VbuckLog(daily, "daily"));
+    logs.push(new VbuckLog(daily, 'daily'));
 
     const missions = 50;
     newVbucks += missions;
-    logs.push(new VbuckLog(missions, "mission"));
+    logs.push(new VbuckLog(missions, 'mission'));
 
     const loginVbucks = vbucksFromLogin(baseLoginDay + day + 1);
     if (loginVbucks) {
       newVbucks += loginVbucks;
-      logs.push(new VbuckLog(loginVbucks, "login"));
+      logs.push(new VbuckLog(loginVbucks, 'login'));
     }
 
     const currentDate = new Date();
@@ -45,10 +45,13 @@ function Timeline(
 
     // XP gained from the daily punch card
     if (punchCardDays[currentDate.getUTCDay()]) {
-      xpGained += (8 + 8 + 8 + 8 + 16) * 2 * 1000;
+      xpGained += (5 + 5 + 5 + 5 + 10) * 2 * 1000;
     }
     // XP gained from each weekly
-    if (currentDate.getUTCDay() === 4) xpGained += 520000;
+    if (currentDate.getUTCDay() === 4) xpGained += 400000;
+
+    // XP from daily challenge
+    xpGained += 31000;
 
     const currentLevel = Math.floor(level + xpGained / 80000);
     const yesterdaysLevel = timeline[timeline.length - 1].level;
@@ -59,10 +62,10 @@ function Timeline(
 
     if (bpVbucks) {
       newVbucks += bpVbucks;
-      logs.push(new VbuckLog(bpVbucks, "battle_pass"));
+      logs.push(new VbuckLog(bpVbucks, 'battle_pass'));
     }
 
-    const dateString = currentDate.toLocaleString("en-US", dateFormat);
+    const dateString = currentDate.toLocaleString('en-US', dateFormat);
     const newTotal = timeline[timeline.length - 1].vbucks + newVbucks;
     timeline.push(new Day(dateString, newTotal, currentLevel, logs));
   }
