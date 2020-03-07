@@ -7,6 +7,7 @@ import WishlistContext from './../../context/WishlistContext';
 import InputContext from './../../context/InputContext';
 import './WishlistView.scss';
 import WishlistList from './WishlistList';
+import uuidv4 from 'uuidv4';
 
 function WishlistView() {
   const { wishlist, wishlistTotal, completionDate, setWishlist } = useContext(
@@ -18,7 +19,7 @@ function WishlistView() {
   const addNewItem = () => {
     setWishlist([
       ...wishlist,
-      new WantedItem('ITEM NAME', 'Uncommon Outfit', '800')
+      new WantedItem('ITEM NAME', 'Uncommon Outfit', '800', uuidv4())
     ]);
   };
 

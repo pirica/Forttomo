@@ -25,7 +25,7 @@ function WishlistItem(props) {
   const updateItem = (name, category, price) => {
     if (category !== props.category) price = getDefaultPrice(category);
 
-    const updatedItem = new WantedItem(name, category, price);
+    const updatedItem = new WantedItem(name, category, price, props.id);
 
     setName(name);
     setCategory(category);
