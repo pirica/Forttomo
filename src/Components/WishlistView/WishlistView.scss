@@ -1,8 +1,7 @@
 .wishlist_item {
   display: grid;
-  width: 100%;
-  font-size: 2rem;
-  grid-template-columns: 50% 30% 10% 5% 5%;
+  font-size: 1.5rem;
+  grid-template-columns: 40% 35% 13% 5% 7%;
   padding: 5px;
   border-radius: 5px;
   margin-bottom: 2px;
@@ -12,7 +11,7 @@
   background: none;
   border: 2px solid transparent;
   border-radius: 5px;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .wishlist_input:focus {

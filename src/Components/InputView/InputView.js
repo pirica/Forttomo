@@ -24,7 +24,7 @@ function InputView() {
   } = useContext(InputContext);
 
   return (
-    <div className='input_view card section'>
+    <div className='input_view card'>
       <div className='input_container vbucks_section'>
         <label htmlFor='vbucks_input'>Vbucks</label>
         <input

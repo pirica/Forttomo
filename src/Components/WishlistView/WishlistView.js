@@ -24,19 +24,16 @@ function WishlistView() {
   };
 
   return (
-    <div className='section'>
-      <h1>Wishlist</h1>
-      <div className='wishlist_view card'>
-        <WishlistList />
-        <button className='wishlist_add_button' onClick={addNewItem}>
-          <i className='fas fa-plus'></i>
-        </button>
-        <WishlistData
-          completionDate={completionDate}
-          wishlistTotal={wishlistTotal}
-          vbucksTotal={vbucksTotal}
-        />
-      </div>
+    <div className='wishlist_view card'>
+      <WishlistList />
+      <button className='wishlist_add_button' onClick={addNewItem}>
+        <i className='fas fa-plus'></i>
+      </button>
+      <WishlistData
+        completionDate={completionDate}
+        wishlistTotal={wishlistTotal}
+        vbucksTotal={vbucksTotal}
+      />
     </div>
   );
 }

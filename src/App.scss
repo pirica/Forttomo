@@ -1,32 +1,38 @@
 * {
-    margin: 0;
-    box-sizing: border-box;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .App {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    color: white;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+.control_panel {
+  display: grid;
+  grid-template-columns: 35% 54%;
+  grid-gap: 10px;
 }
 
 .card {
-    padding: 1em;
-    background: white;
-    text-align: center;
-    border-radius: 2px;
-    color: #000;
+  padding: 1em;
+  background: white;
+  text-align: center;
+  border-radius: 2px;
+  color: #000;
+  align-self: start;
 }
 
 .section:first-of-type {
-    margin-top: 2em;
+  margin-top: 2em;
 }
 
 .section {
-    margin-top: 1em;
-    width: 80%;
-    max-width: 900px;
-    text-align: left;
+  margin-top: 1em;
+  max-width: 1000px;
+  text-align: left;
 }

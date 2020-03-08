@@ -1,6 +1,6 @@
 .input_view {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .input_container {
@@ -13,14 +13,16 @@
   grid-column: 1 / 3;
 }
 
+.dailies_section,
 .level_section,
 .login_day_section {
-  grid-column: 1 / 3;
+  grid-column: 1 / 1;
 }
 
+.missions_section,
 .experience_section,
 .sync_date_section {
-  grid-column: 3 / 5;
+  grid-column: 2 / 2;
 }
 
 .day_select_section {

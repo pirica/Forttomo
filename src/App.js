@@ -11,8 +11,10 @@ function App() {
   return (
     <div className='App'>
       <ContextWrap>
-        <InputView />
-        <WishlistView />
+        <div class='control_panel section'>
+          <InputView />
+          <WishlistView />
+        </div>
         <TimelineView />
       </ContextWrap>
     </div>
