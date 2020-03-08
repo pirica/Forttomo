@@ -32,32 +32,46 @@
   }
 }
 
+$day-border-color: #737373;
+
 .day_select_wrapper {
   display: flex;
+  border-radius: 4px;
+  border: 1px solid $day-border-color;
 }
 
 .day_button {
+  $dimension: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 5px;
-  width: 50px;
-  height: 50px;
+  width: $dimension;
+  height: $dimension;
   font-size: 0.75em;
   font-weight: 700;
   border: none;
-  border-radius: 2px;
+  border-right: 1px solid black;
   cursor: pointer;
+}
+
+.day_button:nth-of-type(7) {
+  border-right: 0px;
 }
 
 .punch_card_day:focus {
   outline: none;
 }
 
+.day {
+  border-color: $day-border-color;
+}
+
 .day_on {
-  background-color: rgb(196, 255, 196);
+  background-color: #6fac6f;
+  color: #026a02;
 }
 
 .day_off {
   background-color: rgb(196, 196, 196);
+  color: #737373;
 }

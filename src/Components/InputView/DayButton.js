@@ -10,7 +10,7 @@ function DayButton({ isOn, children, position, onChange }) {
   };
 
   return (
-    <button className={`day_button ${stateClass}`} onClick={stateChange}>
+    <button className={`day day_button ${stateClass}`} onClick={stateChange}>
       {children}
     </button>
   );
