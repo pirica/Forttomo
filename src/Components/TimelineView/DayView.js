@@ -8,7 +8,7 @@ function DayView({ day }) {
     <div className={`day_view ${thursdayClass}`}>
       <div className='date'>{day.date}</div>
       <div className='timeline_vbucks'>{day.vbucks}</div>
-      <div className='timeline_level'>Lv {day.level}</div>
+      <div className='timeline_level'>{day.level}</div>
       <LogView logs={day.logs} />
     </div>
   );

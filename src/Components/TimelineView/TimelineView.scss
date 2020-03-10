@@ -1,44 +1,40 @@
+.timeline_view h1 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
 .day_view {
-    display: flex;
+  display: grid;
+  grid-template-columns: 250px 100px 100px 250px;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
 .date {
-    width: 250px;
-}
-
-.date,
-.timeline_vbucks,
-.timeline_level {
-    font-size: 1.5rem;
-}
-
-.timeline_vbucks,
-.timeline_level,
-.timeline_logs {
-    margin-left: 25px;
+  width: 250px;
 }
 
 .timeline_vbucks,
 .timeline_level {
-    width: 90px;
+  width: 90px;
 }
 
 .timeline_logs {
-    display: flex;
+  display: flex;
 
-    .daily {
-        color: red;
-    }
+  .daily {
+    color: red;
+  }
 
-    .mission {
-        color: blue;
-    }
+  .mission {
+    color: blue;
+  }
 
-    .login {
-        color: green;
-    }
+  .login {
+    color: green;
+  }
 
-    .battle_pass {
-        color: orange;
-    }
+  .battle_pass {
+    color: orange;
+  }
 }
