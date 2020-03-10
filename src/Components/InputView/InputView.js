@@ -12,6 +12,7 @@ function InputView() {
     missions,
     level,
     experience,
+    extraXP,
     loginDay,
     syncDate,
     setVbucks,
@@ -19,6 +20,7 @@ function InputView() {
     setMissions,
     setLevel,
     setExperience,
+    setExtraXP,
     setLoginDay,
     setSyncDate
   } = useContext(InputContext);
@@ -93,6 +95,17 @@ function InputView() {
           value={syncDate.toISOString().split('T')[0]}
           onChange={e => {
             setSyncDate(new Date(e.target.value));
+          }}
+        />
+      </div>
+      <div className='input_container extra_xp_section'>
+        <label htmlFor='sync_date_input'>Extra XP</label>
+        <input
+          id='extra_xp_input'
+          type='text'
+          value={extraXP}
+          onChange={e => {
+            setExtraXP(parseInt(e.target.value));
           }}
         />
       </div>

@@ -4,6 +4,7 @@ function Timeline(
   vbucks,
   level,
   experience,
+  extraXP,
   punchCardDays,
   dailyChallengeDays,
   loginDay,
@@ -56,6 +57,9 @@ function Timeline(
 
     // XP gained from each weekly
     xpGained += expectedXPOnDay(currentDate);
+
+    // XP gained from playing the game or other misc ways
+    xpGained += extraXP;
 
     const currentLevel = Math.floor(level + xpGained / 80000);
     const yesterdaysLevel = timeline[timeline.length - 1].level;
