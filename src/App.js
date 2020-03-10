@@ -11,7 +11,7 @@ function App() {
   return (
     <div className='App'>
       <ContextWrap>
-        <div class='control_panel section'>
+        <div className='control_panel section'>
           <InputView />
           <WishlistView />
         </div>
