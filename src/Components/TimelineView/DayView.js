@@ -5,7 +5,7 @@ function DayView({ day }) {
   const thursdayClass = day.date.split(',')[0] === 'Thursday' ? 'thursday' : '';
 
   return (
-    <div className={`day_view ${thursdayClass}`}>
+    <div className={`timeline_row day_view ${thursdayClass}`}>
       <div className='date'>{day.date}</div>
       <div className='timeline_vbucks'>{day.vbucks}</div>
       <div className='timeline_level'>{day.level}</div>
