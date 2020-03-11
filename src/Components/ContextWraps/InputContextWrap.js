@@ -9,6 +9,7 @@ function InputContextWrap({ children }) {
   const storedLevel = localStorage.getItem('level');
   const storedExperience = localStorage.getItem('experience');
   const storedExtraXP = localStorage.getItem('extraXP');
+  const storedUnaccountedXP = localStorage.getItem('unaccountedXP');
   const storedLoginDay = localStorage.getItem('loginDay');
   const storedSyncDate = Date.parse(localStorage.getItem('syncDate'));
   const storedPunchCard = JSON.parse(localStorage.getItem('punchCardStates'));
@@ -24,6 +25,7 @@ function InputContextWrap({ children }) {
   const [level, setLevel] = useState(+storedLevel);
   const [experience, setExperience] = useState(+storedExperience);
   const [extraXP, setExtraXP] = useState(+storedExtraXP);
+  const [unaccountedXP, setUnaccountedXP] = useState(+storedUnaccountedXP);
   const [loginDay, setLoginDay] = useState(+storedLoginDay);
   const [syncDate, setSyncDate] = useState(
     storedSyncDate ? new Date(storedSyncDate) : new Date()
@@ -54,6 +56,9 @@ function InputContextWrap({ children }) {
     localStorage.setItem('extraXP', extraXP);
   }, [extraXP]);
   useEffect(() => {
+    localStorage.setItem('unaccountedXP', unaccountedXP);
+  }, [unaccountedXP]);
+  useEffect(() => {
     localStorage.setItem('loginDay', loginDay);
   }, [loginDay]);
   useEffect(() => {
@@ -78,6 +83,7 @@ function InputContextWrap({ children }) {
         level,
         experience,
         extraXP,
+        unaccountedXP,
         loginDay,
         syncDate,
         punchCardStates,
@@ -88,6 +94,7 @@ function InputContextWrap({ children }) {
         setLevel,
         setExperience,
         setExtraXP,
+        setUnaccountedXP,
         setLoginDay,
         setSyncDate,
         setPunchCardStates,

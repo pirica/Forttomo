@@ -13,6 +13,7 @@ function InputView() {
     level,
     experience,
     extraXP,
+    unaccountedXP,
     loginDay,
     syncDate,
     setVbucks,
@@ -21,6 +22,7 @@ function InputView() {
     setLevel,
     setExperience,
     setExtraXP,
+    setUnaccountedXP,
     setLoginDay,
     setSyncDate
   } = useContext(InputContext);
@@ -99,13 +101,24 @@ function InputView() {
         />
       </div>
       <div className='input_container extra_xp_section'>
-        <label htmlFor='sync_date_input'>Extra XP</label>
+        <label htmlFor='extra_xp_input'>Extra XP</label>
         <input
           id='extra_xp_input'
           type='text'
           value={extraXP}
           onChange={e => {
-            setExtraXP(parseInt(e.target.value));
+            setExtraXP(parseInt(e.target.value) | 0);
+          }}
+        />
+      </div>
+      <div className='input_container unaccounted_xp_section'>
+        <label htmlFor='unaccounted_xp_input'>Unaccounted XP</label>
+        <input
+          id='unaccounted_xp_input'
+          type='text'
+          value={unaccountedXP}
+          onChange={e => {
+            setUnaccountedXP(parseInt(e.target.value) | 0);
           }}
         />
       </div>

@@ -5,6 +5,7 @@ function Timeline(
   level,
   experience,
   extraXP,
+  unaccountedXP,
   punchCardDays,
   dailyChallengeDays,
   loginDay,
@@ -18,7 +19,9 @@ function Timeline(
     timeZone: 'UTC'
   };
 
-  let xpGained = experience;
+  let xpGained = experience + unaccountedXP;
+  level = Math.floor(level + xpGained / 80000);
+
   const timeline = [new Day('NOW', vbucks, level, [])];
   const syncDateDistance =
     (new Date() - new Date(syncDate)) / (1000 * 60 * 60 * 24);
