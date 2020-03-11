@@ -1,9 +1,4 @@
-import {
-  vbucksFromLevel,
-  vbucksFromLogin,
-  expectedXPOnDay,
-  itemsForLevel
-} from './reference';
+import { vbucksFromLogin, expectedXPOnDay, itemsFromLevels } from './reference';
 
 function Timeline(
   vbucks,
@@ -35,19 +30,19 @@ function Timeline(
   for (let day = 0; day < amountOfDays; day++) {
     const logs = [];
     let bpItems = [];
-    let newVbucks = 0;
+    let gainedVbucks = 0;
 
     const daily = 50;
-    newVbucks += daily;
+    gainedVbucks += daily;
     logs.push(new VbuckLog(daily, 'daily'));
 
     const missions = 50;
-    newVbucks += missions;
+    gainedVbucks += missions;
     logs.push(new VbuckLog(missions, 'mission'));
 
     const loginVbucks = vbucksFromLogin(baseLoginDay + day + 1);
     if (loginVbucks) {
-      newVbucks += loginVbucks;
+      gainedVbucks += loginVbucks;
       logs.push(new VbuckLog(loginVbucks, 'login'));
     }
 
@@ -70,21 +65,23 @@ function Timeline(
     // XP gained from playing the game or other misc ways
     xpGained += extraXP;
 
-    const currentLevel = Math.floor(level + xpGained / 80000);
     const yesterdaysLevel = timeline[timeline.length - 1].level;
+    const currentLevel = Math.floor(level + xpGained / 80000);
+
+    bpItems = itemsFromLevels(yesterdaysLevel, currentLevel);
+
     let bpVbucks = 0;
-    for (let lvl = yesterdaysLevel + 1; lvl <= currentLevel; lvl++) {
-      bpVbucks += vbucksFromLevel(lvl);
-      bpItems = [...bpItems, ...itemsForLevel(lvl)];
+    for (let item of bpItems) {
+      if (item.type === 'currency') bpVbucks += 100;
     }
 
     if (bpVbucks) {
-      newVbucks += bpVbucks;
+      gainedVbucks += bpVbucks;
       logs.push(new VbuckLog(bpVbucks, 'battle_pass'));
     }
 
     const dateString = currentDate.toLocaleString('en-US', dateFormat);
-    const newTotal = timeline[timeline.length - 1].vbucks + newVbucks;
+    const newTotal = timeline[timeline.length - 1].vbucks + gainedVbucks;
     timeline.push(new Day(dateString, newTotal, currentLevel, logs, bpItems));
   }
 

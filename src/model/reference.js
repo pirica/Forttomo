@@ -41,10 +41,15 @@ export const expectedXPOnDay = date => {
   return expectedXP;
 };
 
-export const itemsForLevel = level => {
-  let items = [];
+export const itemsFromLevels = (startLevel, endLevel) => {
+  let bpItems = [];
 
-  if (level <= 100 && level >= 1) items = BattlePassItems[level];
+  if (startLevel > 100 || startLevel < 1) return bpItems;
+  for (let level = startLevel + 1; level <= endLevel; level++) {
+    if (level > 100) break;
 
-  return items;
+    bpItems = [...bpItems, ...BattlePassItems[level]];
+  }
+
+  return bpItems;
 };
