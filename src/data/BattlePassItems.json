@@ -1,0 +1,167 @@
+{
+  "1": [
+    { "name": "Peely", "type": "outfit", "rarity": "legendary" },
+    { "name": "Maya", "type": "outfit", "rarity": "pic" }
+  ],
+  "2": [{ "name": "Call Me", "type": "emote", "rarity": "uncommon" }],
+  "3": [
+    { "name": "Hench Life", "type": "loading screen", "rarity": "uncommon" }
+  ],
+  "4": [{ "name": "Getaway Case", "type": "contrail", "rarity": "rare" }],
+  "5": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "6": [{ "name": "Banana Briefcase", "type": "back bling", "rarity": "epic" }],
+  "7": [{ "name": "Hench", "type": "wrap", "rarity": "uncommon" }],
+  "8": [{ "name": "Spies!", "type": "music", "rarity": "rare" }],
+  "9": [{ "name": "Cuff 'Em", "type": "emoticon", "rarity": "uncommon" }],
+  "10": [
+    { "name": "Hack & Smash", "type": "harvesting_tool", "rarity": "rare" }
+  ],
+  "11": [{ "name": "Banner", "type": "banner", "rarity": "uncommon" }],
+  "12": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "13": [
+    { "name": "The Clash", "type": "loading screen", "rarity": "uncommon" }
+  ],
+  "14": [{ "name": "Hench Hauler", "type": "back bling", "rarity": "epic" }],
+  "15": [{ "name": "Agent Nana", "type": "spray", "rarity": "uncommon" }],
+  "16": [{ "name": "Big Haul", "type": "glider", "rarity": "rare" }],
+  "17": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "18": [{ "name": "Cash Grab", "type": "spray", "rarity": "uncommon" }],
+  "19": [
+    { "name": "Mountain Raid", "type": "loading screen", "rarity": "uncommon" }
+  ],
+  "20": [{ "name": "Brutus", "type": "outfit", "rarity": "epic" }],
+  "21": [{ "name": "TNT!", "type": "loading screen", "rarity": "uncommon" }],
+  "22": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "23": [
+    { "name": "Arroyo Pack", "type": "back bling", "rarity": "legendary" }
+  ],
+  "24": [{ "name": "Banner", "type": "banner", "rarity": "banner" }],
+  "25": [{ "name": "Heartblast", "type": "emoticon", "rarity": "uncommon" }],
+  "26": [{ "name": "Bombs Away!", "type": "glider", "rarity": "epic" }],
+  "27": [
+    {
+      "name": "Eye of the Storm",
+      "type": "loading screen",
+      "rarity": "uncommon"
+    }
+  ],
+  "28": [{ "name": "Blasted", "type": "wrap", "rarity": "uncommon" }],
+  "29": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "30": [{ "name": "TNTeeth", "type": "harvesting tool", "rarity": "rare" }],
+  "31": [{ "name": "Bomb Drop", "type": "contrail", "rarity": "rare" }],
+  "32": [{ "name": "Wild Blast", "type": "glider", "rarity": "uncommon" }],
+  "33": [{ "name": "Banner", "type": "banner", "rarity": "uncommon" }],
+  "34": [{ "name": "Agent Peely (Ghost)", "type": "style", "rarity": "epic" }],
+  "35": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "36": [{ "name": "Kabag!", "type": "back bling", "rarity": "epic" }],
+  "37": [{ "name": "Dynamite", "type": "spray", "rarity": "uncommon" }],
+  "38": [{ "name": "Bunny Bounce", "type": "music", "rarity": "rare" }],
+  "39": [{ "name": "Side Hustle", "type": "emote", "rarity": "rare" }],
+  "40": [{ "name": "TNTina", "type": "outfit", "rarity": "epic" }],
+  "41": [
+    {
+      "name": "Roy G Meowscles",
+      "type": "loading screen",
+      "rarity": "uncommon"
+    }
+  ],
+  "42": [{ "name": "Calico", "type": "wrap", "rarity": "rare" }],
+  "43": [
+    { "name": "Bananaxe", "type": "harvesting tool", "rarity": "uncommon" }
+  ],
+  "44": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "45": [{ "name": "Feline Fun", "type": "back bling", "rarity": "epic" }],
+  "46": [{ "name": "Meow", "type": "emoticon", "rarity": "uncommon" }],
+  "47": [{ "name": "Pandemonium", "type": "emote", "rarity": "rare" }],
+  "48": [
+    { "name": "Everything's Fine", "type": "spray", "rarity": "uncommon" }
+  ],
+  "49": [
+    { "name": "Our Man Peely", "type": "loading screen", "rarity": "uncommon" }
+  ],
+  "50": [
+    { "name": "Solid Scratch", "type": "harvesting tool", "rarity": "rare" }
+  ],
+  "51": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "52": [{ "name": "Fishbone", "type": "spray", "rarity": "uncommon" }],
+  "53": [{ "name": "Skellefish", "type": "glider", "rarity": "epic" }],
+  "54": [{ "name": "Ghost", "type": "emoticon", "rarity": "uncommon" }],
+  "55": [{ "name": "Alphabet Soup", "type": "contrail", "rarity": "rare" }],
+  "56": [{ "name": "Banner", "type": "banner", "rarity": "uncommon" }],
+  "57": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "58": [
+    { "name": "Meowscleteers", "type": "loading screen", "rarity": "uncommon" }
+  ],
+  "59": [{ "name": "Paws & Claws", "type": "emote", "rarity": "rare" }],
+  "60": [{ "name": "Meowscles", "type": "outfit", "rarity": "epic" }],
+  "61": [
+    { "name": "Lost Levels", "type": "loading screens", "rarity": "uncommon" }
+  ],
+  "62": [{ "name": "Spy vs Banana", "type": "wrap", "rarity": "uncommon" }],
+  "63": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "64": [{ "name": "Ollie", "type": "glider", "rarity": "epic" }],
+  "65": [
+    { "name": "The Harvest", "type": "loading screen", "rarity": "uncommon" }
+  ],
+  "66": [{ "name": "Adventure Pack", "type": "back bling", "rarity": "epic" }],
+  "67": [{ "name": "Banner", "type": "banner", "rarity": "uncommon" }],
+  "68": [{ "name": "Beep Beep", "type": "emote", "rarity": "uncommon" }],
+  "69": [{ "name": "Shadow", "type": "emoticon", "rarity": "uncommon" }],
+  "70": [
+    {
+      "name": "Epic Swords of Wonder",
+      "type": "harvesting tool",
+      "rarity": "epic"
+    }
+  ],
+  "71": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "72": [{ "name": "Bon Bon", "type": "contrail", "rarity": "rare" }],
+  "73": [
+    {
+      "name": "Dangerous Waters",
+      "type": "loading screen",
+      "rarity": "uncommon"
+    }
+  ],
+  "74": [{ "name": "Llamacorn Express", "type": "glider", "rarity": "rare" }],
+  "75": [{ "name": "Ollie Away!", "type": "emoticon", "rarity": "uncommon" }],
+  "76": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "77": [{ "name": "Agent Peely (Shadow)", "type": "style", "rarity": "epic" }],
+  "78": [{ "name": "Mighty Tree", "type": "spray", "rarity": "uncommon" }],
+  "79": [{ "name": "Denim Destiny", "type": "wrap", "rarity": "uncommon" }],
+  "80": [{ "name": "Skye", "type": "outfit", "rarity": "epic" }],
+  "81": [
+    { "name": "Golden Empire", "type": "loading screen", "rarity": "uncommon" }
+  ],
+  "82": [{ "name": "Coin Flip", "type": "emote", "rarity": "uncommon" }],
+  "83": [{ "name": "Gold Touch", "type": "spray", "rarity": "uncommon" }],
+  "84": [{ "name": "Banana Bomber", "type": "glider", "rarity": "uncommon" }],
+  "85": [{ "name": "Flaky", "type": "contrail", "rarity": "rare" }],
+  "86": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "87": [
+    {
+      "name": "Specialist Pickaxe",
+      "type": "harvesting tool",
+      "rarity": "rare"
+    }
+  ],
+  "88": [
+    { "name": "Boss Fight", "type": "loading screen", "rarity": "uncommon" }
+  ],
+  "89": [{ "name": "Banner", "type": "banner", "rarity": "uncommon" }],
+  "90": [
+    { "name": "Golden King", "type": "harvesting tool", "rarity": "rare" }
+  ],
+  "91": [{ "name": "Limitless", "type": "music", "rarity": "rare" }],
+  "92": [{ "name": "Banner", "type": "banner", "rarity": "uncommon" }],
+  "93": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "94": [
+    { "name": "Gold Dagger Pack", "type": "back bling", "rarity": "legendary" }
+  ],
+  "95": [{ "name": "Banner", "type": "banner", "rarity": "uncommon" }],
+  "96": [{ "name": "Golden Vision", "type": "emoticon", "rarity": "uncommon" }],
+  "97": [{ "name": "Midas Memory", "type": "wrap", "rarity": "uncommon" }],
+  "98": [{ "name": "Springy", "type": "emote", "rarity": "epic" }],
+  "99": [{ "name": "Vbucks", "type": "currency", "rarity": "legendary" }],
+  "100": [{ "name": "Midas", "type": "outfit", "rarity": "legendary" }]
+}

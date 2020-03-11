@@ -1,4 +1,5 @@
 import BattlePassVbucks from './../data/BattlePassVbucks';
+import BattlePassItems from './../data/BattlePassItems';
 import LoginVbucks from './../data/LoginVbucks';
 import KnownChallenges from './../data/KnownChallenges';
 
@@ -38,4 +39,12 @@ export const expectedXPOnDay = date => {
   }
 
   return expectedXP;
+};
+
+export const itemsForLevel = level => {
+  let items = [];
+
+  if (level <= 100 && level >= 1) items = BattlePassItems[level];
+
+  return items;
 };

@@ -1,0 +1,73 @@
+.day_view {
+  background: #fff;
+  color: #000;
+  border-radius: 5px;
+}
+
+.thursday {
+  background-color: #f4c68b;
+}
+
+.date {
+  font-weight: bold;
+}
+
+.timeline_vbucks,
+.timeline_level {
+  text-align: right;
+}
+
+.timeline_logs {
+  display: flex;
+  margin-left: 10px;
+
+  .log {
+    margin-left: 5px;
+  }
+
+  .daily {
+    color: red;
+  }
+
+  .mission {
+    color: blue;
+  }
+
+  .login {
+    color: green;
+  }
+
+  .battle_pass {
+    color: orange;
+  }
+}
+
+.battlepass_unlocks {
+  grid-column: 1 / 5;
+
+  h5 {
+    text-align: center;
+    margin: 15px 0;
+  }
+}
+
+.item_wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+}
+
+.battlepass_item {
+  text-align: center;
+  padding: 5px;
+  border: 2px solid black;
+  font-size: 14pt;
+
+  .item_name {
+    font-size: 14pt;
+  }
+
+  .item_type {
+    font-size: 10pt;
+  }
+}

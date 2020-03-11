@@ -1,4 +1,9 @@
-import { vbucksFromLevel, vbucksFromLogin, expectedXPOnDay } from './reference';
+import {
+  vbucksFromLevel,
+  vbucksFromLogin,
+  expectedXPOnDay,
+  itemsForLevel
+} from './reference';
 
 function Timeline(
   vbucks,
@@ -22,13 +27,14 @@ function Timeline(
   let xpGained = experience + unaccountedXP;
   level = Math.floor(level + xpGained / 80000);
 
-  const timeline = [new Day('NOW', vbucks, level, [])];
+  const timeline = [new Day('NOW', vbucks, level, [], [])];
   const syncDateDistance =
     (new Date() - new Date(syncDate)) / (1000 * 60 * 60 * 24);
   const baseLoginDay = Math.floor(syncDateDistance) + loginDay;
 
   for (let day = 0; day < amountOfDays; day++) {
     const logs = [];
+    let bpItems = [];
     let newVbucks = 0;
 
     const daily = 50;
@@ -69,6 +75,7 @@ function Timeline(
     let bpVbucks = 0;
     for (let lvl = yesterdaysLevel + 1; lvl <= currentLevel; lvl++) {
       bpVbucks += vbucksFromLevel(lvl);
+      bpItems = [...bpItems, ...itemsForLevel(lvl)];
     }
 
     if (bpVbucks) {
@@ -78,18 +85,19 @@ function Timeline(
 
     const dateString = currentDate.toLocaleString('en-US', dateFormat);
     const newTotal = timeline[timeline.length - 1].vbucks + newVbucks;
-    timeline.push(new Day(dateString, newTotal, currentLevel, logs));
+    timeline.push(new Day(dateString, newTotal, currentLevel, logs, bpItems));
   }
 
   return timeline;
 }
 
 class Day {
-  constructor(date, vbucks, level, logs) {
+  constructor(date, vbucks, level, logs, bpItems) {
     this.date = date;
     this.vbucks = vbucks;
     this.level = level;
     this.logs = logs;
+    this.bpItems = bpItems;
   }
 }
 
