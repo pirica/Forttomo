@@ -59,26 +59,6 @@ function InputView() {
           placeholder='Missions'
         />
       </div>
-      <div className='input_container level_section'>
-        <label htmlFor='level_input'>Level</label>
-        <input
-          id='level_input'
-          type='text'
-          value={level}
-          onChange={e => setLevel(parseInt(e.target.value) | 0)}
-          placeholder='Battle Pass Level'
-        />
-      </div>
-      <div className='input_container experience_section'>
-        <label htmlFor='experience_input'>Experience</label>
-        <input
-          id='experience_input'
-          type='text'
-          value={experience}
-          onChange={e => setExperience(parseInt(e.target.value) | 0)}
-          placeholder='XP'
-        />
-      </div>
       <div className='input_container login_day_section'>
         <label htmlFor='login_day_input'>Login Day</label>
         <input
@@ -98,6 +78,26 @@ function InputView() {
           onChange={e => {
             setSyncDate(new Date(e.target.value));
           }}
+        />
+      </div>
+      <div className='input_container level_section'>
+        <label htmlFor='level_input'>Level</label>
+        <input
+          id='level_input'
+          type='text'
+          value={level}
+          onChange={e => setLevel(parseInt(e.target.value) | 0)}
+          placeholder='Battle Pass Level'
+        />
+      </div>
+      <div className='input_container experience_section'>
+        <label htmlFor='experience_input'>Experience</label>
+        <input
+          id='experience_input'
+          type='text'
+          value={experience}
+          onChange={e => setExperience(parseInt(e.target.value) | 0)}
+          placeholder='XP'
         />
       </div>
       <div className='input_container extra_xp_section'>
