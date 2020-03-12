@@ -20,9 +20,11 @@ function Timeline(
   };
 
   let xpGained = experience + unaccountedXP;
+  const oldLevel = level;
   level = Math.floor(level + xpGained / 80000);
 
-  const timeline = [new Day('NOW', vbucks, level, [], [])];
+  const availableItems = itemsFromLevels(oldLevel, level);
+  const timeline = [new Day('NOW', vbucks, level, [], availableItems)];
   const syncDateDistance =
     (new Date() - new Date(syncDate)) / (1000 * 60 * 60 * 24);
   const baseLoginDay = Math.floor(syncDateDistance) + loginDay;
