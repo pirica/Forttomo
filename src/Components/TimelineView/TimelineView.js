@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './TimelineView.scss';
 
-import DayView from './DayView';
+import DayView from './DayView/DayView';
 import Timeline from '../../model/Timeline';
 import { endOfSeasonDate } from './../../data/General';
 import InputContext from '../../context/InputContext';
