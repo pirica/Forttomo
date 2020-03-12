@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { Draggable } from 'react-beautiful-dnd';
 
 import WishlistContext from '../../context/WishlistContext';
 import WishlistItem from './WishlistItem/WishlistItem';
+import DroppableWrapper from './DroppableWrapper';
 
 function WishlistList() {
   const { wishlist, setWishlist } = useContext(WishlistContext);
@@ -43,42 +44,33 @@ function WishlistList() {
   };
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId='droppable'>
-        {provided => {
-          return (
-            <div {...provided.droppableProps} ref={provided.innerRef}>
-              {wishlist.map((item, index) => {
-                return (
-                  <Draggable key={item.id} draggableId={item.id} index={index}>
-                    {provided => {
-                      return (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <WishlistItem
-                            position={index}
-                            name={item.name}
-                            category={item.category}
-                            price={item.price}
-                            id={item.id}
-                            removeItem={removeItem}
-                            onChange={updateItem}
-                          />
-                        </div>
-                      );
-                    }}
-                  </Draggable>
-                );
-              })}
-              {provided.placeholder}
-            </div>
-          );
-        }}
-      </Droppable>
-    </DragDropContext>
+    <DroppableWrapper onDragEnd={onDragEnd}>
+      {wishlist.map((item, index) => {
+        return (
+          <Draggable key={item.id} draggableId={item.id} index={index}>
+            {provided => {
+              return (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.draggableProps}
+                  {...provided.dragHandleProps}
+                >
+                  <WishlistItem
+                    position={index}
+                    name={item.name}
+                    category={item.category}
+                    price={item.price}
+                    id={item.id}
+                    removeItem={removeItem}
+                    onChange={updateItem}
+                  />
+                </div>
+              );
+            }}
+          </Draggable>
+        );
+      })}
+    </DroppableWrapper>
   );
 }
 
