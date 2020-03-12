@@ -23,6 +23,7 @@ function DayView({ day }) {
               const key = uuidv4();
               return (
                 <div className={`${item.rarity} battlepass_item`} key={key}>
+                  <div className='item_level'>{item.level}</div>
                   <div className='item_name'>{item.name}</div>
                   <div className='item_type'>({item.type})</div>
                 </div>

@@ -48,7 +48,13 @@ export const itemsFromLevels = (startLevel, endLevel) => {
   for (let level = startLevel + 1; level <= endLevel; level++) {
     if (level > 100) break;
 
-    bpItems = [...bpItems, ...BattlePassItems[level]];
+    const currentItems = BattlePassItems[level];
+
+    for (const index in currentItems) {
+      currentItems[index].level = level;
+    }
+
+    bpItems = [...bpItems, ...currentItems];
   }
 
   return bpItems;
