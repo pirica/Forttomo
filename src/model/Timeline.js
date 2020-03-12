@@ -22,6 +22,8 @@ function Timeline(
   let xpGained = experience + unaccountedXP;
   const oldLevel = level;
   level = Math.floor(level + xpGained / 80000);
+  // The remainder of the xp after the level ups were performed
+  xpGained = xpGained % 80000;
 
   const availableItems = itemsFromLevels(oldLevel, level);
   const timeline = [new Day('NOW', vbucks, level, [], availableItems)];
@@ -49,7 +51,7 @@ function Timeline(
     }
 
     const currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() + day);
+    currentDate.setDate(currentDate.getUTCDate() + day);
 
     // XP gained from the daily punch card
     if (punchCardDays[currentDate.getUTCDay()]) {
@@ -57,9 +59,7 @@ function Timeline(
     }
 
     // XP from daily challenge
-    if (dailyChallengeDays[currentDate.getUTCDay()]) {
-      xpGained += 31000;
-    }
+    if (dailyChallengeDays[currentDate.getUTCDay()]) xpGained += 31000;
 
     // XP gained from each weekly
     xpGained += expectedXPOnDay(currentDate);
