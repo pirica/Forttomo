@@ -31,7 +31,7 @@ function Timeline(
     (new Date() - new Date(syncDate)) / (1000 * 60 * 60 * 24);
   const baseLoginDay = Math.floor(syncDateDistance) + loginDay;
 
-  for (let day = 0; day < amountOfDays; day++) {
+  for (let day = 1; day <= amountOfDays; day++) {
     const logs = [];
     let bpItems = [];
     let gainedVbucks = 0;
