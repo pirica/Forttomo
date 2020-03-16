@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import DayButton from './DayButton';
 
-import InputContext from '../../context/InputContext';
+import InputContext from '../../../context/InputContext';
 
 function PunchCardInput() {
   const { dailyChallengeStates, setDailyChallengeStates } = useContext(

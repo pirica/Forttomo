@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import './InputView.scss';
 
 import InputContext from '../../context/InputContext';
-import PunchCardInput from './PunchCardInput';
-import DailyChallengeInput from './DailyChallengeInput';
+import PunchCardInput from './InputComponents/PunchCardInput';
+import DailyChallengeInput from './InputComponents/DailyChallengeInput';
 
 function InputView() {
   const {
