@@ -79,3 +79,69 @@ $day-border-color: #737373;
   background-color: rgb(196, 196, 196);
   color: #737373;
 }
+
+.label_header {
+  $info-button-dimension: 15px;
+  $message-box-width: 150px;
+  display: grid;
+  grid-template-columns: auto $info-button-dimension;
+
+  label {
+    text-align: left;
+  }
+
+  .info_button_section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+  }
+
+  .info_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    background: #19098c;
+    color: white;
+    border-radius: 10px;
+    width: $info-button-dimension;
+    height: $info-button-dimension;
+    cursor: default;
+    font-size: 8pt;
+  }
+
+  .message_box {
+    position: absolute;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    font-size: 10pt;
+    text-align: left;
+  }
+
+  .messageOpen {
+    animation: openMessage 0.1s both;
+    animation-direction: alternate;
+  }
+
+  @keyframes openMessage {
+    from {
+      width: 0px;
+      height: 0px;
+    }
+    to {
+      padding: 10px;
+
+      width: $message-box-width;
+      height: auto;
+    }
+  }
+}

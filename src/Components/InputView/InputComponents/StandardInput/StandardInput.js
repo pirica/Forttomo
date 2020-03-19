@@ -1,6 +1,7 @@
 import React from 'react';
+import InfoButton from './InfoButton';
 
-function StandardInput({ name, value, formType, onChange }) {
+function StandardInput({ name, value, formType, message, onChange }) {
   const sanitizedName = name.toLowerCase().replace(' ', '_');
 
   if (formType === 'date') {
@@ -19,7 +20,10 @@ function StandardInput({ name, value, formType, onChange }) {
 
   return (
     <div className={`input_container ${sanitizedName}_section`}>
-      <label htmlFor={`${sanitizedName}_input`}>{name}</label>
+      <div className='label_header'>
+        <label htmlFor={`${sanitizedName}_input`}>{name}</label>
+        <InfoButton message={message} />
+      </div>
       <input
         id={`${sanitizedName}_input`}
         type={formType}
