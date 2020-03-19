@@ -8,14 +8,19 @@ function SaveTheWorldInput() {
     vbucks,
     dailies,
     alerts,
+    averageAlerts,
     loginDay,
     syncDate,
     setVbucks,
     setDailies,
     setAlerts,
+    setAverageAlerts,
     setLoginDay,
     setSyncDate
   } = useContext(InputContext);
+
+  if (averageAlerts === null) setAverageAlerts(50);
+
   return (
     <div className='stw_section mode_section'>
       <h3 className='mode_title'>Save the World</h3>
@@ -53,6 +58,13 @@ function SaveTheWorldInput() {
         formType='date'
         message='The date you entered the Login Day textfield. Important for calculating your daily login vbucks.'
         onChange={setSyncDate}
+      />
+      <StandardInput
+        name='Average Alerts'
+        value={averageAlerts}
+        formType='text'
+        message='Average vbucks you expect to get from mission alerts daily. Usually 50 during Alert season and 30 in Storm season.'
+        onChange={setAverageAlerts}
       />
     </div>
   );

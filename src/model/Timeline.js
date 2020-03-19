@@ -2,6 +2,7 @@ import { vbucksFromLogin, expectedXPOnDay, itemsFromLevels } from './reference';
 
 function Timeline(
   vbucks,
+  averageAlerts,
   level,
   experience,
   extraXP,
@@ -40,9 +41,10 @@ function Timeline(
     gainedVbucks += daily;
     logs.push(new VbuckLog(daily, 'daily'));
 
-    const alerts = 50;
-    gainedVbucks += alerts;
-    logs.push(new VbuckLog(alerts, 'alert'));
+    if (averageAlerts) {
+      gainedVbucks += averageAlerts;
+      logs.push(new VbuckLog(averageAlerts, 'alert'));
+    }
 
     const loginVbucks = vbucksFromLogin(baseLoginDay + day + 1);
     if (loginVbucks) {

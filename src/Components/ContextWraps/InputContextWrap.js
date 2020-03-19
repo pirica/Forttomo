@@ -6,6 +6,7 @@ function InputContextWrap({ children }) {
   const storedVbucks = localStorage.getItem('vbucks');
   const storedDailies = localStorage.getItem('dailies');
   const storedAlerts = localStorage.getItem('alerts');
+  const storedAverageAlerts = localStorage.getItem('averageAlerts');
   const storedLevel = localStorage.getItem('level');
   const storedExperience = localStorage.getItem('experience');
   const storedExtraXP = localStorage.getItem('extraXP');
@@ -22,6 +23,7 @@ function InputContextWrap({ children }) {
   const [vbucks, setVbucks] = useState(+storedVbucks);
   const [dailies, setDailies] = useState(+storedDailies);
   const [alerts, setAlerts] = useState(+storedAlerts);
+  const [averageAlerts, setAverageAlerts] = useState(storedAverageAlerts);
   const [level, setLevel] = useState(+storedLevel);
   const [experience, setExperience] = useState(+storedExperience);
   const [extraXP, setExtraXP] = useState(+storedExtraXP);
@@ -46,6 +48,9 @@ function InputContextWrap({ children }) {
   useEffect(() => {
     localStorage.setItem('alerts', alerts);
   }, [alerts]);
+  useEffect(() => {
+    localStorage.setItem('averageAlerts', averageAlerts);
+  }, [averageAlerts]);
   useEffect(() => {
     localStorage.setItem('level', level);
   }, [level]);
@@ -80,6 +85,7 @@ function InputContextWrap({ children }) {
         vbucks,
         dailies,
         alerts,
+        averageAlerts,
         level,
         experience,
         extraXP,
@@ -91,6 +97,7 @@ function InputContextWrap({ children }) {
         setVbucks,
         setDailies,
         setAlerts,
+        setAverageAlerts,
         setLevel,
         setExperience,
         setExtraXP,

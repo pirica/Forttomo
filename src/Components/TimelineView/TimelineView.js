@@ -12,6 +12,7 @@ function TimelineView() {
     vbucks,
     dailies,
     alerts,
+    averageAlerts,
     level,
     experience,
     extraXP,
@@ -33,6 +34,7 @@ function TimelineView() {
 
     const newTimeline = Timeline(
       totalVbucks,
+      +averageAlerts,
       level,
       experience,
       extraXP,
@@ -57,6 +59,7 @@ function TimelineView() {
     setCompletionDate(completionDate);
   }, [
     totalVbucks,
+    averageAlerts,
     level,
     experience,
     extraXP,
