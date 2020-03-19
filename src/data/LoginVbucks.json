@@ -1,178 +1,178 @@
 [
-    {
-        "day": 11,
-        "vbucks": 50
-    },
-    {
-        "day": 28,
-        "vbucks": 300
-    },
-    {
-        "day": 35,
-        "vbucks": 150
-    },
-    {
-        "day": 49,
-        "vbucks": 150
-    },
-    {
-        "day": 56,
-        "vbucks": 300
-    },
-    {
-        "day": 70,
-        "vbucks": 150
-    },
-    {
-        "day": 77,
-        "vbucks": 150
-    },
-    {
-        "day": 84,
-        "vbucks": 300
-    },
-    {
-        "day": 91,
-        "vbucks": 150
-    },
-    {
-        "day": 98,
-        "vbucks": 150
-    },
-    {
-        "day": 105,
-        "vbucks": 150
-    },
-    {
-        "day": 112,
-        "vbucks": 800
-    },
-    {
-        "day": 119,
-        "vbucks": 150
-    },
-    {
-        "day": 126,
-        "vbucks": 150
-    },
-    {
-        "day": 133,
-        "vbucks": 150
-    },
-    {
-        "day": 140,
-        "vbucks": 300
-    },
-    {
-        "day": 147,
-        "vbucks": 150
-    },
-    {
-        "day": 154,
-        "vbucks": 150
-    },
-    {
-        "day": 161,
-        "vbucks": 150
-    },
-    {
-        "day": 168,
-        "vbucks": 300
-    },
-    {
-        "day": 175,
-        "vbucks": 150
-    },
-    {
-        "day": 182,
-        "vbucks": 150
-    },
-    {
-        "day": 189,
-        "vbucks": 150
-    },
-    {
-        "day": 196,
-        "vbucks": 300
-    },
-    {
-        "day": 203,
-        "vbucks": 150
-    },
-    {
-        "day": 210,
-        "vbucks": 150
-    },
-    {
-        "day": 217,
-        "vbucks": 150
-    },
-    {
-        "day": 224,
-        "vbucks": 800
-    },
-    {
-        "day": 231,
-        "vbucks": 150
-    },
-    {
-        "day": 238,
-        "vbucks": 150
-    },
-    {
-        "day": 245,
-        "vbucks": 150
-    },
-    {
-        "day": 252,
-        "vbucks": 300
-    },
-    {
-        "day": 259,
-        "vbucks": 150
-    },
-    {
-        "day": 266,
-        "vbucks": 150
-    },
-    {
-        "day": 273,
-        "vbucks": 150
-    },
-    {
-        "day": 280,
-        "vbucks": 150
-    },
-    {
-        "day": 287,
-        "vbucks": 150
-    },
-    {
-        "day": 294,
-        "vbucks": 150
-    },
-    {
-        "day": 301,
-        "vbucks": 150
-    },
-    {
-        "day": 308,
-        "vbucks": 300
-    },
-    {
-        "day": 315,
-        "vbucks": 150
-    },
-    {
-        "day": 322,
-        "vbucks": 150
-    },
-    {
-        "day": 329,
-        "vbucks": 150
-    },
-    {
-        "day": 336,
-        "vbucks": 1000
-    }
+  {
+    "day": 11,
+    "vbucks": 50
+  },
+  {
+    "day": 28,
+    "vbucks": 300
+  },
+  {
+    "day": 35,
+    "vbucks": 150
+  },
+  {
+    "day": 49,
+    "vbucks": 150
+  },
+  {
+    "day": 56,
+    "vbucks": 300
+  },
+  {
+    "day": 70,
+    "vbucks": 150
+  },
+  {
+    "day": 77,
+    "vbucks": 150
+  },
+  {
+    "day": 84,
+    "vbucks": 300
+  },
+  {
+    "day": 91,
+    "vbucks": 150
+  },
+  {
+    "day": 98,
+    "vbucks": 150
+  },
+  {
+    "day": 105,
+    "vbucks": 150
+  },
+  {
+    "day": 112,
+    "vbucks": 800
+  },
+  {
+    "day": 119,
+    "vbucks": 150
+  },
+  {
+    "day": 126,
+    "vbucks": 150
+  },
+  {
+    "day": 133,
+    "vbucks": 150
+  },
+  {
+    "day": 140,
+    "vbucks": 300
+  },
+  {
+    "day": 147,
+    "vbucks": 150
+  },
+  {
+    "day": 154,
+    "vbucks": 150
+  },
+  {
+    "day": 161,
+    "vbucks": 150
+  },
+  {
+    "day": 168,
+    "vbucks": 300
+  },
+  {
+    "day": 175,
+    "vbucks": 150
+  },
+  {
+    "day": 182,
+    "vbucks": 150
+  },
+  {
+    "day": 189,
+    "vbucks": 150
+  },
+  {
+    "day": 196,
+    "vbucks": 300
+  },
+  {
+    "day": 203,
+    "vbucks": 150
+  },
+  {
+    "day": 210,
+    "vbucks": 150
+  },
+  {
+    "day": 217,
+    "vbucks": 150
+  },
+  {
+    "day": 224,
+    "vbucks": 800
+  },
+  {
+    "day": 231,
+    "vbucks": 150
+  },
+  {
+    "day": 238,
+    "vbucks": 150
+  },
+  {
+    "day": 245,
+    "vbucks": 150
+  },
+  {
+    "day": 252,
+    "vbucks": 300
+  },
+  {
+    "day": 259,
+    "vbucks": 150
+  },
+  {
+    "day": 266,
+    "vbucks": 150
+  },
+  {
+    "day": 273,
+    "vbucks": 150
+  },
+  {
+    "day": 280,
+    "vbucks": 300
+  },
+  {
+    "day": 287,
+    "vbucks": 150
+  },
+  {
+    "day": 294,
+    "vbucks": 150
+  },
+  {
+    "day": 301,
+    "vbucks": 150
+  },
+  {
+    "day": 308,
+    "vbucks": 300
+  },
+  {
+    "day": 315,
+    "vbucks": 150
+  },
+  {
+    "day": 322,
+    "vbucks": 150
+  },
+  {
+    "day": 329,
+    "vbucks": 150
+  },
+  {
+    "day": 336,
+    "vbucks": 1000
+  }
 ]
