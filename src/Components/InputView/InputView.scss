@@ -1,6 +1,29 @@
-.input_view {
+.mode_section {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding: 10px;
+  border-radius: 10px;
+
+  h3,
+  h4 {
+    color: white;
+    text-align: left;
+  }
+
+  .mode_title {
+    text-transform: uppercase;
+    grid-column: 1 / 3;
+    margin-bottom: 5px;
+  }
+}
+
+.stw_section {
+  background: rgb(201, 156, 11);
+  margin-bottom: 20px;
+}
+
+.br_section {
+  background: rgb(9, 102, 133);
 }
 
 .input_container {
@@ -85,10 +108,6 @@ $day-border-color: #737373;
   $message-box-width: 150px;
   display: grid;
   grid-template-columns: auto $info-button-dimension;
-
-  label {
-    text-align: left;
-  }
 
   .info_button_section {
     display: flex;

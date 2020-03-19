@@ -21,7 +21,7 @@ function StandardInput({ name, value, formType, message, onChange }) {
   return (
     <div className={`input_container ${sanitizedName}_section`}>
       <div className='label_header'>
-        <label htmlFor={`${sanitizedName}_input`}>{name}</label>
+        <h4>{name}</h4>
         <InfoButton message={message} />
       </div>
       <input
