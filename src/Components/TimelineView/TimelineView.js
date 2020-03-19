@@ -11,7 +11,7 @@ function TimelineView() {
   const {
     vbucks,
     dailies,
-    missions,
+    alerts,
     level,
     experience,
     extraXP,
@@ -22,7 +22,7 @@ function TimelineView() {
     dailyChallengeStates
   } = useContext(InputContext);
   const { wishlistTotal, setCompletionDate } = useContext(WishlistContext);
-  const totalVbucks = vbucks + dailies + missions;
+  const totalVbucks = vbucks + dailies + alerts;
   const [timeline, setTimeline] = useState([]);
 
   useEffect(() => {

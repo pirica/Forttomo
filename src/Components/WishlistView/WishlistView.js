@@ -13,8 +13,8 @@ function WishlistView() {
   const { wishlist, wishlistTotal, completionDate, setWishlist } = useContext(
     WishlistContext
   );
-  const { vbucks, missions, dailies } = useContext(InputContext);
-  const vbucksTotal = vbucks + missions + dailies;
+  const { vbucks, alerts, dailies } = useContext(InputContext);
+  const vbucksTotal = vbucks + alerts + dailies;
 
   const addNewItem = () => {
     setWishlist([

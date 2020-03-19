@@ -7,12 +7,12 @@ function SaveTheWorldInput() {
   const {
     vbucks,
     dailies,
-    missions,
+    alerts,
     loginDay,
     syncDate,
     setVbucks,
     setDailies,
-    setMissions,
+    setAlerts,
     setLoginDay,
     setSyncDate
   } = useContext(InputContext);
@@ -30,15 +30,15 @@ function SaveTheWorldInput() {
         name='Dailies'
         value={dailies}
         formType='text'
-        message='Amount of vbucks currently obtainable from daily missions.'
+        message='Amount of vbucks currently obtainable from daily challenges.'
         onChange={setDailies}
       />
       <StandardInput
         name='Mission Alerts'
-        value={missions}
+        value={alerts}
         formType='text'
         message='Amount of vbucks currently obtainable from storm alerts.'
-        onChange={setMissions}
+        onChange={setAlerts}
       />
       <StandardInput
         name='Login Day'

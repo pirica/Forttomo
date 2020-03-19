@@ -5,7 +5,7 @@ import InputContext from '../../context/InputContext';
 function InputContextWrap({ children }) {
   const storedVbucks = localStorage.getItem('vbucks');
   const storedDailies = localStorage.getItem('dailies');
-  const storedMissions = localStorage.getItem('missions');
+  const storedAlerts = localStorage.getItem('alerts');
   const storedLevel = localStorage.getItem('level');
   const storedExperience = localStorage.getItem('experience');
   const storedExtraXP = localStorage.getItem('extraXP');
@@ -21,7 +21,7 @@ function InputContextWrap({ children }) {
 
   const [vbucks, setVbucks] = useState(+storedVbucks);
   const [dailies, setDailies] = useState(+storedDailies);
-  const [missions, setMissions] = useState(+storedMissions);
+  const [alerts, setAlerts] = useState(+storedAlerts);
   const [level, setLevel] = useState(+storedLevel);
   const [experience, setExperience] = useState(+storedExperience);
   const [extraXP, setExtraXP] = useState(+storedExtraXP);
@@ -44,8 +44,8 @@ function InputContextWrap({ children }) {
     localStorage.setItem('dailies', dailies);
   }, [dailies]);
   useEffect(() => {
-    localStorage.setItem('missions', missions);
-  }, [missions]);
+    localStorage.setItem('alerts', alerts);
+  }, [alerts]);
   useEffect(() => {
     localStorage.setItem('level', level);
   }, [level]);
@@ -79,7 +79,7 @@ function InputContextWrap({ children }) {
       value={{
         vbucks,
         dailies,
-        missions,
+        alerts,
         level,
         experience,
         extraXP,
@@ -90,7 +90,7 @@ function InputContextWrap({ children }) {
         dailyChallengeStates,
         setVbucks,
         setDailies,
-        setMissions,
+        setAlerts,
         setLevel,
         setExperience,
         setExtraXP,

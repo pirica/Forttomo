@@ -40,9 +40,9 @@ function Timeline(
     gainedVbucks += daily;
     logs.push(new VbuckLog(daily, 'daily'));
 
-    const missions = 50;
-    gainedVbucks += missions;
-    logs.push(new VbuckLog(missions, 'mission'));
+    const alerts = 50;
+    gainedVbucks += alerts;
+    logs.push(new VbuckLog(alerts, 'alert'));
 
     const loginVbucks = vbucksFromLogin(baseLoginDay + day + 1);
     if (loginVbucks) {
