@@ -45,7 +45,7 @@ function InputView() {
         onChange={setDailies}
       />
       <StandardInput
-        name='Missions'
+        name='Mission Alerts'
         value={missions}
         formType='text'
         message='Amount of vbucks currently obtainable from storm alerts.'
