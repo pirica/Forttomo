@@ -51,8 +51,7 @@ function Timeline(
     }
 
     const currentDate = new Date();
-    currentDate.setDate(currentDate.getUTCDate() + day);
-
+    currentDate.setDate(currentDate.getDate() + day);
     // XP gained from the daily punch card
     if (punchCardDays[currentDate.getUTCDay()]) {
       xpGained += (5 + 5 + 5 + 5 + 10) * 2 * 1000;
