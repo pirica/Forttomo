@@ -1,3 +1,5 @@
+@import './../../global.scss';
+
 .wishlist_item {
   display: grid;
   font-size: 1.5rem;
@@ -34,26 +36,6 @@ select {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-}
-
-.uncommon {
-  background-color: rgb(131, 184, 131);
-}
-
-.rare {
-  background-color: rgb(154, 215, 255);
-}
-
-.epic {
-  background-color: rgb(190, 119, 190);
-}
-
-.legendary {
-  background-color: rgb(238, 191, 104);
-}
-
-.other {
-  background-color: rgb(206, 206, 206);
 }
 
 .wishlist_add_button {

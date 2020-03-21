@@ -1,15 +1,17 @@
+@import './global.scss';
+
 * {
   margin: 0;
   box-sizing: border-box;
 }
 
 .App {
-  background-color: #282c34;
+  background-color: $background-color;
   min-height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: white;
+  color: $secondary-color;
 }
 
 .control_panel {
@@ -35,4 +37,24 @@
 .section {
   margin-top: 1em;
   text-align: left;
+}
+
+.uncommon {
+  background-color: $uncommon-color;
+}
+
+.rare {
+  background-color: $rare-color;
+}
+
+.epic {
+  background-color: $epic-color;
+}
+
+.legendary {
+  background-color: $legendary-color;
+}
+
+.other {
+  background-color: $misc-rarity-color;
 }
