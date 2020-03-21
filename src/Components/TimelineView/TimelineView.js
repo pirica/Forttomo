@@ -18,7 +18,6 @@ function TimelineView() {
     extraXP,
     unaccountedXP,
     loginDay,
-    syncDate,
     punchCardStates,
     dailyChallengeStates
   } = useContext(InputContext);
@@ -42,7 +41,6 @@ function TimelineView() {
       punchCardStates,
       dailyChallengeStates,
       loginDay,
-      syncDate,
       amountOfDays
     );
 
@@ -67,7 +65,6 @@ function TimelineView() {
     punchCardStates,
     dailyChallengeStates,
     loginDay,
-    syncDate,
     wishlistTotal,
     setCompletionDate
   ]);

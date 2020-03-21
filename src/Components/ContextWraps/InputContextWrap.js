@@ -11,7 +11,7 @@ function InputContextWrap({ children }) {
   const storedExperience = localStorage.getItem('experience');
   const storedExtraXP = localStorage.getItem('extraXP');
   const storedUnaccountedXP = localStorage.getItem('unaccountedXP');
-  const storedLoginDay = localStorage.getItem('loginDay');
+  let storedLoginDay = localStorage.getItem('loginDay');
   const storedSyncDate = Date.parse(localStorage.getItem('syncDate'));
   const storedPunchCard = JSON.parse(localStorage.getItem('punchCardStates'));
   const storedDailyChallenges = JSON.parse(
@@ -19,6 +19,19 @@ function InputContextWrap({ children }) {
   );
   const defaultPunchCard = [true, true, true, true, true, true, true];
   const defaultDailyChallenges = [true, true, true, true, true, true, true];
+
+  if (storedSyncDate) {
+    const msPerDay = 8.64e7;
+    const beginDate = new Date(storedSyncDate);
+    const endDate = new Date();
+
+    beginDate.setUTCHours(12, 0, 0);
+    endDate.setUTCHours(12, 0, 0);
+    const days = Math.round((endDate - beginDate) / msPerDay);
+
+    storedLoginDay = +storedLoginDay + days;
+    console.log(storedLoginDay);
+  }
 
   const [vbucks, setVbucks] = useState(+storedVbucks);
   const [dailies, setDailies] = useState(+storedDailies);
@@ -29,9 +42,6 @@ function InputContextWrap({ children }) {
   const [extraXP, setExtraXP] = useState(+storedExtraXP);
   const [unaccountedXP, setUnaccountedXP] = useState(+storedUnaccountedXP);
   const [loginDay, setLoginDay] = useState(+storedLoginDay);
-  const [syncDate, setSyncDate] = useState(
-    storedSyncDate ? new Date(storedSyncDate) : new Date()
-  );
   const [punchCardStates, setPunchCardStates] = useState(
     storedPunchCard || defaultPunchCard
   );
@@ -64,12 +74,11 @@ function InputContextWrap({ children }) {
     localStorage.setItem('unaccountedXP', unaccountedXP);
   }, [unaccountedXP]);
   useEffect(() => {
+    const currentTime = new Date();
+
     localStorage.setItem('loginDay', loginDay);
+    localStorage.setItem('syncDate', currentTime);
   }, [loginDay]);
-  useEffect(() => {
-    const syncDateString = syncDate.toISOString().split('T')[0];
-    localStorage.setItem('syncDate', syncDateString);
-  }, [syncDate]);
   useEffect(() => {
     const punchCardString = JSON.stringify(punchCardStates);
     localStorage.setItem('punchCardStates', punchCardString);
@@ -91,7 +100,6 @@ function InputContextWrap({ children }) {
         extraXP,
         unaccountedXP,
         loginDay,
-        syncDate,
         punchCardStates,
         dailyChallengeStates,
         setVbucks,
@@ -103,7 +111,6 @@ function InputContextWrap({ children }) {
         setExtraXP,
         setUnaccountedXP,
         setLoginDay,
-        setSyncDate,
         setPunchCardStates,
         setDailyChallengeStates
       }}

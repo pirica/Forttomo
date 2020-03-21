@@ -10,13 +10,11 @@ function SaveTheWorldInput() {
     alerts,
     averageAlerts,
     loginDay,
-    syncDate,
     setVbucks,
     setDailies,
     setAlerts,
     setAverageAlerts,
-    setLoginDay,
-    setSyncDate
+    setLoginDay
   } = useContext(InputContext);
 
   if (averageAlerts === null) setAverageAlerts(50);
@@ -51,13 +49,6 @@ function SaveTheWorldInput() {
         formType='text'
         message='Login day for login rewards. Found under the the reward you received.'
         onChange={setLoginDay}
-      />
-      <StandardInput
-        name='Sync Date'
-        value={syncDate}
-        formType='date'
-        message='The date you entered the Login Day textfield. Important for calculating your daily login vbucks.'
-        onChange={setSyncDate}
       />
       <StandardInput
         name='Average Alerts'

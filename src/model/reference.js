@@ -15,6 +15,7 @@ export const vbucksFromLevel = level => {
 
 export const vbucksFromLogin = loginDay => {
   let vbucks = 0;
+  loginDay = loginDay % 336;
 
   for (const entry of LoginVbucks) {
     if (entry.day === loginDay) vbucks = entry.vbucks;

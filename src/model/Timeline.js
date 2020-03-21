@@ -10,7 +10,6 @@ function Timeline(
   punchCardDays,
   dailyChallengeDays,
   loginDay,
-  syncDate,
   amountOfDays
 ) {
   const dateFormat = {
@@ -28,9 +27,6 @@ function Timeline(
 
   const availableItems = itemsFromLevels(oldLevel, level);
   const timeline = [new Day('NOW', vbucks, level, [], availableItems)];
-  const syncDateDistance =
-    (new Date() - new Date(syncDate)) / (1000 * 60 * 60 * 24);
-  const baseLoginDay = Math.floor(syncDateDistance) + loginDay;
 
   for (let day = 1; day <= amountOfDays; day++) {
     const logs = [];
@@ -46,7 +42,7 @@ function Timeline(
       logs.push(new VbuckLog(averageAlerts, 'alert'));
     }
 
-    const loginVbucks = vbucksFromLogin(baseLoginDay + day + 1);
+    const loginVbucks = vbucksFromLogin(loginDay + day + 1);
     if (loginVbucks) {
       gainedVbucks += loginVbucks;
       logs.push(new VbuckLog(loginVbucks, 'login'));

@@ -19,8 +19,6 @@ export default React.createContext({
   setUnaccountedXP: unaccountedXP => {},
   loginDay: null,
   setLoginDay: loginDay => {},
-  syncDate: null,
-  setSyncDate: syncDate => {},
   punchCardStates: null,
   setPunchCardStates: states => {},
   dailyChallengeState: null,
