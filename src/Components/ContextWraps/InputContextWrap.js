@@ -25,8 +25,8 @@ function InputContextWrap({ children }) {
     const beginDate = new Date(storedSyncDate);
     const endDate = new Date();
 
-    beginDate.setUTCHours(12, 0, 0);
-    endDate.setUTCHours(12, 0, 0);
+    beginDate.setUTCHours(0, 0, 0);
+    endDate.setUTCHours(0, 0, 0);
     const days = Math.round((endDate - beginDate) / msPerDay);
 
     storedLoginDay = +storedLoginDay + days;
