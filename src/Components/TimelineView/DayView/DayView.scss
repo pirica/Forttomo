@@ -1,20 +1,27 @@
+@import '../../../global.scss';
+
 .day_view {
-  background: #fff;
-  color: #000;
+  color: $secondary-color;
   border-radius: 5px;
 }
 
-.thursday {
-  background-color: #f4c68b;
+.thursday .date {
+  color: $accent-color;
 }
 
 .date {
-  font-weight: bold;
+  font-family: $title-font;
+  font-size: 25px;
 }
 
 .timeline_vbucks,
-.timeline_level {
-  text-align: right;
+.timeline_level,
+.timeline_logs {
+  font-family: $body-font;
+  font-weight: normal;
+  font-size: 20px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .timeline_logs {
@@ -24,30 +31,16 @@
   .log {
     margin-left: 5px;
   }
-
-  .daily {
-    color: red;
-  }
-
-  .alert {
-    color: blue;
-  }
-
-  .login {
-    color: green;
-  }
-
-  .battle_pass {
-    color: orange;
-  }
 }
 
 .battlepass_unlocks {
   grid-column: 1 / -1;
 
   h5 {
-    text-align: center;
     margin: 15px 0;
+    color: $module-background-color;
+    font-family: 'Rubik';
+    font-weight: normal;
   }
 }
 
@@ -58,22 +51,39 @@
 }
 
 .battlepass_item {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
   text-align: center;
   padding: 5px;
   border: 2px solid black;
+  border-radius: 4px;
   font-size: 14pt;
 
   .item_level {
-    position: absolute;
-    font-size: 8pt;
+    grid-row: span 2;
+    align-self: center;
+  }
+
+  .item_details {
+    align-self: center;
   }
 
   .item_name {
-    margin-top: 5pt;
-    font-size: 14pt;
+    font-size: 10pt;
   }
 
   .item_type {
-    font-size: 10pt;
+    font-size: 8pt;
   }
+}
+
+.divider {
+  background: $module-background-color;
+  height: 1px;
+  grid-column: 1 / -1;
+  margin-top: 25px;
+}
+
+.label_row .divider {
+  margin-top: 10px;
 }

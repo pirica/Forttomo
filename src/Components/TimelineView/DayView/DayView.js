@@ -15,6 +15,7 @@ function DayView({ day }) {
       <div className='timeline_level'>{day.level}</div>
       <LogView logs={day.logs} />
       {bpItems.length !== 0 && <BattlePassView items={bpItems} />}
+      <div className='divider'></div>
     </div>
   );
 }

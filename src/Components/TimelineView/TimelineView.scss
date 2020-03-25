@@ -1,6 +1,13 @@
-.timeline_view h1 {
-  text-align: center;
-  margin-bottom: 1em;
+@import './../../global.scss';
+
+.timeline_view {
+  width: 700px;
+  justify-self: flex-end;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1em;
+  }
 }
 
 .timeline_row {
@@ -12,5 +19,10 @@
 }
 
 .label_row {
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  background-color: $background-color;
   font-size: 1.25em;
 }
