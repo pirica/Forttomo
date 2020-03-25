@@ -18,7 +18,7 @@ function PunchCardInput() {
 
   return (
     <div>
-      <h3>Daily Challenge Days</h3>
+      <h4>Daily Challenge Days</h4>
       <div className='day_select_wrapper'>
         <DayButton
           isOn={dailyChallengeStates[0]}

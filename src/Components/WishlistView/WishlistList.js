@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
 import WishlistContext from '../../context/WishlistContext';
-import WishlistItem from './WishlistItem/WishlistItem';
+import WishlistItem from './WishlistItem';
 import DroppableWrapper from './DroppableWrapper';
 
 function WishlistList() {
@@ -58,7 +58,6 @@ function WishlistList() {
                   <WishlistItem
                     position={index}
                     name={item.name}
-                    category={item.category}
                     price={item.price}
                     id={item.id}
                     removeItem={removeItem}

@@ -1,7 +1,6 @@
 class WantedItem {
-  constructor(name, category, price, id) {
+  constructor(name, price, id) {
     this.name = name;
-    this.category = category;
     this.price = price;
     this.id = id;
   }

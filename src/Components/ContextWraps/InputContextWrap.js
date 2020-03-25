@@ -10,7 +10,7 @@ function InputContextWrap({ children }) {
   const storedLevel = localStorage.getItem('level');
   const storedExperience = localStorage.getItem('experience');
   const storedExtraXP = localStorage.getItem('extraXP');
-  const storedUnaccountedXP = localStorage.getItem('unaccountedXP');
+  const storedUnfinishedXP = localStorage.getItem('unfinishedXP');
   let storedLoginDay = localStorage.getItem('loginDay');
   const storedSyncDate = Date.parse(localStorage.getItem('syncDate'));
   const storedPunchCard = JSON.parse(localStorage.getItem('punchCardStates'));
@@ -30,7 +30,6 @@ function InputContextWrap({ children }) {
     const days = Math.round((endDate - beginDate) / msPerDay);
 
     storedLoginDay = +storedLoginDay + days;
-    console.log(storedLoginDay);
   }
 
   const [vbucks, setVbucks] = useState(+storedVbucks);
@@ -40,7 +39,7 @@ function InputContextWrap({ children }) {
   const [level, setLevel] = useState(+storedLevel);
   const [experience, setExperience] = useState(+storedExperience);
   const [extraXP, setExtraXP] = useState(+storedExtraXP);
-  const [unaccountedXP, setUnaccountedXP] = useState(+storedUnaccountedXP);
+  const [unfinishedXP, setUnfinishedXP] = useState(+storedUnfinishedXP);
   const [loginDay, setLoginDay] = useState(+storedLoginDay);
   const [punchCardStates, setPunchCardStates] = useState(
     storedPunchCard || defaultPunchCard
@@ -71,8 +70,8 @@ function InputContextWrap({ children }) {
     localStorage.setItem('extraXP', extraXP);
   }, [extraXP]);
   useEffect(() => {
-    localStorage.setItem('unaccountedXP', unaccountedXP);
-  }, [unaccountedXP]);
+    localStorage.setItem('unfinishedXP', unfinishedXP);
+  }, [unfinishedXP]);
   useEffect(() => {
     const currentTime = new Date();
 
@@ -98,7 +97,7 @@ function InputContextWrap({ children }) {
         level,
         experience,
         extraXP,
-        unaccountedXP,
+        unfinishedXP,
         loginDay,
         punchCardStates,
         dailyChallengeStates,
@@ -109,7 +108,7 @@ function InputContextWrap({ children }) {
         setLevel,
         setExperience,
         setExtraXP,
-        setUnaccountedXP,
+        setUnfinishedXP,
         setLoginDay,
         setPunchCardStates,
         setDailyChallengeStates

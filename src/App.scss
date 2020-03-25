@@ -5,25 +5,28 @@
   box-sizing: border-box;
 }
 
-.App {
+#root {
   background-color: $background-color;
+  font-family: $body-font;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: 260px auto;
+  width: 1000px;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  margin: auto;
   color: $secondary-color;
 }
 
 .control_panel {
-  display: grid;
-  grid-template-columns: 35% 54%;
-  grid-gap: 10px;
-  width: 1000px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
-  padding: 1em;
-  background: white;
+  background: $module-background-color;
+  padding: 10px;
   text-align: center;
   border-radius: 2px;
   color: #000;

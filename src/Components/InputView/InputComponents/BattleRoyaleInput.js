@@ -10,11 +10,11 @@ function BattleRoyaleInput() {
     level,
     experience,
     extraXP,
-    unaccountedXP,
+    unfinishedXP,
     setLevel,
     setExperience,
     setExtraXP,
-    setUnaccountedXP
+    setUnfinishedXP
   } = useContext(InputContext);
 
   return (
@@ -42,11 +42,11 @@ function BattleRoyaleInput() {
         onChange={setExtraXP}
       />
       <StandardInput
-        name='Unaccounted XP'
-        value={unaccountedXP}
+        name='Unfinished XP'
+        value={unfinishedXP}
         formType='text'
         message='XP currently able to obtained. ie, uncompleted challenges, punch card, etc.'
-        onChange={setUnaccountedXP}
+        onChange={setUnfinishedXP}
       />
       <div className='input_container day_select_section'>
         <PunchCardInput />

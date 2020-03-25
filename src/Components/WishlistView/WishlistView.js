@@ -17,10 +17,7 @@ function WishlistView() {
   const vbucksTotal = vbucks + alerts + dailies;
 
   const addNewItem = () => {
-    setWishlist([
-      ...wishlist,
-      new WantedItem('ITEM NAME', 'Uncommon Outfit', '800', uuidv4())
-    ]);
+    setWishlist([...wishlist, new WantedItem('ITEM NAME', '0', uuidv4())]);
   };
 
   return (

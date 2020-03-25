@@ -6,7 +6,7 @@ function Timeline(
   level,
   experience,
   extraXP,
-  unaccountedXP,
+  unfinishedXP,
   punchCardDays,
   dailyChallengeDays,
   loginDay,
@@ -19,7 +19,7 @@ function Timeline(
     timeZone: 'UTC'
   };
 
-  let xpGained = experience + unaccountedXP;
+  let xpGained = experience + unfinishedXP;
   const oldLevel = level;
   level = Math.floor(level + xpGained / 80000);
   // The remainder of the xp after the level ups were performed
