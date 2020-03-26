@@ -1,4 +1,4 @@
-@import "./global.scss";
+@import './global.scss';
 
 * {
   margin: 0;
@@ -17,15 +17,18 @@
   min-height: 100vh;
   margin: auto;
   color: $secondary-color;
+  position: relative;
 }
 
 .control_panel {
   display: flex;
   flex-direction: column;
+  z-index: 2;
 }
 
 .right_panel {
   justify-self: center;
+  z-index: 1;
 }
 
 .card {

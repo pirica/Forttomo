@@ -52,7 +52,9 @@ function SaveTheWorldInput() {
         name='Average Alerts'
         value={averageAlerts}
         formType='text'
-        message='Average vbucks you expect to get from mission alerts daily. Usually 50 during Alert season and 30 in Storm season.'
+        message={`Average vbucks you expect to get from mission alerts daily. 
+        Usually 50 during Alert season and 30 in Storm season assuming you have access
+        to all available missions.`}
         onChange={setAverageAlerts}
       />
     </div>

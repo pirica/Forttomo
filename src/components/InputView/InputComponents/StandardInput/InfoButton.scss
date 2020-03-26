@@ -1,0 +1,61 @@
+@import '../../../../global.scss';
+
+.info_button_section {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.info_button {
+  $info-button-dimension: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: $background-color;
+  color: $module-background-color;
+  border-radius: 10px;
+  width: $info-button-dimension;
+  height: $info-button-dimension;
+  cursor: default;
+  font-size: 8pt;
+}
+
+.message_box {
+  position: absolute;
+  left: 105%;
+  background: $accent-color;
+  color: $background-color;
+  font-family: $body-font;
+  width: 150px;
+  padding: 10px;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.5s;
+  font-size: 10pt;
+  text-align: left;
+  display: none;
+  transform: translateY(0);
+  z-index: 100;
+  font-weight: 600;
+}
+
+.info_button:hover {
+  color: $accent-color;
+}
+
+.info_button:hover .message_box {
+  display: inline-block;
+  opacity: 1;
+}
+
+.message_box::after {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent $accent-color transparent transparent;
+}
