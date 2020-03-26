@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import WantedItem from './WantedItem';
+import WantedItem from "./WantedItem";
 
 function WishlistItem(props) {
-  const [name, setName] = useState(props.name || 'ITEM NAME');
-  const [price, setPrice] = useState(props.price || '0');
+  const [name, setName] = useState(props.name || "ITEM NAME");
+  const [price, setPrice] = useState(props.price || "0");
 
   const itemRef = React.createRef();
 
@@ -17,27 +17,27 @@ function WishlistItem(props) {
   };
 
   return (
-    <div className='wishlist_item' ref={itemRef}>
+    <div className="wishlist_item wishlist_columns" ref={itemRef}>
       <input
-        type='text'
-        className='wishlist_input item_name_input'
+        type="text"
+        className="wishlist_input item_name_input"
         defaultValue={props.name}
         onChange={e => updateItem(e.target.value, price)}
       />
       <input
-        type='text'
-        className='wishlist_input item_cost_input'
+        type="text"
+        className="wishlist_input item_cost_input"
         value={price}
         onChange={e => updateItem(name, e.target.value)}
       />
       <div
-        className='wishlist_delete'
+        className="wishlist_delete"
         onClick={() => props.removeItem(props.position)}
       >
-        <i className='fas fa-times'></i>
+        <i className="fas fa-times"></i>
       </div>
-      <div className='wishlist_handler'>
-        <i className='fas fa-grip-lines'></i>
+      <div className="wishlist_handler">
+        <i className="fas fa-grip-lines"></i>
       </div>
     </div>
   );

@@ -3,14 +3,26 @@
 .wishlist_view {
   width: 100%;
   margin-top: 14px;
+
+  h3,
+  h4 {
+    color: $background-color;
+  }
+
+  h3 {
+    margin-bottom: 5px;
+  }
+}
+
+.wishlist_columns {
+  display: grid;
+  grid-template-columns: 100px 80px auto auto;
 }
 
 .wishlist_item {
   background: $background-color;
   color: $secondary-color;
-  display: grid;
   font-size: 1.5rem;
-  grid-template-columns: 100px 80px auto auto;
   padding: 5px;
   border-radius: 5px;
   margin-bottom: 2px;

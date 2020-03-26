@@ -1,4 +1,4 @@
-@import './global.scss';
+@import "./global.scss";
 
 * {
   margin: 0;
@@ -39,6 +39,19 @@
 
 .section {
   margin-top: 2em;
+}
+
+h3 {
+  font-family: $title-font;
+  text-transform: uppercase;
+  font-size: 20px;
+  text-align: left;
+}
+
+h4 {
+  font-weight: normal;
+  font-size: 10pt;
+  text-align: left;
 }
 
 .uncommon {

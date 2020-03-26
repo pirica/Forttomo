@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import "./TimelineView.scss";
+import React, { useState, useEffect, useContext } from 'react';
+import './TimelineView.scss';
 
-import DayView from "./DayView/DayView";
-import Timeline from "../../model/Timeline";
-import { endOfSeasonDate } from "./../../data/General";
-import InputContext from "../../context/InputContext";
-import OverviewContext from "./../../context/OverviewContext";
+import DayView from './DayView/DayView';
+import Timeline from '../../model/Timeline';
+import { endOfSeasonDate } from './../../data/General';
+import InputContext from '../../context/InputContext';
+import OverviewContext from './../../context/OverviewContext';
 
 function TimelineView() {
   const {
@@ -52,15 +52,15 @@ function TimelineView() {
     );
 
     let wishlistDate = `NA`;
-    let passDate = "NA";
+    let passDate = 'NA';
 
     for (const day of newTimeline) {
-      if (wishlistDate === "NA" && day.vbucks >= wishlistTotal) {
+      if (wishlistDate === 'NA' && day.vbucks >= wishlistTotal) {
         wishlistDate = day.date;
       }
-      if (passDate === "NA" && day.level >= 100) passDate = day.date;
+      if (passDate === 'NA' && day.level >= 100) passDate = day.date;
 
-      if (wishlistDate !== "NA" && passDate !== "NA") break;
+      if (wishlistDate !== 'NA' && passDate !== 'NA') break;
     }
 
     let lastDay = newTimeline[newTimeline.length - 1];
@@ -90,14 +90,14 @@ function TimelineView() {
   ]);
 
   return (
-    <div className="timeline_view section">
+    <div className='timeline_view section'>
       <h1>Timeline</h1>
-      <div className="timeline_row label_row">
+      <div className='timeline_row label_row'>
         <div>Date</div>
         <div>Vbucks</div>
         <div>Level</div>
         <div>Changes</div>
-        <div className="divider"></div>
+        <div className='divider'></div>
       </div>
       {timeline.map((day, index) => {
         return <DayView day={day} key={`day-${index}`} />;
