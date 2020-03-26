@@ -16,21 +16,12 @@
 
 .timeline_vbucks,
 .timeline_level,
-.timeline_logs {
+.timeline_change {
   font-family: $body-font;
   font-weight: normal;
   font-size: 20px;
   display: flex;
   align-items: flex-end;
-}
-
-.timeline_logs {
-  display: flex;
-  margin-left: 10px;
-
-  .log {
-    margin-left: 5px;
-  }
 }
 
 .battlepass_unlocks {
@@ -46,7 +37,7 @@
 
 .item_wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 5px;
 }
 

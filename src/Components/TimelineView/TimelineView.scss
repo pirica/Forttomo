@@ -1,8 +1,8 @@
 @import './../../global.scss';
 
 .timeline_view {
-  width: 700px;
-  justify-self: flex-end;
+  width: 615px;
+  justify-self: center;
 
   h1 {
     text-align: center;
@@ -12,7 +12,7 @@
 
 .timeline_row {
   display: grid;
-  grid-template-columns: 250px 80px 55px 220px;
+  grid-template-columns: 250px 80px 65px 220px;
   font-size: 1.5rem;
   margin-bottom: 10px;
   padding: 0.5em;
