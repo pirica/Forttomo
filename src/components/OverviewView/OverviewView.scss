@@ -1,4 +1,4 @@
-@import "./../../global.scss";
+@import './../../global.scss';
 
 .overview {
   display: grid;
@@ -24,4 +24,24 @@
     flex: 1;
     font-weight: normal;
   }
+}
+
+.countdown {
+  color: $accent-color;
+  text-align: center;
+  font-family: $title-font;
+  font-weight: bold;
+  align-self: center;
+}
+
+.end_of_season_date {
+  margin-bottom: -20px;
+}
+
+.days_remaining {
+  font-size: 120px;
+}
+
+.left_label {
+  margin-top: -20px;
 }

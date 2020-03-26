@@ -1,13 +1,14 @@
 import React from 'react';
 
 import OverviewDetails from './OverviewDetails';
+import EOFCountdown from './EOFCountdown';
 import './OverviewView.scss';
 
 function OverviewView() {
   return (
     <div className='overview'>
       <OverviewDetails />
-      <div>END OF SEASON</div>
+      <EOFCountdown />
     </div>
   );
 }
