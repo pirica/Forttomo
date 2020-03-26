@@ -3,7 +3,8 @@ import { endOfSeasonDate } from './../../data/General';
 
 function EOFCountdown() {
   const EOFDate = new Date(endOfSeasonDate);
-  EOFDate.setUTCHours(0, 0, 0);
+  // Servers usually go live at 5am
+  EOFDate.setUTCHours(5, 0, 0);
   const dateDiff = EOFDate - new Date().setUTCHours(0, 0, 0);
   const remainingDays = Math.round(dateDiff / 8.64e7);
   const dateFormat = {
@@ -11,6 +12,7 @@ function EOFCountdown() {
     day: 'numeric',
     year: 'numeric'
   };
+
   return (
     <div className='countdown'>
       <div className='end_of_season_date'>
