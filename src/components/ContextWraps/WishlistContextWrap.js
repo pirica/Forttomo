@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import WishlistContext from './../../context/WishlistContext';
+import React, { useState, useEffect, useContext } from "react";
+import WishlistContext from "./../../context/WishlistContext";
+import OverviewContext from "./../../context/OverviewContext";
 
 function WishlistContextWrap({ children }) {
-  const storedWishlist = JSON.parse(localStorage.getItem('wishlist'));
+  const storedWishlist = JSON.parse(localStorage.getItem("wishlist"));
   const [wishlist, setWishlist] = useState(storedWishlist || []);
-  const [wishlistTotal, setWishlistTotal] = useState(0);
-  const [completionDate, setCompletionDate] = useState('NA');
+  const { setWishlistTotal } = useContext(OverviewContext);
 
   useEffect(() => {
     const wishlistString = JSON.stringify(wishlist);
-    localStorage.setItem('wishlist', wishlistString);
+    localStorage.setItem("wishlist", wishlistString);
 
     if (wishlist.length > 0) {
       const total = wishlist
@@ -17,17 +17,13 @@ function WishlistContextWrap({ children }) {
         .reduce((sum, value) => sum + value);
       setWishlistTotal(total);
     }
-  }, [wishlist]);
+  }, [wishlist, setWishlistTotal]);
 
   return (
     <WishlistContext.Provider
       value={{
         wishlist,
-        wishlistTotal,
-        completionDate,
-        setWishlist,
-        setWishlistTotal,
-        setCompletionDate
+        setWishlist
       }}
     >
       {children}

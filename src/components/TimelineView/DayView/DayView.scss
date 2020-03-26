@@ -1,4 +1,4 @@
-@import '../../../global.scss';
+@import "../../../global.scss";
 
 .day_view {
   color: $secondary-color;
@@ -30,7 +30,7 @@
   h5 {
     margin: 15px 0;
     color: $module-background-color;
-    font-family: 'Rubik';
+    font-family: "Rubik";
     font-weight: normal;
   }
 }
@@ -46,7 +46,6 @@
   grid-template-columns: 1fr 4fr;
   text-align: center;
   padding: 5px;
-  border: 2px solid black;
   border-radius: 4px;
   font-size: 14pt;
 
