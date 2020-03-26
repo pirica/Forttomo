@@ -24,6 +24,10 @@
   flex-direction: column;
 }
 
+.right_panel {
+  justify-self: center;
+}
+
 .card {
   background: $module-background-color;
   padding: 10px;
@@ -33,13 +37,8 @@
   align-self: start;
 }
 
-.section:first-of-type {
-  margin-top: 2em;
-}
-
 .section {
-  margin-top: 1em;
-  text-align: left;
+  margin-top: 2em;
 }
 
 .uncommon {

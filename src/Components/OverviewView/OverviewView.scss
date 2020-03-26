@@ -1,0 +1,31 @@
+@import './../../global.scss';
+
+.overview {
+  display: grid;
+  grid-template-columns: 55% 45%;
+
+  h3 {
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+}
+
+.overview_body {
+  padding: 10px;
+}
+
+.overview_row {
+  display: flex;
+
+  h5 {
+    font-family: $body-font;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  p {
+    text-align: right;
+    flex: 1;
+    font-weight: normal;
+  }
+}
