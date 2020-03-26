@@ -22,7 +22,7 @@ function StandardInput({ name, value, formType, message, onChange }) {
     <div className={`input_container ${sanitizedName}_section`}>
       <div className='label_header'>
         <h4>{name}</h4>
-        <InfoButton message={message} />
+        {message && <InfoButton message={message} />}
       </div>
       <input
         id={`${sanitizedName}_input`}

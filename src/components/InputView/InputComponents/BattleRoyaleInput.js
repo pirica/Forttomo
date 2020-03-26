@@ -24,14 +24,12 @@ function BattleRoyaleInput() {
         name='Level'
         value={level}
         formType='text'
-        message='Current Battle Royale level.'
         onChange={setLevel}
       />
       <StandardInput
         name='Experience'
         value={experience}
         formType='text'
-        message='Current amount of XP gained towards next level.'
         onChange={setExperience}
       />
       <StandardInput

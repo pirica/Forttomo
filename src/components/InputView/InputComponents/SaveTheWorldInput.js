@@ -21,14 +21,13 @@ function SaveTheWorldInput() {
 
   return (
     <div className='stw_section mode_section'>
-      <h3 className='mode_title'>Save the World</h3>
       <StandardInput
         name='Vbucks'
         value={vbucks}
         formType='text'
-        message='Current amount of vbucks owned.'
         onChange={setVbucks}
       />
+      <h3 className='mode_title'>Save the World</h3>
       <StandardInput
         name='Dailies'
         value={dailies}
@@ -47,7 +46,6 @@ function SaveTheWorldInput() {
         name='Login Day'
         value={loginDay}
         formType='text'
-        message='Login day for login rewards. Found under the the reward you received.'
         onChange={setLoginDay}
       />
       <StandardInput

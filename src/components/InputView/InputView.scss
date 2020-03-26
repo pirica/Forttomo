@@ -1,4 +1,4 @@
-@import "../../global.scss";
+@import '../../global.scss';
 
 .mode_section {
   display: grid;
@@ -40,6 +40,7 @@
 .vbucks_section {
   grid-column: auto / span 2;
   width: 240px;
+  margin-bottom: 15px;
 }
 
 .dailies_section,
