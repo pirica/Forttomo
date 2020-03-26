@@ -1,4 +1,4 @@
-@import "./../../global.scss";
+@import './../../global.scss';
 
 .wishlist_view {
   width: 100%;
@@ -17,6 +17,10 @@
 .wishlist_columns {
   display: grid;
   grid-template-columns: 100px 80px auto auto;
+}
+
+.wislist_labels {
+  padding-left: 5px;
 }
 
 .wishlist_item {
