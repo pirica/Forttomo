@@ -13,7 +13,7 @@ function Timeline(
   amountOfDays
 ) {
   const dateFormat = {
-    weekday: 'long',
+    weekday: 'short',
     month: 'short',
     day: 'numeric',
     timeZone: 'UTC'

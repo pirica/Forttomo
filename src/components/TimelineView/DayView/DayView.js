@@ -4,7 +4,7 @@ import BattlePassView from './BattlePassView';
 import './DayView.scss';
 
 function DayView({ day }) {
-  const thursdayClass = day.date.split(',')[0] === 'Thursday' ? 'thursday' : '';
+  const thursdayClass = day.date.split(',')[0] === 'Thu' ? 'thursday' : '';
   const bpItems = day.bpItems.filter(x => x.type !== 'currency');
 
   return (
