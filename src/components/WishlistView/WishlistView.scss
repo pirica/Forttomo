@@ -27,7 +27,6 @@
 .wishlist_item {
   background: $background-color;
   color: $secondary-color;
-  font-size: 1.5rem;
   padding: 5px;
   border-radius: 5px;
   margin-bottom: 2px;
@@ -40,16 +39,16 @@
 .wishlist_input {
   background: none;
   border: 2px solid transparent;
-  border-radius: 5px;
   font-size: 1.25rem;
   text-align: left;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  height: 25px;
 }
 
 .wishlist_input:focus {
-  border: 2px solid $secondary-color;
+  border-bottom: 2px solid $secondary-color;
   color: rgb(97, 96, 96);
   font-weight: 500;
   outline: none;

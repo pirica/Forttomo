@@ -30,7 +30,7 @@ function DoubleClickInput({ value, onChange }) {
         ></input>
       ) : (
         <div
-          className='wishlist_input '
+          className='wishlist_input'
           onDoubleClick={() => setIsEditable(true)}
         >
           {value}
