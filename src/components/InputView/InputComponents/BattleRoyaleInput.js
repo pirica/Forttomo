@@ -1,20 +1,23 @@
 import React, { useContext } from 'react';
 
 import InputContext from '../../../context/InputContext';
-import StandardInput from './StandardInput/StandardInput';
-import PunchCardInput from './PunchCardInput';
-import DailyChallengeInput from './DailyChallengeInput';
+import StandardInput from './Inputs/StandardInput';
+import WeeklyInput from './Inputs/WeeklyInput';
 
 function BattleRoyaleInput() {
   const {
     level,
-    experience,
-    extraXP,
-    unfinishedXP,
     setLevel,
+    experience,
     setExperience,
+    extraXP,
     setExtraXP,
-    setUnfinishedXP
+    unfinishedXP,
+    setUnfinishedXP,
+    punchCardStates,
+    setPunchCardStates,
+    dailyChallengeStates,
+    setDailyChallengeStates
   } = useContext(InputContext);
 
   return (
@@ -47,10 +50,18 @@ function BattleRoyaleInput() {
         onChange={setUnfinishedXP}
       />
       <div className='input_container day_select_section'>
-        <PunchCardInput />
+        <WeeklyInput
+          label='Punch Card Days'
+          states={punchCardStates}
+          setStates={setPunchCardStates}
+        />
       </div>
       <div className='input_container day_select_section'>
-        <DailyChallengeInput />
+        <WeeklyInput
+          label='Daily Challenge Days'
+          states={dailyChallengeStates}
+          setStates={setDailyChallengeStates}
+        />
       </div>
     </div>
   );
