@@ -91,7 +91,6 @@ function TimelineView() {
 
   return (
     <div className='timeline_view section'>
-      <h1>Timeline</h1>
       <div className='timeline_row label_row'>
         <div>Date</div>
         <div>Vbucks</div>
