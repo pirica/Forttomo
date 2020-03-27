@@ -15,7 +15,7 @@ function DoubleClickInput({ value, onChange }) {
         if (e.which === 13) this.blur();
       });
     }
-  }, [isEditable]);
+  }, [isEditable, textfieldRef]);
 
   return (
     <>
