@@ -21,6 +21,6 @@ export default React.createContext({
   setLoginDay: loginDay => {},
   punchCardStates: null,
   setPunchCardStates: states => {},
-  dailyChallengeState: null,
+  dailyChallengeStates: null,
   setDailyChallengeStates: dailyChallengeState => {}
 });
