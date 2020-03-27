@@ -3,8 +3,6 @@ import DayButton from './DayButton';
 import LabelHeader from './LabelHeader';
 
 function WeeklyInput({ label, infoBox, states, setStates }) {
-  console.log(label);
-  console.log(states);
   const updateStates = (position, newState) => {
     const newStates = states.map((state, index) => {
       return position === index ? newState : state;
