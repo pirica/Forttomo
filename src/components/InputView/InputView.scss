@@ -76,12 +76,9 @@
   }
 }
 
-$day-border-color: #737373;
-
 .day_select_wrapper {
   display: flex;
   border-radius: 4px;
-  border: 1px solid $day-border-color;
   width: 240px;
   border-radius: 8px;
   overflow: hidden;
@@ -97,12 +94,7 @@ $day-border-color: #737373;
   font-size: 20px;
   font-weight: bold;
   border: none;
-  border-right: 1px solid black;
   cursor: pointer;
-}
-
-.day_button:nth-of-type(7) {
-  border-right: 0px;
 }
 
 .punch_card_day:focus {
@@ -112,12 +104,11 @@ $day-border-color: #737373;
 .day {
   background-color: $background-color;
   color: $module-background-color;
-  border-right: 1px solid;
 }
 
 .day_on {
-  color: $accent-color;
-  border-color: $module-background-color;
+  background-color: $accent-color;
+  color: $secondary-color;
 }
 
 .label_header {
