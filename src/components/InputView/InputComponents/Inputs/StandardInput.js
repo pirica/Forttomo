@@ -1,7 +1,7 @@
 import React from 'react';
-import InfoButton from './InfoButton';
+import LabelHeader from './LabelHeader';
 
-function StandardInput({ name, value, formType, message, onChange }) {
+function StandardInput({ name, value, formType, infoBox, onChange }) {
   const sanitizedName = name.toLowerCase().replace(' ', '_');
 
   if (formType === 'date') {
@@ -20,10 +20,7 @@ function StandardInput({ name, value, formType, message, onChange }) {
 
   return (
     <div className={`input_container ${sanitizedName}_section`}>
-      <div className='label_header'>
-        <h4>{name}</h4>
-        {message && <InfoButton message={message} />}
-      </div>
+      <LabelHeader label={name} infoBox={infoBox} />
       <input
         id={`${sanitizedName}_input`}
         type={formType}

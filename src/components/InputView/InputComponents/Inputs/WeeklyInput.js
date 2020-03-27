@@ -1,7 +1,8 @@
 import React from 'react';
 import DayButton from './DayButton';
+import LabelHeader from './LabelHeader';
 
-function WeeklyInput({ label, states, setStates }) {
+function WeeklyInput({ label, infoBox, states, setStates }) {
   console.log(label);
   console.log(states);
   const updateStates = (position, newState) => {
@@ -14,7 +15,7 @@ function WeeklyInput({ label, states, setStates }) {
 
   return (
     <div>
-      <h4>{label}</h4>
+      <LabelHeader label={label} infoBox={infoBox} />
       <div className='day_select_wrapper'>
         <DayButton isOn={states[0]} position={0} onChange={updateStates}>
           M

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import InputContext from '../../../context/InputContext';
-import StandardInput from './StandardInput/StandardInput';
+import StandardInput from './Inputs/StandardInput';
 
 function SaveTheWorldInput() {
   const {
@@ -32,14 +32,14 @@ function SaveTheWorldInput() {
         name='Dailies'
         value={dailies}
         formType='text'
-        message='Amount of vbucks currently obtainable from daily challenges.'
+        infoBox='Amount of vbucks currently obtainable from daily challenges.'
         onChange={setDailies}
       />
       <StandardInput
         name='Mission Alerts'
         value={alerts}
         formType='text'
-        message='Amount of vbucks currently obtainable from storm alerts.'
+        infoBox='Amount of vbucks currently obtainable from storm alerts.'
         onChange={setAlerts}
       />
       <StandardInput
@@ -52,7 +52,7 @@ function SaveTheWorldInput() {
         name='Average Alerts'
         value={averageAlerts}
         formType='text'
-        message={`Average vbucks you expect to get from mission alerts daily. 
+        infoBox={`Average vbucks you expect to get from mission alerts daily. 
         Usually 50 during Alert season and 30 in Storm season assuming you have access
         to all available missions.`}
         onChange={setAverageAlerts}

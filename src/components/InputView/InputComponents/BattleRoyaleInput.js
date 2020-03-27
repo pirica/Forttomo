@@ -39,19 +39,20 @@ function BattleRoyaleInput() {
         name='Extra XP'
         value={extraXP}
         formType='text'
-        message='Average amount of xp you plan on gaining daily outside punch card, daily, and weekly challenges.'
+        infoBox='Average amount of xp you plan on gaining daily outside punch card, daily, and weekly challenges.'
         onChange={setExtraXP}
       />
       <StandardInput
         name='Unfinished XP'
         value={unfinishedXP}
         formType='text'
-        message='XP currently able to obtained. ie, uncompleted challenges, punch card, etc.'
+        infoBox='XP currently able to obtained. ie, uncompleted challenges, punch card, etc.'
         onChange={setUnfinishedXP}
       />
       <div className='input_container day_select_section'>
         <WeeklyInput
           label='Punch Card Days'
+          infoBox='Days you plan on completing your daily medal punch card.'
           states={punchCardStates}
           setStates={setPunchCardStates}
         />
@@ -59,6 +60,9 @@ function BattleRoyaleInput() {
       <div className='input_container day_select_section'>
         <WeeklyInput
           label='Daily Challenge Days'
+          infoBox={`Days you plan on doing your daily challenges. Since
+          daily challenges don't need to be completed on the day of, you
+          can use it to count how many dailies you plan to do a week in total.`}
           states={dailyChallengeStates}
           setStates={setDailyChallengeStates}
         />
