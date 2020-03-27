@@ -45,3 +45,41 @@
 .left_label {
   margin-top: -20px;
 }
+
+.progress_bar {
+  $height: 22px;
+  $font-size: 16px;
+  position: relative;
+  height: $height;
+  width: 60%;
+  background: $module-background-color;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 10px;
+  overflow: hidden;
+
+  .completed_bar {
+    height: $height;
+    background-color: $accent-color;
+  }
+
+  .blend_layer {
+    height: $height;
+    color: $accent-color;
+  }
+
+  .progress_text {
+    position: absolute;
+    top: 0px;
+    height: $height;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: $body-font;
+    font-weight: normal;
+    font-size: $font-size;
+    color: $background-color;
+  }
+}

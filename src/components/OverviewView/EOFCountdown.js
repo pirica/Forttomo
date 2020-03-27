@@ -1,4 +1,5 @@
 import React from 'react';
+import SeasonProgressBar from './SeasonProgressBar';
 import { endOfSeasonDate } from './../../data/General';
 
 function EOFCountdown() {
@@ -20,6 +21,7 @@ function EOFCountdown() {
       </div>
       <div className='days_remaining'>{remainingDays}</div>
       <div className='left_label'>days left</div>
+      <SeasonProgressBar />
     </div>
   );
 }
