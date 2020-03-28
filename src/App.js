@@ -7,10 +7,12 @@ import TimelineView from './components/TimelineView/TimelineView';
 
 import ContextWrap from './components/ContextWraps/ContextWrap';
 import './App.scss';
+import SiteHeader from './components/SiteHeader/SiteHeader';
 
 function App() {
   return (
     <div className='App'>
+      <SiteHeader />
       <ContextWrap>
         <div className='control_panel section'>
           <InputView />
