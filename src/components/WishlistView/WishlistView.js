@@ -20,7 +20,7 @@ function WishlistView() {
       <h3>Wishlist</h3>
       <div className='wishtlist_labels wishlist_columns'>
         <h4>Name</h4>
-        <h4>Price</h4>
+        <h4>Vbucks</h4>
       </div>
       <WishlistList />
       <button className='wishlist_add_button' onClick={addNewItem}>
