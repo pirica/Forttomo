@@ -16,8 +16,8 @@ function BattleRoyaleInput() {
     setUnfinishedXP,
     punchCardStates,
     setPunchCardStates,
-    dailyChallengeStates,
-    setDailyChallengeStates
+    dailyBRStates,
+    setDailyBRStates
   } = useContext(InputContext);
 
   return (
@@ -49,24 +49,20 @@ function BattleRoyaleInput() {
         infoBox='XP currently able to obtained. ie, uncompleted challenges, punch card, etc.'
         onChange={setUnfinishedXP}
       />
-      <div className='input_container day_select_section'>
-        <WeeklyInput
-          label='Punch Card Days'
-          infoBox='Days you plan on completing your daily medal punch card.'
-          states={punchCardStates}
-          setStates={setPunchCardStates}
-        />
-      </div>
-      <div className='input_container day_select_section'>
-        <WeeklyInput
-          label='Daily Challenge Days'
-          infoBox={`Days you plan on doing your daily challenges. Since
+      <WeeklyInput
+        label='Punch Card Days'
+        infoBox='Days you plan on completing your daily medal punch card.'
+        states={punchCardStates}
+        setStates={setPunchCardStates}
+      />
+      <WeeklyInput
+        label='Daily Challenge Days'
+        infoBox={`Days you plan on doing your daily challenges. Since
           daily challenges don't need to be completed on the day of, you
           can use it to count how many dailies you plan to do a week in total.`}
-          states={dailyChallengeStates}
-          setStates={setDailyChallengeStates}
-        />
-      </div>
+        states={dailyBRStates}
+        setStates={setDailyBRStates}
+      />
     </div>
   );
 }

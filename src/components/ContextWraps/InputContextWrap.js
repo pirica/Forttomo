@@ -14,11 +14,14 @@ function InputContextWrap({ children }) {
   let storedLoginDay = localStorage.getItem('loginDay');
   const storedSyncDate = Date.parse(localStorage.getItem('syncDate'));
   const storedPunchCard = JSON.parse(localStorage.getItem('punchCardStates'));
-  const storedDailyChallenges = JSON.parse(
-    localStorage.getItem('dailyChallenges')
+  const storedDailyBRStates = JSON.parse(localStorage.getItem('dailyBRStates'));
+  const storedDailySTWStates = JSON.parse(
+    localStorage.getItem('dailySTWStates')
   );
-  const defaultPunchCard = [true, true, true, true, true, true, true];
-  const defaultDailyChallenges = [true, true, true, true, true, true, true];
+  const storedDailyAlertsStates = JSON.parse(
+    localStorage.getItem('dailyAlertsStates')
+  );
+  const defaultStates = [true, true, true, true, true, true, true];
 
   if (storedSyncDate) {
     const msPerDay = 8.64e7;
@@ -42,10 +45,16 @@ function InputContextWrap({ children }) {
   const [unfinishedXP, setUnfinishedXP] = useState(+storedUnfinishedXP);
   const [loginDay, setLoginDay] = useState(+storedLoginDay);
   const [punchCardStates, setPunchCardStates] = useState(
-    storedPunchCard || defaultPunchCard
+    storedPunchCard || defaultStates
   );
-  const [dailyChallengeStates, setDailyChallengeStates] = useState(
-    storedDailyChallenges || defaultDailyChallenges
+  const [dailyBRStates, setDailyBRStates] = useState(
+    storedDailyBRStates || defaultStates
+  );
+  const [dailySTWStates, setDailySTWStates] = useState(
+    storedDailySTWStates || defaultStates
+  );
+  const [dailyAlertsStates, setDailyAlertsStates] = useState(
+    storedDailyAlertsStates || defaultStates
   );
 
   useEffect(() => {
@@ -79,39 +88,51 @@ function InputContextWrap({ children }) {
     localStorage.setItem('syncDate', currentTime);
   }, [loginDay]);
   useEffect(() => {
-    const punchCardString = JSON.stringify(punchCardStates);
-    localStorage.setItem('punchCardStates', punchCardString);
+    const stringified = JSON.stringify(punchCardStates);
+    localStorage.setItem('punchCardStates', stringified);
   }, [punchCardStates]);
   useEffect(() => {
-    const dailyChallengesString = JSON.stringify(dailyChallengeStates);
-    localStorage.setItem('dailyChallenges', dailyChallengesString);
-  });
+    const stringified = JSON.stringify(dailyBRStates);
+    localStorage.setItem('dailyBRStates', stringified);
+  }, [dailyBRStates]);
+  useEffect(() => {
+    const stringified = JSON.stringify(dailySTWStates);
+    localStorage.setItem('dailySTWStates', stringified);
+  }, [dailySTWStates]);
+  useEffect(() => {
+    const stringified = JSON.stringify(dailyAlertsStates);
+    localStorage.setItem('dailyAlertsStates', stringified);
+  }, [dailyAlertsStates]);
 
   return (
     <InputContext.Provider
       value={{
         vbucks,
-        dailies,
-        alerts,
-        averageAlerts,
-        level,
-        experience,
-        extraXP,
-        unfinishedXP,
-        loginDay,
-        punchCardStates,
-        dailyChallengeStates,
         setVbucks,
+        dailies,
         setDailies,
+        alerts,
         setAlerts,
+        averageAlerts,
         setAverageAlerts,
+        level,
         setLevel,
+        experience,
         setExperience,
+        extraXP,
         setExtraXP,
+        unfinishedXP,
         setUnfinishedXP,
+        loginDay,
         setLoginDay,
+        dailyBRStates,
+        setDailyBRStates,
+        punchCardStates,
         setPunchCardStates,
-        setDailyChallengeStates
+        dailySTWStates,
+        setDailySTWStates,
+        dailyAlertsStates,
+        setDailyAlertsStates
       }}
     >
       {children}

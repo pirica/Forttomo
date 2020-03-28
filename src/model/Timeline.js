@@ -8,7 +8,9 @@ function Timeline(
   extraXP,
   unfinishedXP,
   punchCardDays,
-  dailyChallengeDays,
+  dailyBRStates,
+  dailySTWStates,
+  dailyAlertsStates,
   loginDay,
   amountOfDays
 ) {
@@ -32,27 +34,26 @@ function Timeline(
     let bpItems = [];
     let gainedVbucks = 0;
 
-    const daily = 50;
-    gainedVbucks += daily;
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + day);
+    const currentWeekday = currentDate.getUTCDay();
 
-    if (averageAlerts) {
-      gainedVbucks += averageAlerts;
-    }
+    // Vbucks gained from StW missions and alerts
+    if (dailySTWStates[currentWeekday]) gainedVbucks += 50;
+    if (dailyAlertsStates[currentWeekday]) gainedVbucks += averageAlerts;
 
     const loginVbucks = vbucksFromLogin(loginDay + day + 1);
     if (loginVbucks) {
       gainedVbucks += loginVbucks;
     }
 
-    const currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() + day);
     // XP gained from the daily punch card
-    if (punchCardDays[currentDate.getUTCDay()]) {
+    if (punchCardDays[currentWeekday]) {
       xpGained += (5 + 5 + 5 + 5 + 10) * 2 * 1000;
     }
 
     // XP from daily challenge
-    if (dailyChallengeDays[currentDate.getUTCDay()]) xpGained += 31000;
+    if (dailyBRStates[currentWeekday]) xpGained += 31000;
 
     // XP gained from each weekly
     xpGained += expectedXPOnDay(currentDate);

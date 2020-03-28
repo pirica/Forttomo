@@ -12,26 +12,26 @@ function WeeklyInput({ label, infoBox, states, setStates }) {
   };
 
   return (
-    <div>
+    <div className='input_container day_select_section'>
       <LabelHeader label={label} infoBox={infoBox} />
       <div className='day_select_wrapper'>
         <DayButton isOn={states[0]} position={0} onChange={updateStates}>
-          M
+          S
         </DayButton>
         <DayButton isOn={states[1]} position={1} onChange={updateStates}>
-          T
+          M
         </DayButton>
         <DayButton isOn={states[2]} position={2} onChange={updateStates}>
-          W
-        </DayButton>
-        <DayButton isOn={states[3]} position={3} onChange={updateStates}>
           T
         </DayButton>
+        <DayButton isOn={states[3]} position={3} onChange={updateStates}>
+          W
+        </DayButton>
         <DayButton isOn={states[4]} position={4} onChange={updateStates}>
-          F
+          T
         </DayButton>
         <DayButton isOn={states[5]} position={5} onChange={updateStates}>
-          S
+          F
         </DayButton>
         <DayButton isOn={states[6]} position={6} onChange={updateStates}>
           S
