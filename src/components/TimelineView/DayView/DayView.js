@@ -5,7 +5,6 @@ import './DayView.scss';
 
 function DayView({ day }) {
   const thursdayClass = day.date.split(',')[0] === 'Thu' ? 'thursday' : '';
-  const bpItems = day.bpItems.filter(x => x.type !== 'currency');
 
   return (
     <div className={`timeline_row day_view ${thursdayClass}`}>
@@ -13,7 +12,7 @@ function DayView({ day }) {
       <div className='timeline_vbucks'>{day.vbucks}</div>
       <div className='timeline_level'>{day.level}</div>
       <div className='timeline_change'>{day.change}</div>
-      {bpItems.length !== 0 && <BattlePassView items={bpItems} />}
+      {day.bpItems.length !== 0 && <BattlePassView items={day.bpItems} />}
       <div className='divider'></div>
     </div>
   );
