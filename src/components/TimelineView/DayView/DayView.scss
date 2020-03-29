@@ -1,4 +1,4 @@
-@import "../../../global.scss";
+@import '../../../global.scss';
 
 .day_view {
   color: $secondary-color;
@@ -30,7 +30,7 @@
   h5 {
     margin: 15px 0;
     color: $module-background-color;
-    font-family: "Rubik";
+    font-family: 'Rubik';
     font-weight: normal;
   }
 }
@@ -76,4 +76,20 @@
 
 .label_row .divider {
   margin-top: 10px;
+}
+
+@media screen and (max-width: 414px) {
+  .date {
+    font-size: 20px;
+  }
+
+  .timeline_vbucks,
+  .timeline_level,
+  .timeline_change {
+    font-size: 17px;
+  }
+
+  .item_wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
 }

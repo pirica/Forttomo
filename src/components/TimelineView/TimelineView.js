@@ -102,7 +102,6 @@ function TimelineView() {
         <div>Vbucks</div>
         <div>Level</div>
         <div>Changes</div>
-        <div className='divider'></div>
       </div>
       {timeline.map((day, index) => {
         return <DayView day={day} key={`day-${index}`} />;

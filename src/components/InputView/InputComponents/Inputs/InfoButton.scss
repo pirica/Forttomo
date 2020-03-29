@@ -35,7 +35,6 @@
   font-size: 10pt;
   text-align: left;
   display: none;
-  transform: translateY(0);
   z-index: 100;
   font-weight: 600;
 }
@@ -58,4 +57,26 @@
   border-width: 5px;
   border-style: solid;
   border-color: transparent $accent-color transparent transparent;
+}
+
+@media screen and (max-width: 414px) {
+  .info_button {
+    $dimension: 30px;
+    height: $dimension;
+    width: $dimension;
+  }
+
+  .message_box {
+    width: 200px;
+    font-size: 16px;
+    left: auto;
+    right: 105%;
+    transform: translateY(-43%);
+  }
+
+  .message_box::after {
+    right: auto;
+    left: 100%;
+    border-color: transparent transparent transparent $accent-color;
+  }
 }
