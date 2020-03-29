@@ -12,7 +12,7 @@
 
 .App {
   display: grid;
-  grid-template-columns: 260px auto;
+  grid-template-columns: $control-panel-width auto;
   width: 1000px;
   min-height: 100vh;
   margin: auto;
@@ -75,4 +75,46 @@ h4 {
 
 .other {
   background-color: $misc-rarity-color;
+}
+
+@media screen and (max-width: 1000px) {
+  .App {
+    grid-template-columns: auto;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .control_panel {
+    display: grid;
+    grid-template-columns: $control-panel-width auto;
+    gap: 10px;
+    padding: 10px;
+
+    > div {
+      margin: 10px;
+    }
+
+    .input_view {
+      width: 260px;
+    }
+  }
+
+  .right_panel {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .control_panel {
+    grid-template-columns: auto;
+    gap: 0px;
+    padding: 0px;
+
+    .card {
+      width: 90%;
+      margin: auto;
+      margin-bottom: 10px;
+    }
+  }
 }

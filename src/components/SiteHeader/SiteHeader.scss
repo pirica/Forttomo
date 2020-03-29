@@ -11,3 +11,10 @@ header {
     margin-top: 20px;
   }
 }
+
+@media screen and (max-width: 414px) {
+  header h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+}

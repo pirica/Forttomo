@@ -26,3 +26,17 @@
   background-color: $background-color;
   font-size: 1.25em;
 }
+
+@media screen and (max-width: 414px) {
+  .timeline_view {
+    width: auto;
+  }
+
+  .timeline_row {
+    grid-template-columns: 144px 80px 65px auto;
+  }
+
+  .date {
+    font-size: 22px;
+  }
+}

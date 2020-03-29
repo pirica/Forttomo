@@ -6,7 +6,7 @@ import BattleRoyaleInput from './InputComponents/BattleRoyaleInput';
 
 function InputView() {
   return (
-    <div className='card'>
+    <div className='input_view card'>
       <SaveTheWorldInput />
       <BattleRoyaleInput />
     </div>

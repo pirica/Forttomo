@@ -115,3 +115,30 @@
   display: grid;
   grid-template-columns: auto 1fr;
 }
+
+@media screen and (max-width: 414px) {
+  .day_select_section {
+    width: calc(#{$control-panel-width - 20px});
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .vbucks_section {
+    width: auto;
+  }
+
+  .dailies_section,
+  .level_section,
+  .login_day_section,
+  .extra_xp_section,
+  .mission_alerts_section,
+  .experience_section,
+  .average_alerts_section,
+  .unfinished_xp_section {
+    width: auto;
+  }
+
+  .mode_section {
+    display: block;
+  }
+}

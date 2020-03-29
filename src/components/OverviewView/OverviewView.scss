@@ -83,3 +83,9 @@
     color: $background-color;
   }
 }
+
+@media screen and (max-width: 414px) {
+  .overview {
+    grid-template-columns: auto;
+  }
+}
