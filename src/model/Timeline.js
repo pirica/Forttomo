@@ -42,7 +42,8 @@ function Timeline(
     if (dailySTWStates[currentWeekday]) gainedVbucks += 50;
     if (dailyAlertsStates[currentWeekday]) gainedVbucks += averageAlerts;
 
-    const loginVbucks = vbucksFromLogin(loginDay + day + 1);
+    console.log(loginDay + day + 1);
+    const loginVbucks = vbucksFromLogin(loginDay + day);
     if (loginVbucks) {
       gainedVbucks += loginVbucks;
     }
