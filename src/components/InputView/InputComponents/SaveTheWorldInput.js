@@ -79,7 +79,7 @@ function SaveTheWorldInput() {
         setStates={setDailyAlertsStates}
       />
       <WeeklyInput
-        label='Weekly Login Days'
+        label='Login Days'
         infoBox='Days of the week you plan to redeem login rewards.'
         states={loginDayStates}
         setStates={setLoginDayStates}
