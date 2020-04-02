@@ -21,8 +21,10 @@ function TimelineView() {
     punchCardStates,
     dailyBRStates,
     dailySTWStates,
-    dailyAlertsStates
+    dailyAlertsStates,
+    loginDayStates
   } = useContext(InputContext);
+
   const totalVbucks = vbucks + dailies + alerts;
   const {
     setCurrentVbucks,
@@ -51,6 +53,7 @@ function TimelineView() {
       dailyBRStates,
       dailySTWStates,
       dailyAlertsStates,
+      loginDayStates,
       loginDay,
       amountOfDays
     );
@@ -86,6 +89,7 @@ function TimelineView() {
     dailyBRStates,
     dailySTWStates,
     dailyAlertsStates,
+    loginDayStates,
     loginDay,
     setCurrentVbucks,
     wishlistTotal,

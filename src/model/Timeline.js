@@ -11,6 +11,7 @@ function Timeline(
   dailyBRStates,
   dailySTWStates,
   dailyAlertsStates,
+  loginDayStates,
   loginDay,
   amountOfDays
 ) {
@@ -42,10 +43,10 @@ function Timeline(
     if (dailySTWStates[currentWeekday]) gainedVbucks += 50;
     if (dailyAlertsStates[currentWeekday]) gainedVbucks += averageAlerts;
 
-    console.log(loginDay + day + 1);
-    const loginVbucks = vbucksFromLogin(loginDay + day);
-    if (loginVbucks) {
-      gainedVbucks += loginVbucks;
+    // Vbucks gained from logging in StW
+    if (loginDayStates[currentWeekday]) {
+      loginDay += 1;
+      gainedVbucks += vbucksFromLogin(loginDay);
     }
 
     // XP gained from the daily punch card

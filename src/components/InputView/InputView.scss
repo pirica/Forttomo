@@ -7,7 +7,7 @@
 
   h3,
   h4 {
-    color: $background-color;
+    color: $secondary-color;
   }
 
   input {
@@ -70,6 +70,7 @@
 
 .day_select_section {
   grid-column: 1 / -1;
+  margin-bottom: 10px;
 
   h3 {
     font-size: 12pt;
@@ -78,7 +79,7 @@
 
 .day_select_wrapper {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(8, minmax(0, 1fr));
   border-radius: 4px;
   width: 240px;
   border-radius: 8px;

@@ -11,8 +11,7 @@ function InputContextWrap({ children }) {
   const storedExperience = localStorage.getItem('experience');
   const storedExtraXP = localStorage.getItem('extraXP');
   const storedUnfinishedXP = localStorage.getItem('unfinishedXP');
-  let storedLoginDay = localStorage.getItem('loginDay');
-  const storedSyncDate = Date.parse(localStorage.getItem('syncDate'));
+  const storedLoginDay = localStorage.getItem('loginDay');
   const storedPunchCard = JSON.parse(localStorage.getItem('punchCardStates'));
   const storedDailyBRStates = JSON.parse(localStorage.getItem('dailyBRStates'));
   const storedDailySTWStates = JSON.parse(
@@ -21,19 +20,10 @@ function InputContextWrap({ children }) {
   const storedDailyAlertsStates = JSON.parse(
     localStorage.getItem('dailyAlertsStates')
   );
+  const storedLoginDayStates = JSON.parse(
+    localStorage.getItem('loginDayStates')
+  );
   const defaultStates = [true, true, true, true, true, true, true];
-
-  if (storedSyncDate) {
-    const msPerDay = 8.64e7;
-    const beginDate = new Date(storedSyncDate);
-    const endDate = new Date();
-
-    beginDate.setUTCHours(0, 0, 0);
-    endDate.setUTCHours(0, 0, 0);
-    const days = Math.round((endDate - beginDate) / msPerDay);
-
-    storedLoginDay = +storedLoginDay + days;
-  }
 
   const [vbucks, setVbucks] = useState(+storedVbucks);
   const [dailies, setDailies] = useState(+storedDailies);
@@ -56,6 +46,38 @@ function InputContextWrap({ children }) {
   const [dailyAlertsStates, setDailyAlertsStates] = useState(
     storedDailyAlertsStates || defaultStates
   );
+  const [loginDayStates, setLoginDayStates] = useState(
+    storedLoginDayStates || defaultStates
+  );
+
+  useEffect(() => {
+    // Date that was recorded when the last login day was registered.
+    const syncDate = Date.parse(localStorage.getItem('syncDate'));
+    const loginDay = localStorage.getItem('loginDay');
+
+    if (syncDate) {
+      const beginDate = new Date(syncDate);
+      const endDate = new Date();
+
+      beginDate.setUTCHours(0, 0, 0);
+      endDate.setUTCHours(0, 0, 0);
+
+      const msPerDay = 8.64e7;
+      const days = Math.round((endDate - beginDate) / msPerDay);
+      let loginDays = 0;
+
+      // Login days are based on weekdays, and should only be counted the days
+      // of the week the user selected.
+      for (let day = 1; day <= days; day++) {
+        const newDate = new Date(beginDate);
+        newDate.setDate(newDate.getDate() + day);
+
+        if (loginDayStates[newDate.getUTCDay()]) loginDays += 1;
+      }
+
+      setLoginDay(+loginDay + loginDays);
+    }
+  }, [loginDayStates]);
 
   useEffect(() => {
     localStorage.setItem('vbucks', vbucks);
@@ -103,6 +125,10 @@ function InputContextWrap({ children }) {
     const stringified = JSON.stringify(dailyAlertsStates);
     localStorage.setItem('dailyAlertsStates', stringified);
   }, [dailyAlertsStates]);
+  useEffect(() => {
+    const stringified = JSON.stringify(loginDayStates);
+    localStorage.setItem('loginDayStates', stringified);
+  }, [loginDayStates]);
 
   return (
     <InputContext.Provider
@@ -132,7 +158,9 @@ function InputContextWrap({ children }) {
         dailySTWStates,
         setDailySTWStates,
         dailyAlertsStates,
-        setDailyAlertsStates
+        setDailyAlertsStates,
+        loginDayStates,
+        setLoginDayStates
       }}
     >
       {children}

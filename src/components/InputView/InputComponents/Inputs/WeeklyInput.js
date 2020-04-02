@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DayButton from './DayButton';
 import LabelHeader from './LabelHeader';
 
 function WeeklyInput({ label, infoBox, states, setStates }) {
+  const [allDaysOn, setAllDaysOn] = useState(false);
+
+  useEffect(() => {
+    let allOn = true;
+    for (const state of states) {
+      if (!state) allOn = false;
+    }
+
+    setAllDaysOn(allOn);
+  }, [states]);
+
   const updateStates = (position, newState) => {
-    const newStates = states.map((state, index) => {
-      return position === index ? newState : state;
-    });
+    let newStates;
+
+    if (position === 7) {
+      newStates = allDaysOn
+        ? new Array(7).fill(false)
+        : new Array(7).fill(true);
+    } else {
+      newStates = states.map((state, index) => {
+        return position === index ? newState : state;
+      });
+    }
 
     setStates(newStates);
   };
@@ -35,6 +54,9 @@ function WeeklyInput({ label, infoBox, states, setStates }) {
         </DayButton>
         <DayButton isOn={states[6]} position={6} onChange={updateStates}>
           S
+        </DayButton>
+        <DayButton isOn={allDaysOn} position={7} onChange={updateStates}>
+          A
         </DayButton>
       </div>
     </div>

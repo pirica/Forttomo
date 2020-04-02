@@ -26,5 +26,7 @@ export default React.createContext({
   dailySTWStates: null,
   setDailySTWStates: states => {},
   dailyAlertsStates: null,
-  setDailyAlertsStates: states => {}
+  setDailyAlertsStates: states => {},
+  loginDayStates: null,
+  setLoginDayStates: states => {}
 });
