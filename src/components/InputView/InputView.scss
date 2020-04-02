@@ -7,7 +7,7 @@
 
   h3,
   h4 {
-    color: $background-color;
+    color: $secondary-color;
   }
 
   input {
@@ -70,6 +70,7 @@
 
 .day_select_section {
   grid-column: 1 / -1;
+  margin-bottom: 10px;
 
   h3 {
     font-size: 12pt;
