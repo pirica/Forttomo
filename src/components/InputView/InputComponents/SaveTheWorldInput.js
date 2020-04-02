@@ -19,7 +19,9 @@ function SaveTheWorldInput() {
     dailySTWStates,
     setDailySTWStates,
     dailyAlertsStates,
-    setDailyAlertsStates
+    setDailyAlertsStates,
+    loginDayStates,
+    setLoginDayStates
   } = useContext(InputContext);
 
   if (averageAlerts === null) setAverageAlerts(50);
@@ -64,7 +66,7 @@ function SaveTheWorldInput() {
       />
       <WeeklyInput
         label='Daily Challenge Days'
-        infoBox={`Days you plan on doing your daily challenges. 
+        infoBox={`Days of the week you plan on doing your daily challenges. 
         Since daily challenges don't need to be completed on the day of, you can use 
         it to count how many dailies you plan to do a week in total.`}
         states={dailySTWStates}
@@ -72,9 +74,15 @@ function SaveTheWorldInput() {
       />
       <WeeklyInput
         label='Mission Alert Days'
-        infoBox={'Days you plan on doing available mission alerts.'}
+        infoBox={'Days of the week you plan on doing available mission alerts.'}
         states={dailyAlertsStates}
         setStates={setDailyAlertsStates}
+      />
+      <WeeklyInput
+        label='Weekly Login Days'
+        infoBox='Days of the week you plan to redeem login rewards.'
+        states={loginDayStates}
+        setStates={setLoginDayStates}
       />
     </div>
   );

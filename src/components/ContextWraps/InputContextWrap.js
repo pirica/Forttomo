@@ -21,6 +21,9 @@ function InputContextWrap({ children }) {
   const storedDailyAlertsStates = JSON.parse(
     localStorage.getItem('dailyAlertsStates')
   );
+  const storedLoginDayStates = JSON.parse(
+    localStorage.getItem('loginDayStates')
+  );
   const defaultStates = [true, true, true, true, true, true, true];
 
   if (storedSyncDate) {
@@ -55,6 +58,9 @@ function InputContextWrap({ children }) {
   );
   const [dailyAlertsStates, setDailyAlertsStates] = useState(
     storedDailyAlertsStates || defaultStates
+  );
+  const [loginDayStates, setLoginDayStates] = useState(
+    storedLoginDayStates || defaultStates
   );
 
   useEffect(() => {
@@ -103,6 +109,10 @@ function InputContextWrap({ children }) {
     const stringified = JSON.stringify(dailyAlertsStates);
     localStorage.setItem('dailyAlertsStates', stringified);
   }, [dailyAlertsStates]);
+  useEffect(() => {
+    const stringified = JSON.stringify(loginDayStates);
+    localStorage.setItem('loginDayStates', stringified);
+  }, [loginDayStates]);
 
   return (
     <InputContext.Provider
@@ -132,7 +142,9 @@ function InputContextWrap({ children }) {
         dailySTWStates,
         setDailySTWStates,
         dailyAlertsStates,
-        setDailyAlertsStates
+        setDailyAlertsStates,
+        loginDayStates,
+        setLoginDayStates
       }}
     >
       {children}
