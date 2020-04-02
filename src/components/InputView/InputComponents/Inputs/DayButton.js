@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function DayButton({ isOn, children, position, onChange }) {
-  const [state, setState] = useState(isOn);
-  const stateClass = state ? 'day_on' : 'day_off';
+  const stateClass = isOn ? 'day_on' : 'day_off';
 
   const stateChange = () => {
-    setState(!state);
-    onChange(position, !state);
+    onChange(position, !isOn);
   };
 
   return (
