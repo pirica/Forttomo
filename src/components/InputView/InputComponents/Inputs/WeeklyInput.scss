@@ -95,4 +95,30 @@
   .day_select_wrapper {
     width: 100%;
   }
+
+  .select_button_wrapper {
+    justify-content: flex-end;
+  }
+
+  .select_button {
+    height: 30px;
+    width: 30px;
+  }
+
+  .turned_on::before {
+    bottom: 8px;
+    left: -4px;
+    width: 16px;
+  }
+
+  .select_button::before,
+  .select_button::after {
+    height: 7px;
+  }
+
+  .turned_on::after {
+    width: 28px;
+    left: 2px;
+    bottom: 11px;
+  }
 }
