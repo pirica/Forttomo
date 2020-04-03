@@ -1,0 +1,98 @@
+@import '../../../../global.scss';
+
+.day_select_section {
+  grid-column: 1 / -1;
+  margin-bottom: 10px;
+
+  h3 {
+    font-size: 12pt;
+  }
+}
+
+.day_select_wrapper {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  border-radius: 4px;
+  width: 240px;
+}
+
+.day_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.day_button:nth-of-type(1) {
+  border-radius: 8px 0 0 8px;
+}
+
+.day_button:nth-of-type(7) {
+  border-radius: 0 8px 8px 0;
+}
+
+.day_button:nth-of-type(8) {
+  background: none;
+}
+
+.day {
+  background-color: $background-color;
+  color: $module-background-color;
+}
+
+.day_on {
+  background-color: $accent-color;
+  color: $secondary-color;
+}
+
+.select_button {
+  $dimension: 15px;
+  position: relative;
+  height: $dimension;
+  width: $dimension;
+  border: 2px solid $accent-color;
+  border-radius: $dimension;
+}
+
+.select_button_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select_button::before,
+.select_button::after {
+  position: absolute;
+  background-color: $secondary-color;
+  content: ' ';
+  height: 4px;
+}
+
+.turned_on::before {
+  bottom: 3px;
+  left: -2px;
+  width: 9px;
+  transform: rotate(45deg);
+}
+
+.turned_on::after {
+  width: 10px;
+  transform: rotate(-45deg);
+  left: 4px;
+  bottom: 6px;
+}
+
+@media screen and (max-width: 414px) {
+  .day_select_section {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .day_select_wrapper {
+    width: 100%;
+  }
+}

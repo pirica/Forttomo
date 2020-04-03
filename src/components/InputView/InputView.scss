@@ -68,64 +68,13 @@
   justify-self: flex-end;
 }
 
-.day_select_section {
-  grid-column: 1 / -1;
-  margin-bottom: 10px;
-
-  h3 {
-    font-size: 12pt;
-  }
-}
-
-.day_select_wrapper {
-  display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-  border-radius: 4px;
-  width: 240px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.day_button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 34px;
-  font-size: 20px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-}
-
-.punch_card_day:focus {
-  outline: none;
-}
-
-.day {
-  background-color: $background-color;
-  color: $module-background-color;
-}
-
-.day_on {
-  background-color: $accent-color;
-  color: $secondary-color;
-}
-
 .label_header {
   display: grid;
   grid-template-columns: auto 1fr;
+  margin: 2px 0px;
 }
 
 @media screen and (max-width: 414px) {
-  .day_select_section {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .day_select_wrapper {
-    width: 100%;
-  }
-
   .input_container {
     margin-bottom: 20px;
   }
