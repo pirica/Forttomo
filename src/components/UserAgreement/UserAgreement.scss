@@ -22,3 +22,11 @@
   background-color: $module-background-color;
   color: $accent-color;
 }
+
+@media screen and (max-width: 414px) {
+  .user_agreement {
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+  }
+}
