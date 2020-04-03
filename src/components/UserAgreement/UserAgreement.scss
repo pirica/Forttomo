@@ -1,0 +1,32 @@
+@import '../../global.scss';
+
+.user_agreement {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 200;
+  width: 350px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  background-color: $accent-color;
+  color: $background-color;
+  padding: 10px;
+}
+
+.agreement_description {
+  padding: 10px;
+}
+
+.confirmation_button {
+  border: none;
+  background-color: $module-background-color;
+  color: $accent-color;
+}
+
+@media screen and (max-width: 414px) {
+  .user_agreement {
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+  }
+}

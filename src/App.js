@@ -9,6 +9,8 @@ import ContextWrap from './components/ContextWraps/ContextWrap';
 import './App.scss';
 import SiteHeader from './components/SiteHeader/SiteHeader';
 
+import UserAgreement from './components/UserAgreement/UserAgreement';
+
 function App() {
   return (
     <div className='App'>
@@ -22,6 +24,7 @@ function App() {
           <OverviewView />
           <TimelineView />
         </div>
+        <UserAgreement />
       </ContextWrap>
     </div>
   );

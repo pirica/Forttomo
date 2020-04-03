@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import DayButton from './DayButton';
 import LabelHeader from './LabelHeader';
 
+import './WeeklyInput.scss';
+
 function WeeklyInput({ label, infoBox, states, setStates }) {
   const [allDaysOn, setAllDaysOn] = useState(false);
+  const selectButtonStyle = allDaysOn ? 'turned_on' : 'turned_off';
 
   useEffect(() => {
     let allOn = true;
@@ -15,17 +18,17 @@ function WeeklyInput({ label, infoBox, states, setStates }) {
   }, [states]);
 
   const updateStates = (position, newState) => {
-    let newStates;
+    let newStates = states.map((state, index) => {
+      return position === index ? newState : state;
+    });
 
-    if (position === 7) {
-      newStates = allDaysOn
-        ? new Array(7).fill(false)
-        : new Array(7).fill(true);
-    } else {
-      newStates = states.map((state, index) => {
-        return position === index ? newState : state;
-      });
-    }
+    setStates(newStates);
+  };
+
+  const toggleAll = () => {
+    const newStates = allDaysOn
+      ? new Array(7).fill(false)
+      : new Array(7).fill(true);
 
     setStates(newStates);
   };
@@ -55,9 +58,12 @@ function WeeklyInput({ label, infoBox, states, setStates }) {
         <DayButton isOn={states[6]} position={6} onChange={updateStates}>
           S
         </DayButton>
-        <DayButton isOn={allDaysOn} position={7} onChange={updateStates}>
-          A
-        </DayButton>
+        <div className='select_button_wrapper'>
+          <div
+            className={`select_button ${selectButtonStyle}`}
+            onClick={toggleAll}
+          ></div>
+        </div>
       </div>
     </div>
   );

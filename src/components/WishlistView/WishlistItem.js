@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import WantedItem from './WantedItem';
-import DoubleClickInput from './DoubleClickInput';
+import WishlistInput from './WishlistInput';
 
 function WishlistItem(props) {
   const [name, setName] = useState(props.name || 'ITEM NAME');
@@ -27,13 +27,16 @@ function WishlistItem(props) {
 
   return (
     <div className='wishlist_item wishlist_columns' ref={itemRef}>
-      <DoubleClickInput value={name} onChange={updateName} />
-      <DoubleClickInput value={price} onChange={updatePrice} />
+      <WishlistInput value={name} onChange={updateName} />
+      <WishlistInput value={price} onChange={updatePrice} />
       <div
         className='wishlist_delete'
         onClick={() => props.removeItem(props.position)}
       >
-        <i className='fas fa-times'></i>
+        <i className='fas fa-times' />
+      </div>
+      <div className='wishlist_handler'>
+        <i className='fas fa-grip-lines' />
       </div>
     </div>
   );

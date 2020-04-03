@@ -18,7 +18,7 @@ function WishlistView() {
   return (
     <div className='wishlist_view card'>
       <h3>Wishlist</h3>
-      <div className='wishtlist_labels wishlist_columns'>
+      <div className='wishlist_labels wishlist_columns'>
         <h4>Name</h4>
         <h4>Vbucks</h4>
         <div></div>
