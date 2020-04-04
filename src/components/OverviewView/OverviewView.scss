@@ -12,18 +12,21 @@
 
 .overview_row {
   display: flex;
+  position: relative;
 
   h5 {
     font-family: $body-font;
     font-size: 16px;
     font-weight: normal;
   }
+}
 
-  p {
-    text-align: right;
-    flex: 1;
-    font-weight: normal;
-  }
+.overview_value {
+  position: absolute;
+  right: 0px;
+  text-align: right;
+  flex: 1;
+  font-weight: normal;
 }
 
 .countdown {

@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 
-import OverviewContext from "../../context/OverviewContext";
+import UpdatableLabel from '../UpdatableLabel/UpdatableLabel';
+import OverviewContext from '../../context/OverviewContext';
 
 function OverviewDetails() {
   const {
@@ -13,38 +14,50 @@ function OverviewDetails() {
   } = useContext(OverviewContext);
 
   return (
-    <div className="overview_details">
+    <div className='overview_details'>
       <h3>Overview</h3>
-      <div className="overview_body">
-        <div className="overview_row">
+      <div className='overview_body'>
+        <div className='overview_row'>
           <h5>Wishlist Total</h5>
-          <p>{wishlistTotal}</p>
+          <UpdatableLabel className='overview_value'>
+            {wishlistTotal}
+          </UpdatableLabel>
         </div>
-        <div className="overview_row">
+        <div className='overview_row'>
           <h5>Vbucks Needed</h5>
-          <p>
+          <UpdatableLabel className='overview_value'>
             {wishlistTotal > currentVbucks ? wishlistTotal - currentVbucks : 0}
-          </p>
+          </UpdatableLabel>
         </div>
-        <div className="overview_row">
+        <div className='overview_row'>
           <h5>Wishlist Completion Date</h5>
-          <p>{wishlistCompletionDate}</p>
+          <UpdatableLabel className='overview_value'>
+            {wishlistCompletionDate}
+          </UpdatableLabel>
         </div>
-        <div className="overview_row">
+        <div className='overview_row'>
           <h5>Battle Pass Completion Date</h5>
-          <p>{passCompletionDate}</p>
+          <UpdatableLabel className='overview_value'>
+            {passCompletionDate}
+          </UpdatableLabel>
         </div>
-        <div className="overview_row">
+        <div className='overview_row'>
           <h5>Vbucks @ End of Season</h5>
-          <p>{vbucksAtEndOfSeason}</p>
+          <UpdatableLabel className='overview_value'>
+            {vbucksAtEndOfSeason}
+          </UpdatableLabel>
         </div>
-        <div className="overview_row">
+        <div className='overview_row'>
           <h5>Vbucks After Wishlist</h5>
-          <p>{vbucksAtEndOfSeason - wishlistTotal}</p>
+          <UpdatableLabel className='overview_value'>
+            {vbucksAtEndOfSeason - wishlistTotal}
+          </UpdatableLabel>
         </div>
-        <div className="overview_row">
+        <div className='overview_row'>
           <h5>Level @ End of Season</h5>
-          <p>{levelAtEndOfSeason}</p>
+          <UpdatableLabel className='overview_value'>
+            {levelAtEndOfSeason}
+          </UpdatableLabel>
         </div>
       </div>
     </div>

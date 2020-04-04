@@ -14,9 +14,16 @@
   font-size: 25px;
 }
 
+.timeline_label_wrapper {
+  position: relative;
+}
+
 .timeline_vbucks,
 .timeline_level,
 .timeline_change {
+  position: absolute;
+  left: 0px;
+  top: 0px;
   font-family: $body-font;
   font-weight: normal;
   font-size: 20px;
