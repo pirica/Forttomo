@@ -15,6 +15,12 @@ function Timeline(
   loginDay,
   amountOfDays
 ) {
+  vbucks = Number.isInteger(vbucks) ? vbucks : 0;
+  level = Number.isInteger(level) ? level : 1;
+  experience = Number.isInteger(experience) ? experience : 0;
+  extraXP = Number.isInteger(extraXP) ? extraXP : 0;
+  unfinishedXP = Number.isInteger(unfinishedXP) ? unfinishedXP : 0;
+
   const dateFormat = {
     weekday: 'short',
     month: 'short',
