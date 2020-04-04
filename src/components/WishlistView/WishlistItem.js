@@ -10,7 +10,9 @@ function WishlistItem(props) {
   const itemRef = React.createRef();
 
   const updateItem = (newName, newPrice) => {
-    const updatedItem = new WantedItem(newName, newPrice, props.id);
+    const sanitizedPrice = Number.isInteger(+newPrice) ? +newPrice : 0;
+
+    const updatedItem = new WantedItem(newName, sanitizedPrice, props.id);
 
     setName(newName);
     setPrice(newPrice);
