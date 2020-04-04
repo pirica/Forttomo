@@ -24,7 +24,7 @@ function DoubleClickInput({ value, onChange }) {
       type='text'
       ref={textfieldRef}
       className='item_property item_input'
-      defaultValue={value}
+      value={value}
       onChange={handleChange}
     ></input>
   );

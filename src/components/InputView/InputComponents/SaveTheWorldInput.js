@@ -26,13 +26,20 @@ function SaveTheWorldInput() {
 
   if (averageAlerts === null) setAverageAlerts(50);
 
+  const setState = (number, setFunc) => {
+    number = parseInt(number);
+    const isNumber = Number.isInteger(number);
+
+    setFunc(isNumber ? number : '');
+  };
+
   return (
     <div className='stw_section mode_section'>
       <StandardInput
         name='Vbucks'
         value={vbucks}
         formType='text'
-        onChange={setVbucks}
+        onChange={value => setState(value, setVbucks)}
       />
       <h3 className='mode_title'>Save the World</h3>
       <StandardInput
@@ -40,20 +47,20 @@ function SaveTheWorldInput() {
         value={dailies}
         formType='text'
         infoBox='Amount of vbucks currently obtainable from daily challenges.'
-        onChange={setDailies}
+        onChange={value => setState(value, setDailies)}
       />
       <StandardInput
         name='Mission Alerts'
         value={alerts}
         formType='text'
         infoBox='Amount of vbucks currently obtainable from storm alerts.'
-        onChange={setAlerts}
+        onChange={value => setState(value, setAlerts)}
       />
       <StandardInput
         name='Login Day'
         value={loginDay}
         formType='text'
-        onChange={setLoginDay}
+        onChange={value => setState(value, setLoginDay)}
       />
       <StandardInput
         name='Average Alerts'
