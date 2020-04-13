@@ -1,19 +1,7 @@
-import BattlePassVbucks from './../data/BattlePassVbucks';
-import BattlePassItems from './../data/BattlePassItems';
 import LoginVbucks from './../data/LoginVbucks';
 import KnownChallenges from './../data/KnownChallenges';
 
-export const vbucksFromLevel = level => {
-  let vbucks = 0;
-
-  for (const entry of BattlePassVbucks) {
-    if (entry.level === level) vbucks = entry.vbucks;
-  }
-
-  return vbucks;
-};
-
-export const vbucksFromLogin = loginDay => {
+export const vbucksFromLogin = (loginDay) => {
   let vbucks = 0;
   loginDay = loginDay % 336;
 
@@ -24,7 +12,7 @@ export const vbucksFromLogin = loginDay => {
   return vbucks;
 };
 
-export const expectedXPOnDay = date => {
+export const expectedXPOnDay = (date) => {
   const year = date.getUTCFullYear();
   const month = parseInt(date.getUTCMonth()) + 1;
   const day = date.getUTCDate();
@@ -42,14 +30,14 @@ export const expectedXPOnDay = date => {
   return expectedXP;
 };
 
-export const itemsFromLevels = (startLevel, endLevel) => {
+export const itemsFromLevels = (startLevel, endLevel, battlePass) => {
   let bpItems = [];
 
   if (startLevel > 100 || startLevel < 1) return bpItems;
   for (let level = startLevel + 1; level <= endLevel; level++) {
     if (level > 100) break;
 
-    const currentItems = BattlePassItems[level];
+    const currentItems = battlePass[level].items;
 
     for (const index in currentItems) {
       currentItems[index].level = level;

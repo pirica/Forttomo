@@ -3,9 +3,10 @@ import './TimelineView.scss';
 
 import DayView from './DayView/DayView';
 import Timeline from '../../model/Timeline';
-import { endOfSeasonDate } from './../../data/General';
+
 import InputContext from '../../context/InputContext';
 import OverviewContext from './../../context/OverviewContext';
+import DataContext from './../../context/DataContext';
 
 function TimelineView() {
   const {
@@ -22,64 +23,74 @@ function TimelineView() {
     dailyBRStates,
     dailySTWStates,
     dailyAlertsStates,
-    loginDayStates
+    loginDayStates,
   } = useContext(InputContext);
 
-  const totalVbucks = vbucks + dailies + alerts;
   const {
     setCurrentVbucks,
     wishlistTotal,
     setWishlistCompletionDate,
     setPassCompletionDate,
     setVbucksAtEndOfSeason,
-    setLevelAtEndOfSeason
+    setLevelAtEndOfSeason,
   } = useContext(OverviewContext);
+
+  const { generalData, battlePass, loadingGeneral, loadingPass } = useContext(
+    DataContext
+  );
+
   const [timeline, setTimeline] = useState([]);
 
   useEffect(() => {
-    const day = 1000 * 60 * 60 * 24;
-    const amountOfDays = Math.ceil(
-      (new Date(endOfSeasonDate) - new Date()) / day
-    );
+    const calculateTimeline = () => {
+      const day = 1000 * 60 * 60 * 24;
+      const amountOfDays = Math.ceil(
+        (generalData.endOfSeason - new Date()) / day
+      );
 
-    const newTimeline = Timeline(
-      totalVbucks,
-      +averageAlerts,
-      level,
-      experience,
-      extraXP,
-      unfinishedXP,
-      punchCardStates,
-      dailyBRStates,
-      dailySTWStates,
-      dailyAlertsStates,
-      loginDayStates,
-      loginDay,
-      amountOfDays
-    );
+      const timelineData = {
+        vbucks: vbucks + dailies + alerts,
+        averageAlerts: +averageAlerts,
+        level,
+        experience,
+        extraXP,
+        unfinishedXP,
+        punchCardStates,
+        dailyBRStates,
+        dailySTWStates,
+        dailyAlertsStates,
+        loginDayStates,
+        loginDay,
+        amountOfDays,
+        battlePass,
+      };
 
-    let wishlistDate = `NA`;
-    let passDate = 'NA';
+      const newTimeline = Timeline(timelineData);
 
-    for (const day of newTimeline) {
-      if (wishlistDate === 'NA' && day.vbucks >= wishlistTotal) {
-        wishlistDate = day.date;
+      let wishlistDate = `NA`;
+      let passDate = 'NA';
+
+      for (const day of newTimeline) {
+        if (wishlistDate === 'NA' && day.vbucks >= wishlistTotal) {
+          wishlistDate = day.date;
+        }
+        if (passDate === 'NA' && day.level >= 100) passDate = day.date;
+
+        if (wishlistDate !== 'NA' && passDate !== 'NA') break;
       }
-      if (passDate === 'NA' && day.level >= 100) passDate = day.date;
 
-      if (wishlistDate !== 'NA' && passDate !== 'NA') break;
-    }
+      let lastDay = newTimeline[newTimeline.length - 1];
 
-    let lastDay = newTimeline[newTimeline.length - 1];
+      setTimeline(newTimeline);
+      setCurrentVbucks(newTimeline[0].vbucks);
+      setWishlistCompletionDate(wishlistDate);
+      setPassCompletionDate(passDate);
+      setVbucksAtEndOfSeason(lastDay.vbucks);
+      setLevelAtEndOfSeason(lastDay.level);
+    };
 
-    setTimeline(newTimeline);
-    setCurrentVbucks(newTimeline[0].vbucks);
-    setWishlistCompletionDate(wishlistDate);
-    setPassCompletionDate(passDate);
-    setVbucksAtEndOfSeason(lastDay.vbucks);
-    setLevelAtEndOfSeason(lastDay.level);
+    if (!loadingGeneral && !loadingPass) calculateTimeline();
   }, [
-    totalVbucks,
     averageAlerts,
     level,
     experience,
@@ -96,7 +107,14 @@ function TimelineView() {
     setWishlistCompletionDate,
     setPassCompletionDate,
     setVbucksAtEndOfSeason,
-    setLevelAtEndOfSeason
+    setLevelAtEndOfSeason,
+    loadingGeneral,
+    loadingPass,
+    battlePass,
+    dailies,
+    generalData.endOfSeason,
+    vbucks,
+    alerts,
   ]);
 
   return (
