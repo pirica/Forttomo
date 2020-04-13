@@ -9,22 +9,7 @@ import OverviewContext from './../../context/OverviewContext';
 import DataContext from './../../context/DataContext';
 
 function TimelineView() {
-  const {
-    vbucks,
-    dailies,
-    alerts,
-    averageAlerts,
-    level,
-    experience,
-    extraXP,
-    unfinishedXP,
-    loginDay,
-    punchCardStates,
-    dailyBRStates,
-    dailySTWStates,
-    dailyAlertsStates,
-    loginDayStates,
-  } = useContext(InputContext);
+  const { input } = useContext(InputContext);
 
   const {
     setCurrentVbucks,
@@ -49,18 +34,18 @@ function TimelineView() {
       );
 
       const timelineData = {
-        vbucks: vbucks + dailies + alerts,
-        averageAlerts: +averageAlerts,
-        level,
-        experience,
-        extraXP,
-        unfinishedXP,
-        punchCardStates,
-        dailyBRStates,
-        dailySTWStates,
-        dailyAlertsStates,
-        loginDayStates,
-        loginDay,
+        vbucks: +input.vbucks + +input.dailies + +input.alerts,
+        averageAlerts: +input.averageAlerts,
+        level: +input.level,
+        experience: +input.experience,
+        playtimeXP: +input.playtimeXP,
+        unfinishedXP: +input.unfinishedXP,
+        loginDay: +input.loginDay,
+        punchCardStates: input.punchCardStates,
+        dailyBRStates: input.dailyBRStates,
+        dailySTWStates: input.dailySTWStates,
+        dailyAlertsStates: input.dailyAlertsStates,
+        loginDayStates: input.loginDayStates,
         amountOfDays,
         battlePass,
       };
@@ -91,19 +76,9 @@ function TimelineView() {
 
     if (!loadingGeneral && !loadingPass) calculateTimeline();
   }, [
-    averageAlerts,
-    level,
-    experience,
-    extraXP,
-    unfinishedXP,
-    punchCardStates,
-    dailyBRStates,
-    dailySTWStates,
-    dailyAlertsStates,
-    loginDayStates,
-    loginDay,
-    setCurrentVbucks,
+    input,
     wishlistTotal,
+    setCurrentVbucks,
     setWishlistCompletionDate,
     setPassCompletionDate,
     setVbucksAtEndOfSeason,
@@ -111,10 +86,7 @@ function TimelineView() {
     loadingGeneral,
     loadingPass,
     battlePass,
-    dailies,
     generalData.endOfSeason,
-    vbucks,
-    alerts,
   ]);
 
   return (

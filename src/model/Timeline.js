@@ -6,7 +6,7 @@ function Timeline(data) {
     averageAlerts,
     level,
     experience,
-    extraXP,
+    playtimeXP,
     unfinishedXP,
     punchCardStates,
     dailyBRStates,
@@ -21,7 +21,7 @@ function Timeline(data) {
   vbucks = Number.isInteger(vbucks) ? vbucks : 0;
   level = Number.isInteger(level) ? level : 1;
   experience = Number.isInteger(experience) ? experience : 0;
-  extraXP = Number.isInteger(extraXP) ? extraXP : 0;
+  playtimeXP = Number.isInteger(playtimeXP) ? playtimeXP : 0;
   unfinishedXP = Number.isInteger(unfinishedXP) ? unfinishedXP : 0;
   battlePass = battlePass ? battlePass : {};
 
@@ -79,7 +79,7 @@ function Timeline(data) {
     xpGained += expectedXPOnDay(currentDate);
 
     // XP gained from playing the game or other misc ways
-    xpGained += extraXP;
+    xpGained += playtimeXP;
 
     const yesterdaysLevel = timeline[timeline.length - 1].level;
     const currentLevel = Math.floor(level + xpGained / 80000);
