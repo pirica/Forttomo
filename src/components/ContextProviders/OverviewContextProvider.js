@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import OverviewContext from "./../../context/OverviewContext";
+import React, { useState } from 'react';
+import OverviewContext from '../../context/OverviewContext';
 
-function OverviewContextWrap({ children }) {
+function OverviewContextProvider({ children }) {
   const [currentVbucks, setCurrentVbucks] = useState(0);
   const [wishlistTotal, setWishlistTotal] = useState(0);
-  const [wishlistCompletionDate, setWishlistCompletionDate] = useState("NA");
-  const [passCompletionDate, setPassCompletionDate] = useState("NA");
+  const [wishlistCompletionDate, setWishlistCompletionDate] = useState('NA');
+  const [passCompletionDate, setPassCompletionDate] = useState('NA');
   const [vbucksAtEndOfSeason, setVbucksAtEndOfSeason] = useState(0);
   const [levelAtEndOfSeason, setLevelAtEndOfSeason] = useState(0);
 
@@ -23,7 +23,7 @@ function OverviewContextWrap({ children }) {
         vbucksAtEndOfSeason,
         setVbucksAtEndOfSeason,
         levelAtEndOfSeason,
-        setLevelAtEndOfSeason
+        setLevelAtEndOfSeason,
       }}
     >
       {children}
@@ -31,4 +31,4 @@ function OverviewContextWrap({ children }) {
   );
 }
 
-export default OverviewContextWrap;
+export default OverviewContextProvider;

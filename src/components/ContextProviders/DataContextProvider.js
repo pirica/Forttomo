@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import Prismic from 'prismic-javascript';
-import DataContext from './../../context/DataContext';
+import DataContext from '../../context/DataContext';
 
-const DataContextWrap = ({ children }) => {
+const DataContextProvider = ({ children }) => {
   const [generalData, setGeneralData] = useState({});
   const [battlePass, setBattlePass] = useState({});
   const [loadingGeneral, setLoadingGeneral] = useState(true);
@@ -70,4 +70,4 @@ const DataContextWrap = ({ children }) => {
   );
 };
 
-export default DataContextWrap;
+export default DataContextProvider;

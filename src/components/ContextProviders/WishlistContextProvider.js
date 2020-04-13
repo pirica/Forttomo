@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import WishlistContext from './../../context/WishlistContext';
-import OverviewContext from './../../context/OverviewContext';
+import WishlistContext from '../../context/WishlistContext';
+import OverviewContext from '../../context/OverviewContext';
 
-function WishlistContextWrap({ children }) {
+function WishlistContextProvider({ children }) {
   const storedWishlist = JSON.parse(localStorage.getItem('wishlist'));
   const startingWishlist = [
-    { name: 'Battle Pass', price: 950, id: 'startingitem' }
+    { name: 'Battle Pass', price: 950, id: 'startingitem' },
   ];
   const [wishlist, setWishlist] = useState(storedWishlist || startingWishlist);
   const { setWishlistTotal } = useContext(OverviewContext);
@@ -16,7 +16,7 @@ function WishlistContextWrap({ children }) {
 
     if (wishlist.length > 0) {
       const total = wishlist
-        .map(el => +el.price)
+        .map((el) => +el.price)
         .reduce((sum, value) => sum + value);
       setWishlistTotal(total);
     }
@@ -26,7 +26,7 @@ function WishlistContextWrap({ children }) {
     <WishlistContext.Provider
       value={{
         wishlist,
-        setWishlist
+        setWishlist,
       }}
     >
       {children}
@@ -34,4 +34,4 @@ function WishlistContextWrap({ children }) {
   );
 }
 
-export default WishlistContextWrap;
+export default WishlistContextProvider;
