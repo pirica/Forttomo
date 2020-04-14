@@ -1,22 +1,30 @@
-import React from 'react';
-import { startOfSeasonDate, endOfSeasonDate } from '../../data/General.json';
+import React, { useState, useEffect, useContext } from 'react';
+
+import DataContext from '../../context/DataContext';
 
 function SeasonProgressBar() {
-  const seasonStart = new Date(startOfSeasonDate);
-  const seasonEnd = new Date(endOfSeasonDate);
-  const currentDate = new Date();
-  const seasonDuration = seasonEnd - seasonStart;
-  const seasonProgress = currentDate - seasonStart;
-  const seasonLeft = (seasonDuration - seasonProgress) / seasonDuration;
-  let percentage = Math.round((1 - seasonLeft) * 100);
-
-  if (seasonEnd < currentDate) {
-    percentage = 100;
-  } else if (seasonStart > currentDate) {
-    percentage = 0;
-  }
-
+  const [percentage, setPercentage] = useState(0);
+  const { generalData, loadingGeneral } = useContext(DataContext);
   const barWidth = { width: `${percentage}%` };
+
+  useEffect(() => {
+    if (!loadingGeneral) {
+      const { startOfSeason, endOfSeason } = generalData;
+      const currentDate = new Date();
+      const seasonDuration = endOfSeason - startOfSeason;
+      const seasonProgress = currentDate - startOfSeason;
+      const seasonLeft = (seasonDuration - seasonProgress) / seasonDuration;
+      let newPercentage = Math.round((1 - seasonLeft) * 100);
+
+      if (endOfSeason < currentDate) {
+        newPercentage = 100;
+      } else if (startOfSeason > currentDate) {
+        newPercentage = 0;
+      }
+
+      setPercentage(newPercentage);
+    }
+  }, [generalData, loadingGeneral]);
 
   return (
     <div className='progress_bar'>

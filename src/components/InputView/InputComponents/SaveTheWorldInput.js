@@ -5,91 +5,73 @@ import StandardInput from './Inputs/StandardInput';
 import WeeklyInput from './Inputs/WeeklyInput';
 
 function SaveTheWorldInput() {
-  const {
-    vbucks,
-    setVbucks,
-    dailies,
-    setDailies,
-    alerts,
-    setAlerts,
-    averageAlerts,
-    setAverageAlerts,
-    loginDay,
-    setLoginDay,
-    dailySTWStates,
-    setDailySTWStates,
-    dailyAlertsStates,
-    setDailyAlertsStates,
-    loginDayStates,
-    setLoginDayStates
-  } = useContext(InputContext);
+  const { input, setInput } = useContext(InputContext);
 
-  if (averageAlerts === null) setAverageAlerts(50);
+  const updateState = (valueName, value) => {
+    const sanitizedValue = Number.isInteger(parseInt(value)) ? +value : '';
+    const newInput = { ...input };
+    newInput[valueName] = sanitizedValue;
 
-  const setState = (number, setFunc) => {
-    number = parseInt(number);
-    const isNumber = Number.isInteger(number);
-
-    setFunc(isNumber ? number : '');
+    setInput(newInput);
   };
 
   return (
     <div className='stw_section mode_section'>
       <StandardInput
         name='Vbucks'
-        value={vbucks}
+        value={input.vbucks}
         formType='text'
-        onChange={value => setState(value, setVbucks)}
+        onChange={value => updateState('vbucks', value)}
       />
       <h3 className='mode_title'>Save the World</h3>
       <StandardInput
         name='Dailies'
-        value={dailies}
+        value={input.dailies}
         formType='text'
         infoBox='Amount of vbucks currently obtainable from daily challenges.'
-        onChange={value => setState(value, setDailies)}
+        onChange={value => updateState('dailies', value)}
       />
       <StandardInput
         name='Mission Alerts'
-        value={alerts}
+        value={input.alerts}
         formType='text'
         infoBox='Amount of vbucks currently obtainable from storm alerts.'
-        onChange={value => setState(value, setAlerts)}
+        onChange={value => updateState('alerts', value)}
       />
       <StandardInput
         name='Login Day'
-        value={loginDay}
+        value={input.loginDay}
         formType='text'
-        onChange={value => setState(value, setLoginDay)}
+        onChange={value => updateState('loginDay', value)}
       />
       <StandardInput
         name='Average Alerts'
-        value={averageAlerts}
+        value={input.averageAlerts}
         formType='text'
         infoBox={`Average vbucks you expect to get from mission alerts daily. 
         Usually 50 during Alert season and 30 in Storm season assuming you have access
         to all available missions.`}
-        onChange={setAverageAlerts}
+        onChange={value => updateState('averageAlerts', value)}
       />
       <WeeklyInput
         label='Daily Challenge Days'
         infoBox={`Days of the week you plan on doing your daily challenges. 
         Since daily challenges don't need to be completed on the day of, you can use 
         it to count how many dailies you plan to do a week in total.`}
-        states={dailySTWStates}
-        setStates={setDailySTWStates}
+        states={input.dailySTWStates}
+        setStates={value => setInput({ ...input, dailySTWStates: value })}
       />
       <WeeklyInput
         label='Mission Alert Days'
         infoBox={'Days of the week you plan on doing available mission alerts.'}
-        states={dailyAlertsStates}
-        setStates={setDailyAlertsStates}
+        states={input.dailyAlertsStates}
+        setStates={value => setInput({ ...input, dailyAlertsStates: value })}
       />
       <WeeklyInput
         label='Login Days'
         infoBox='Days of the week you plan to redeem login rewards.'
-        states={loginDayStates}
-        setStates={setLoginDayStates}
+        states={input.loginDayStates}
+        setStates={value => setInput({ ...input, loginDayStates: value })}
       />
     </div>
   );

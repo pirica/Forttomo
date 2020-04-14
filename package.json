@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "node-sass": "^4.13.0",
+    "prismic-javascript": "^2.7.1",
     "react": "^16.11.0",
     "react-beautiful-dnd": "^12.1.1",
     "react-dom": "^16.11.0",
