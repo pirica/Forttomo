@@ -88,7 +88,7 @@ function Timeline(data) {
 
     let bpVbucks = 0;
     for (let item of bpItems) {
-      if (item.type === 'currency') bpVbucks += 100;
+      if (item.type === 'Currency') bpVbucks += 100;
     }
 
     if (bpVbucks) gainedVbucks += bpVbucks;
