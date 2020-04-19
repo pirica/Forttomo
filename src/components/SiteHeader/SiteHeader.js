@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import AuthView from './../AuthView/AuthView';
+
 import './SiteHeader.scss';
 
-function SiteHeader({ setLoggingInState }) {
+function SiteHeader() {
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
   return (
     <header>
       <h1>Fortnite Timeline</h1>
-      <div className='login_link' onClick={() => setLoggingInState(true)}>
+      <div className='login_link' onClick={() => setIsLoggingIn(true)}>
         Log In
       </div>
+      {isLoggingIn && <AuthView setLoggingInState={setIsLoggingIn} />}
     </header>
   );
 }
