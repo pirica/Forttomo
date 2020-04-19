@@ -2,6 +2,7 @@
 
 header {
   grid-column: 1 / -1;
+  display: flex;
 
   h1 {
     text-transform: uppercase;
@@ -9,6 +10,13 @@ header {
     font-family: $title-font;
     font-size: 40px;
     margin-top: 20px;
+    flex-grow: 1;
+  }
+
+  .login_link {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
   }
 }
 

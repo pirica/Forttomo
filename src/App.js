@@ -1,30 +1,34 @@
-import React from 'react';
-
-import InputView from './components/InputView/InputView';
-import WishlistView from './components/WishlistView/WishlistView';
-import OverviewView from './components/OverviewView/OverviewView';
-import TimelineView from './components/TimelineView/TimelineView';
+import React, { useState } from 'react';
 
 import ContextProviders from './components/ContextProviders/ContextProviders';
-import './App.scss';
-import SiteHeader from './components/SiteHeader/SiteHeader';
 
+import SiteHeader from './components/SiteHeader/SiteHeader';
+import ControlPanel from './components/ControlPanel';
+import DataView from './components/DataView';
+import UserView from './components/UserView/UserView';
 import UserAgreement from './components/UserAgreement/UserAgreement';
 
+import { enableScroll, disableScroll } from './helper/ToggleScroll';
+
+import './App.scss';
+
 function App() {
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  if (isLoggingIn) {
+    disableScroll();
+  } else {
+    enableScroll();
+  }
+
   return (
     <div className='App'>
-      <SiteHeader />
       <ContextProviders>
-        <div className='control_panel section'>
-          <InputView />
-          <WishlistView />
-        </div>
-        <div className='right_panel section'>
-          <OverviewView />
-          <TimelineView />
-        </div>
+        <SiteHeader setLoggingInState={setIsLoggingIn} />
+        <ControlPanel />
+        <DataView />
         <UserAgreement />
+        {isLoggingIn && <UserView setLoggingInState={setIsLoggingIn} />}
       </ContextProviders>
     </div>
   );
