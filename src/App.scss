@@ -13,7 +13,7 @@ body {
 .App {
   display: grid;
   grid-template-columns: $control-panel-width auto;
-  width: 1000px;
+  width: 900px;
   min-height: 100vh;
   margin: auto;
   color: $secondary-color;

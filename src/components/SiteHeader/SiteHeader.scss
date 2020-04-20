@@ -14,10 +14,19 @@ header {
   }
 
   .login_link {
-    display: flex;
-    align-items: center;
     cursor: pointer;
   }
+
+  .signout_link {
+    text-align: right;
+    cursor: pointer;
+    color: #ff652f;
+  }
+}
+
+.auth_region {
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width: 414px) {

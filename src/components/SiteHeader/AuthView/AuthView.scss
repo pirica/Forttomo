@@ -1,4 +1,4 @@
-@import './../../global.scss';
+@import '../../../global.scss';
 
 .auth_container {
   position: absolute;
@@ -58,6 +58,16 @@
   button {
     margin-top: auto;
   }
+}
+
+.auth_input {
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+}
+
+.invalid_input {
+  background: #ffa0a0;
 }
 
 .form_toggle {
