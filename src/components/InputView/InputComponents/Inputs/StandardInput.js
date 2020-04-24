@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import LabelHeader from './LabelHeader';
 
 function StandardInput({ name, value, formType, infoBox, onChange }) {
+  const [tempValue, setTempValue] = useState(value);
+  const typingTimeout = React.useRef(0);
+
   const sanitizedName = name.toLowerCase().replace(' ', '_');
   const inputRef = React.createRef();
 
@@ -11,8 +14,17 @@ function StandardInput({ name, value, formType, infoBox, onChange }) {
     });
   }, [inputRef]);
 
-  const updateState = e => {
-    onChange(e.target.value);
+  const handleChange = e => {
+    const { value } = e.target;
+
+    if (typingTimeout.current) clearTimeout(typingTimeout.current);
+
+    // Ensures the web app doesn't rerender per keypress
+    typingTimeout.current = setTimeout(() => {
+      onChange(value);
+    }, 500);
+
+    setTempValue(value);
   };
 
   return (
@@ -22,8 +34,8 @@ function StandardInput({ name, value, formType, infoBox, onChange }) {
         id={`${sanitizedName}_input`}
         ref={inputRef}
         type={formType}
-        value={value}
-        onChange={updateState}
+        value={tempValue}
+        onChange={handleChange}
       ></input>
     </div>
   );
