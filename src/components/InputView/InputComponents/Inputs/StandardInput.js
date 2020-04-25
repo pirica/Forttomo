@@ -14,6 +14,10 @@ function StandardInput({ name, value, formType, infoBox, onChange }) {
     });
   }, [inputRef]);
 
+  useEffect(() => {
+    setTempValue(value);
+  }, [value]);
+
   const handleChange = e => {
     const { value } = e.target;
 
