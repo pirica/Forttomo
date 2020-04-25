@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import UpdatableLabel from '../UpdatableLabel/UpdatableLabel';
+import UpdatableLabel from '../Utility/UpdatableLabel';
 import OverviewContext from '../../context/OverviewContext';
 
 function OverviewDetails() {
@@ -10,7 +10,7 @@ function OverviewDetails() {
     wishlistCompletionDate,
     passCompletionDate,
     vbucksAtEndOfSeason,
-    levelAtEndOfSeason
+    levelAtEndOfSeason,
   } = useContext(OverviewContext);
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import UpdatableLabel from '../../UpdatableLabel/UpdatableLabel';
+import UpdatableLabel from '../../Utility/UpdatableLabel';
 import BattlePassView from './BattlePassView';
 import './DayView.scss';
 
