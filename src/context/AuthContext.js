@@ -4,4 +4,5 @@ export default React.createContext({
   username: null,
   logout: username => {},
   userID: null,
+  isLoading: null,
 });

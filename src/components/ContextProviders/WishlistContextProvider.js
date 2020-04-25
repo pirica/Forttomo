@@ -8,38 +8,73 @@ import Firebase from '../../firebase';
 import 'firebase/database';
 
 function WishlistContextProvider({ children }) {
-  const storedWishlist = JSON.parse(localStorage.getItem('wishlist'));
-  const startingWishlist = [
-    { name: 'Battle Pass', price: 950, id: 'startingitem' },
-  ];
-  const [wishlist, setWishlist] = useState(storedWishlist || startingWishlist);
-  const { userID } = useContext(AuthContext);
+  const [wishlist, setWishlist] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const authContext = useContext(AuthContext);
+  const userID = authContext.userID;
+  const isUserLoading = authContext.isLoading;
   const { setWishlistTotal } = useContext(OverviewContext);
 
   useEffect(() => {
-    const wishlistString = JSON.stringify(wishlist);
+    const backupWishlist = () => {
+      const storedWishlist = JSON.parse(localStorage.getItem('wishlist'));
+      const startingWishlist = [
+        { name: 'Battle Pass', price: 950, id: 'startingitem' },
+      ];
 
-    if (userID) {
+      return storedWishlist || startingWishlist;
+    };
+
+    const fetchWishlist = async () => {
       const path = 'users/' + userID + '/wishlist';
 
-      Firebase.database().ref(path).set(wishlist);
+      const response = await Firebase.database().ref(path).once('value');
+      const wishlist = response.val();
+
+      const newWishlist = wishlist !== null ? wishlist : backupWishlist();
+      setWishlist(newWishlist);
+    };
+
+    if (!isUserLoading) {
+      if (userID) {
+        fetchWishlist().then(() => {
+          setIsLoading(false);
+        });
+      } else {
+        const newWishlist = backupWishlist();
+        setWishlist(newWishlist);
+      }
     }
+  }, [userID, isUserLoading]);
 
-    localStorage.setItem('wishlist', wishlistString);
+  useEffect(() => {
+    if (!isLoading) {
+      if (userID) {
+        const path = 'users/' + userID + '/wishlist';
 
+        Firebase.database().ref(path).set(wishlist);
+      }
+
+      const wishlistString = JSON.stringify(wishlist);
+      localStorage.setItem('wishlist', wishlistString);
+    }
+  }, [wishlist, userID, isLoading]);
+
+  useEffect(() => {
     if (wishlist.length > 0) {
       const total = wishlist
         .map(el => +el.price)
         .reduce((sum, value) => sum + value);
       setWishlistTotal(total);
     }
-  }, [wishlist, setWishlistTotal, userID]);
+  }, [wishlist, setWishlistTotal]);
 
   return (
     <WishlistContext.Provider
       value={{
         wishlist,
         setWishlist,
+        isLoading,
       }}
     >
       {children}

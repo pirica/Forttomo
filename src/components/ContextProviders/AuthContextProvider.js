@@ -8,12 +8,14 @@ import 'firebase/auth';
 const AuthContextProvider = ({ children }) => {
   const [username, setUsername] = useState(null);
   const [userID, setUserID] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     Firebase.auth().onAuthStateChanged(user => {
       if (user) {
         setUsername(user.email);
         setUserID(user.uid);
+        setIsLoading(false);
       }
     });
   }, []);
@@ -25,7 +27,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ username, userID, logout }}>
+    <AuthContext.Provider value={{ username, userID, isLoading, logout }}>
       {children}
     </AuthContext.Provider>
   );

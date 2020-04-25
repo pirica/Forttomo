@@ -10,7 +10,7 @@ function DoubleClickInput({ value, onChange }) {
   useEffect(() => {
     const textfield = textfieldRef.current;
 
-    const enterPress = function(e) {
+    const enterPress = function (e) {
       if (e.which === 13) this.blur();
     };
 
