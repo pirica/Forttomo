@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import InputContext from '../../context/InputContext';
+import AuthContext from '../../context/AuthContext';
+import Firebase from '../../firebase';
+import 'firebase/database';
 
 function InputContextWrap({ children }) {
-  const storedInput = JSON.parse(localStorage.getItem('input'));
+  const { userID } = useContext(AuthContext);
   const defaultInput = {
     vbucks: 0,
     dailies: 0,
@@ -20,13 +23,27 @@ function InputContextWrap({ children }) {
     dailyAlertsStates: new Array(7).fill(true),
     loginDayStates: new Array(7).fill(true),
   };
+  const [input, setInput] = useState(defaultInput);
 
-  const state = storedInput ? storedInput : defaultInput;
-  const [input, setInput] = useState(state);
+  useEffect(() => {
+    if (userID) {
+      const path = 'users/' + userID + '/input';
+      Firebase.database()
+        .ref(path)
+        .once('value')
+        .then(snapshot => {
+          const data = snapshot.val();
+
+          if (data !== null) {
+            setInput({ ...data });
+          }
+        });
+    }
+  }, [userID]);
 
   useEffect(() => {
     // Date that was recorded when the last login day was registered.
-    const syncDate = Date.parse(localStorage.getItem('syncDate'));
+    const syncDate = Date.parse(input.syncDate);
 
     if (syncDate) {
       const beginDate = new Date(syncDate);
@@ -55,11 +72,16 @@ function InputContextWrap({ children }) {
   }, [input.loginDayStates]);
 
   useEffect(() => {
-    const inputString = JSON.stringify(input);
-    const currentTime = new Date();
+    const data = { ...input, syncDate: new Date().getTime() };
 
+    if (userID) {
+      const path = 'users/' + userID + '/input';
+
+      Firebase.database().ref(path).set(data);
+    }
+
+    const inputString = JSON.stringify(data);
     localStorage.setItem('input', inputString);
-    localStorage.setItem('syncDate', currentTime);
   }, [input]);
 
   return (

@@ -2,15 +2,11 @@ import React, { useContext } from 'react';
 
 import AuthContext from '../../../context/AuthContext';
 
-import Firebase from 'firebase/app';
-import 'firebase/auth';
-
 const SignedInManager = ({ username }) => {
-  const { setUsername } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
 
   const handleSignOut = () => {
-    Firebase.auth().signOut();
-    setUsername(null);
+    logout();
   };
 
   return (
