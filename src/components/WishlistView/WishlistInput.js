@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
 
-function DoubleClickInput({ value, onChange }) {
-  const textfieldRef = React.createRef();
+import DelayedInput from '../Utility/DelayedInput';
 
-  const handleChange = e => {
-    onChange(e.target.value);
+function DoubleClickInput({ value, onChange }) {
+  const ref = React.createRef();
+
+  const handleChange = change => {
+    onChange(change);
   };
 
   useEffect(() => {
-    const textfield = textfieldRef.current;
+    const textfield = ref.current;
 
     const enterPress = function (e) {
       if (e.which === 13) this.blur();
@@ -17,16 +19,16 @@ function DoubleClickInput({ value, onChange }) {
     textfield.addEventListener('keydown', enterPress);
 
     return () => textfield.removeEventListener('keydown', enterPress);
-  }, [textfieldRef]);
+  }, [ref]);
 
   return (
-    <input
+    <DelayedInput
       type='text'
-      ref={textfieldRef}
+      ref={ref}
       className='item_property item_input'
       value={value}
       onChange={handleChange}
-    ></input>
+    />
   );
 }
 
