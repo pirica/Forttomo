@@ -21,26 +21,26 @@ function BattleRoyaleInput() {
       <StandardInput
         name='Level'
         value={input.level}
-        formType='text'
+        type='text'
         onChange={value => updateState('level', value)}
       />
       <StandardInput
         name='Experience'
         value={input.experience}
-        formType='text'
+        type='text'
         onChange={value => updateState('experience', value)}
       />
       <StandardInput
         name='Extra XP'
         value={input.playtimeXP}
-        formType='text'
+        type='text'
         infoBox='Average amount of xp you plan on gaining daily outside punch card, daily, and weekly challenges.'
         onChange={value => updateState('playtimeXP', value)}
       />
       <StandardInput
         name='Unfinished XP'
         value={input.unfinishedXP}
-        formType='text'
+        type='text'
         infoBox='XP currently able to obtained. ie, uncompleted challenges, punch card, etc.'
         onChange={value => updateState('unfinishedXP', value)}
       />

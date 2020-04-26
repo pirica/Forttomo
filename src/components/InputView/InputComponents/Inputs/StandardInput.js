@@ -1,46 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import LabelHeader from './LabelHeader';
+import DelayedInput from '../../../Utility/DelayedInput';
 
-function StandardInput({ name, value, formType, infoBox, onChange }) {
-  const [tempValue, setTempValue] = useState(value);
-  const typingTimeout = React.useRef(0);
-
+function StandardInput({ name, value, type, infoBox, onChange }) {
   const sanitizedName = name.toLowerCase().replace(' ', '_');
-  const inputRef = React.createRef();
+  const className = `${sanitizedName}_input`;
+  const ref = React.createRef();
 
   useEffect(() => {
-    inputRef.current.addEventListener('keypress', e => {
+    const inputRef = ref.current;
+
+    const preventNonNumbers = e => {
       if (e.which < 48 || e.which > 57) e.preventDefault();
-    });
-  }, [inputRef]);
+    };
 
-  useEffect(() => {
-    setTempValue(value);
-  }, [value]);
+    if (inputRef) {
+      inputRef.addEventListener('keypress', preventNonNumbers);
+    }
 
-  const handleChange = e => {
-    const { value } = e.target;
-
-    if (typingTimeout.current) clearTimeout(typingTimeout.current);
-
-    // Ensures the web app doesn't rerender per keypress
-    typingTimeout.current = setTimeout(() => {
-      onChange(value);
-    }, 500);
-
-    setTempValue(value);
-  };
+    return () => {
+      if (inputRef) {
+        inputRef.removeEventListener('keypress', preventNonNumbers);
+      }
+    };
+  }, [ref]);
 
   return (
     <div className={`input_container ${sanitizedName}_section`}>
       <LabelHeader label={name} infoBox={infoBox} />
-      <input
-        id={`${sanitizedName}_input`}
-        ref={inputRef}
-        type={formType}
-        value={tempValue}
-        onChange={handleChange}
-      ></input>
+      <DelayedInput
+        type={type}
+        className={className}
+        ref={ref}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 }

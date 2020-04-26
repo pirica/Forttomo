@@ -20,34 +20,34 @@ function SaveTheWorldInput() {
       <StandardInput
         name='Vbucks'
         value={input.vbucks}
-        formType='text'
+        type='text'
         onChange={value => updateState('vbucks', value)}
       />
       <h3 className='mode_title'>Save the World</h3>
       <StandardInput
         name='Dailies'
         value={input.dailies}
-        formType='text'
+        type='text'
         infoBox='Amount of vbucks currently obtainable from daily challenges.'
         onChange={value => updateState('dailies', value)}
       />
       <StandardInput
         name='Mission Alerts'
         value={input.alerts}
-        formType='text'
+        type='text'
         infoBox='Amount of vbucks currently obtainable from storm alerts.'
         onChange={value => updateState('alerts', value)}
       />
       <StandardInput
         name='Login Day'
         value={input.loginDay}
-        formType='text'
+        type='text'
         onChange={value => updateState('loginDay', value)}
       />
       <StandardInput
         name='Average Alerts'
         value={input.averageAlerts}
-        formType='text'
+        type='text'
         infoBox={`Average vbucks you expect to get from mission alerts daily. 
         Usually 50 during Alert season and 30 in Storm season assuming you have access
         to all available missions.`}
