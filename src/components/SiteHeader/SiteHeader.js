@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 
 import AuthView from './AuthView/AuthView';
-import SignedInManager from './AuthManger/SignedInManager';
+import AccountManager from './AuthManger/AccountManager';
+import UnregisteredManager from './AuthManger/UnregisteredManager';
 
 import AuthContext from '../../context/AuthContext';
 
 import './SiteHeader.scss';
-import UnregisteredManager from './AuthManger/UnregisteredManager';
 
 function SiteHeader() {
   const [isAuthWindowOpen, setIsAuthWindowOpen] = useState(false);
@@ -23,7 +23,7 @@ function SiteHeader() {
       <h1>Fortnite Timeline</h1>
       <div className='auth_region'>
         {isSignedIn ? (
-          <SignedInManager username={username} />
+          <AccountManager username={username} />
         ) : (
           <UnregisteredManager onClick={setIsAuthWindowOpen} />
         )}

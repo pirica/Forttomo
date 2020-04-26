@@ -3,7 +3,7 @@ import React, { useContext, useRef } from 'react';
 import AuthContext from '../../../context/AuthContext';
 import './AccountManager.scss';
 
-const SignedInManager = () => {
+const AccountManager = () => {
   const { username, logout } = useContext(AuthContext);
   const dropdownRef = useRef();
 
@@ -31,4 +31,4 @@ const SignedInManager = () => {
   );
 };
 
-export default SignedInManager;
+export default AccountManager;
