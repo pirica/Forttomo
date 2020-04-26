@@ -18,7 +18,7 @@ const AccountManager = () => {
   return (
     <div className='account_manager'>
       <i className='fas fa-user-circle' />
-      <div className='username_label'>LMAOBoy</div>
+      <div className='username_label'>{username}</div>
       <div className='dropdown_container'>
         <i className='fas fa-sort-down' onClick={toggleDropDown} />
         <div className='signin_dropdown' ref={dropdownRef}>
