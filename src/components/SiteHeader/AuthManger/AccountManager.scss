@@ -1,0 +1,34 @@
+@import '../../../global.scss';
+
+.account_manager {
+  display: flex;
+
+  > * {
+    margin: auto 2px;
+  }
+}
+
+.dropdown_container {
+  position: relative;
+  cursor: pointer;
+}
+
+.signin_dropdown {
+  position: absolute;
+  width: 100px;
+  top: 100%;
+  right: 0px;
+  padding: 10px;
+  background: $module-background-color;
+  display: none;
+}
+
+.droppeddown {
+  display: block;
+}
+
+.signout_link {
+  text-align: center;
+  cursor: pointer;
+  color: #ff652f;
+}
