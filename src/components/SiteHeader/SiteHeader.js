@@ -8,11 +8,12 @@ import AuthContext from '../../context/AuthContext';
 
 import './SiteHeader.scss';
 
-function SiteHeader() {
+const SiteHeader = () => {
   const [isAuthWindowOpen, setIsAuthWindowOpen] = useState(false);
   const { username } = useContext(AuthContext);
 
   useEffect(() => {
+    // When the user authenticates, the window should close
     setIsAuthWindowOpen(false);
   }, [username]);
 
@@ -31,6 +32,6 @@ function SiteHeader() {
       {isAuthWindowOpen ? <AuthView onExit={setIsAuthWindowOpen} /> : <div />}
     </header>
   );
-}
+};
 
 export default SiteHeader;
