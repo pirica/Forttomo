@@ -3,19 +3,11 @@ import React, { useContext } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
 import WishlistContext from '../../context/WishlistContext';
-import WishlistItem from './WishlistItem';
+import WishlistItemWrapper from './WishlistItemWrapper';
 import DroppableWrapper from './DroppableWrapper';
 
 function WishlistList() {
   const { wishlist, setWishlist } = useContext(WishlistContext);
-
-  const reorder = (list, startIndex, endIndex) => {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-
-    return result;
-  };
 
   const onDragEnd = result => {
     if (!result.destination) return;
@@ -45,32 +37,29 @@ function WishlistList() {
 
   return (
     <DroppableWrapper onDragEnd={onDragEnd}>
-      {wishlist.map((item, index) => {
-        return (
-          <Draggable key={item.id} draggableId={item.id} index={index}>
-            {provided => {
-              return (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                >
-                  <WishlistItem
-                    position={index}
-                    name={item.name}
-                    price={item.price}
-                    id={item.id}
-                    removeItem={removeItem}
-                    onChange={updateItem}
-                  />
-                </div>
-              );
-            }}
-          </Draggable>
-        );
-      })}
+      {wishlist.map((item, index) => (
+        <Draggable key={item.id} draggableId={item.id} index={index}>
+          {provided => (
+            <WishlistItemWrapper
+              item={item}
+              position={index}
+              provided={provided}
+              onChange={updateItem}
+              removeItem={removeItem}
+            />
+          )}
+        </Draggable>
+      ))}
     </DroppableWrapper>
   );
 }
+
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+
+  return result;
+};
 
 export default WishlistList;

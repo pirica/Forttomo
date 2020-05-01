@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
@@ -18,5 +19,10 @@ function DroppableWrapper({ children, onDragEnd }) {
     </DragDropContext>
   );
 }
+
+DroppableWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+  onDragEnd: PropTypes.func.isRequired,
+};
 
 export default DroppableWrapper;

@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 import DelayedInput from '../Utility/DelayedInput';
 
-function DoubleClickInput({ value, onChange }) {
-  const ref = React.createRef();
+function WishlistInput({ value, onChange }) {
+  const ref = useRef();
 
   const handleChange = change => {
     onChange(change);
@@ -32,4 +33,9 @@ function DoubleClickInput({ value, onChange }) {
   );
 }
 
-export default DoubleClickInput;
+WishlistInput.propTypes = {
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+export default WishlistInput;
