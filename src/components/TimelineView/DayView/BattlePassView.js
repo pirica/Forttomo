@@ -1,14 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import uuidv4 from 'uuidv4';
-
-function BattlePassView({ items }) {
+const BattlePassView = ({ items }) => {
   return (
     <div className='battlepass_unlocks'>
       <h5>Battle Pass Unlocks</h5>
       <div className='item_wrapper'>
         {items.map(item => {
-          const key = uuidv4();
+          const key = `${item.name}+${item.level}`;
           return (
             <div className={`${item.rarity} battlepass_item`} key={key}>
               <div className='item_level'>{item.level}</div>
@@ -22,6 +21,17 @@ function BattlePassView({ items }) {
       </div>
     </div>
   );
-}
+};
+
+BattlePassView.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      level: PropTypes.number,
+      rarity: PropTypes.string,
+      type: PropTypes.string,
+    })
+  ).isRequired,
+};
 
 export default BattlePassView;
