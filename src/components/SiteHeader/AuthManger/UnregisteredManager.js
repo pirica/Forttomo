@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const UnregisteredManager = ({ onClick }) => {
   const handleClick = () => {
@@ -10,6 +11,10 @@ const UnregisteredManager = ({ onClick }) => {
       Log In
     </div>
   );
+};
+
+UnregisteredManager.propTypes = {
+  onClick: PropTypes.func.isRequired,
 };
 
 export default UnregisteredManager;
