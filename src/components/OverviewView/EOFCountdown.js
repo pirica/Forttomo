@@ -3,7 +3,7 @@ import SeasonProgressBar from './SeasonProgressBar';
 
 import DataContext from '../../context/DataContext';
 
-function EOFCountdown() {
+const EOFCountdown = () => {
   const [remainingDays, setRemainingDays] = useState(0);
   const [dateString, setDateString] = useState('');
   const { generalData, loadingGeneral } = useContext(DataContext);
@@ -36,6 +36,6 @@ function EOFCountdown() {
       <SeasonProgressBar />
     </div>
   );
-}
+};
 
 export default EOFCountdown;

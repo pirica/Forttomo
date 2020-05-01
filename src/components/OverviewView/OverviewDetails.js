@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import UpdatableLabel from '../Utility/UpdatableLabel';
 import OverviewContext from '../../context/OverviewContext';
 
-function OverviewDetails() {
+const OverviewDetails = () => {
   const {
     currentVbucks,
     wishlistTotal,
@@ -62,6 +62,6 @@ function OverviewDetails() {
       </div>
     </div>
   );
-}
+};
 
 export default OverviewDetails;

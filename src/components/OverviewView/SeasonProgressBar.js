@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 
 import DataContext from '../../context/DataContext';
 
-function SeasonProgressBar() {
+const SeasonProgressBar = () => {
   const [percentage, setPercentage] = useState(0);
   const { generalData, loadingGeneral } = useContext(DataContext);
   const barWidth = { width: `${percentage}%` };
@@ -32,6 +32,6 @@ function SeasonProgressBar() {
       <div className='progress_text'>{`${percentage}% Completed`}</div>
     </div>
   );
-}
+};
 
 export default SeasonProgressBar;
