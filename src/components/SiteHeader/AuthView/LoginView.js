@@ -31,18 +31,12 @@ const LoginView = () => {
       });
   };
 
-  const setState = (name, value) => {
-    switch (name) {
-      case 'Email':
-        setEmail(value);
-        setIsEmailValid(true);
-        break;
-      case 'Password':
-        setPassword(value);
-        setIsPasswordValid(true);
-        break;
-      default:
-    }
+  const updateEmail = value => {
+    setEmail(value);
+  };
+
+  const updatePassword = value => {
+    setPassword(value);
   };
 
   return (
@@ -53,17 +47,17 @@ const LoginView = () => {
           name='Email'
           type='text'
           value={email}
-          onChange={setState}
-          isValid={isEmailValid}
+          onChange={updateEmail}
+          isInvalid={!isEmailValid}
         />
         <AuthInput
           name='Password'
           type='password'
           value={password}
-          onChange={setState}
-          isValid={isPasswordValid}
+          onChange={updatePassword}
+          isInvalid={!isPasswordValid}
         />
-        <button>Login</button>
+        <button type='submit'>Login</button>
       </form>
     </div>
   );

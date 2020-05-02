@@ -73,14 +73,14 @@ const SignUpView = () => {
           type='text'
           value={email}
           onChange={updateEmail}
-          isValid={isEmailValid}
+          isInvalid={!isEmailValid}
         />
         <AuthInput
           name='Password'
           type='password'
           value={password}
           onChange={updatePassword}
-          isValid={isPasswordValid}
+          isInvalid={!isPasswordValid}
         />
         <AuthInput
           name='Display Name'
@@ -93,9 +93,9 @@ const SignUpView = () => {
           type='text'
           value={secretKey}
           onChange={updateSecretKey}
-          isValid={isSecretKeyValid}
+          isInvalid={!isSecretKeyValid}
         />
-        <button>Sign Up</button>
+        <button type='submit'>Sign Up</button>
       </form>
     </div>
   );
