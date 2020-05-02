@@ -10,21 +10,21 @@ import './SiteHeader.scss';
 
 const SiteHeader = () => {
   const [isAuthWindowOpen, setIsAuthWindowOpen] = useState(false);
-  const { username } = useContext(AuthContext);
+  const { displayName } = useContext(AuthContext);
 
   useEffect(() => {
     // When the user authenticates, the window should close
     setIsAuthWindowOpen(false);
-  }, [username]);
+  }, [displayName]);
 
-  const isSignedIn = username !== null;
+  const isSignedIn = displayName !== null;
 
   return (
     <header>
       <h1>Fortnite Timeline</h1>
       <div className='auth_region'>
         {isSignedIn ? (
-          <AccountManager username={username} />
+          <AccountManager />
         ) : (
           <UnregisteredManager onClick={setIsAuthWindowOpen} />
         )}
