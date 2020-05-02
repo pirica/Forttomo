@@ -1,10 +1,9 @@
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 
-import AuthContext from '../../../context/AuthContext';
 import './AccountManager.scss';
 
-const AccountManager = () => {
-  const { displayName, logout } = useContext(AuthContext);
+const AccountManager = ({ displayName, logout }) => {
   const dropdownRef = useRef();
 
   const handleSignOut = () => {
@@ -29,6 +28,11 @@ const AccountManager = () => {
       </div>
     </div>
   );
+};
+
+AccountManager.propTypes = {
+  displayName: PropTypes.string.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 export default AccountManager;

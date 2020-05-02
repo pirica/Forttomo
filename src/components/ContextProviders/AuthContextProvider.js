@@ -23,6 +23,7 @@ const AuthContextProvider = ({ children }) => {
   const logout = () => {
     Firebase.auth().signOut();
     setUserID(null);
+    setDisplayName(null);
   };
 
   return (
