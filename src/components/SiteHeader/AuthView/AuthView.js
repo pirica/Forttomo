@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import LoginView from './LoginView';
 import SignUpView from './SignUpView';
@@ -46,6 +47,10 @@ const AuthView = ({ onExit }) => {
       <div className='modal_background' onClick={handleClose} />
     </div>
   );
+};
+
+AuthView.propTypes = {
+  onExit: PropTypes.func.isRequired,
 };
 
 export default AuthView;

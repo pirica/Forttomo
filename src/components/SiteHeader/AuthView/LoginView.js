@@ -4,7 +4,7 @@ import Firebase from 'firebase/app';
 import 'firebase/auth';
 import AuthInput from './AuthInput';
 
-const LoginView = ({ onSuccess }) => {
+const LoginView = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -51,14 +51,14 @@ const LoginView = ({ onSuccess }) => {
       <form onSubmit={handleSubmit}>
         <AuthInput
           name='Email'
-          inputType='text'
+          type='text'
           value={email}
           onChange={setState}
           isValid={isEmailValid}
         />
         <AuthInput
           name='Password'
-          inputType='password'
+          type='password'
           value={password}
           onChange={setState}
           isValid={isPasswordValid}

@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default React.createContext({
-  username: null,
-  logout: username => {},
+  logout: () => {},
   userID: null,
+  displayName: null,
   isLoading: null,
 });

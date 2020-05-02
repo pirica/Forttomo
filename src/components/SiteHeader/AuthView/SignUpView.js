@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 
-import Firebase from '../../../firebase';
-import 'firebase/functions';
-import 'firebase/auth';
 import AuthInput from './AuthInput';
 
-const SignUpView = ({ onSuccess }) => {
+import Firebase from '../../../firebase';
+import 'firebase/database';
+import 'firebase/functions';
+import 'firebase/auth';
+
+const SignUpView = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [displayName, setDisplayName] = useState('');
   const [secretKey, setSecretKey] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
@@ -34,31 +37,31 @@ const SignUpView = ({ onSuccess }) => {
 
     if (formFailed) return;
 
-    Firebase.auth()
-      .createUserWithEmailAndPassword(email, password)
-      .catch(error => {
-        const { code, message } = error;
+    const auth = Firebase.auth();
 
-        console.log(code, message);
-      });
+    const result = await auth.createUserWithEmailAndPassword(email, password);
+    result.user.updateProfile({
+      displayName: displayName,
+    });
   };
 
-  const setState = (name, value) => {
-    switch (name) {
-      case 'Email':
-        setEmail(value);
-        setIsEmailValid(true);
-        break;
-      case 'Password':
-        setPassword(value);
-        setIsPasswordValid(true);
-        break;
-      case 'Secret Key':
-        setSecretKey(value);
-        setIsSecretKeyValid(true);
-        break;
-      default:
-    }
+  const updateEmail = value => {
+    setEmail(value);
+    setIsEmailValid(true);
+  };
+
+  const updatePassword = value => {
+    setPassword(value);
+    setIsPasswordValid(value);
+  };
+
+  const updateDisplayName = value => {
+    setDisplayName(value);
+  };
+
+  const updateSecretKey = value => {
+    setSecretKey(value);
+    setIsSecretKeyValid(true);
   };
 
   return (
@@ -67,23 +70,29 @@ const SignUpView = ({ onSuccess }) => {
       <form onSubmit={submitForm}>
         <AuthInput
           name='Email'
-          inputType='text'
+          type='text'
           value={email}
-          onChange={setState}
+          onChange={updateEmail}
           isValid={isEmailValid}
         />
         <AuthInput
           name='Password'
-          inputType='password'
+          type='password'
           value={password}
-          onChange={setState}
+          onChange={updatePassword}
           isValid={isPasswordValid}
         />
         <AuthInput
+          name='Display Name'
+          type='text'
+          value={displayName}
+          onChange={updateDisplayName}
+        />
+        <AuthInput
           name='Secret Key'
-          inputType='text'
+          type='text'
           value={secretKey}
-          onChange={setState}
+          onChange={updateSecretKey}
           isValid={isSecretKeyValid}
         />
         <button>Sign Up</button>

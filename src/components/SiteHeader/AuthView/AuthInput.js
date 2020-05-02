@@ -1,20 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const AuthInput = ({ name, inputType, value, onChange, isValid }) => {
-  let classNames = 'auth_input';
-  classNames += isValid ? '' : ' invalid_input';
+const AuthInput = ({ name, type, value, onChange, isInvalid }) => {
+  const validityClass = isInvalid ? 'invalid_input' : '';
+  const className = `auth_input ${validityClass}`;
+
+  const handleChange = e => {
+    onChange(e.target.value);
+  };
 
   return (
     <>
       <label>{name}</label>
       <input
-        className={classNames}
-        type={inputType}
+        className={className}
+        type={type}
         value={value}
-        onChange={e => onChange(name, e.target.value)}
+        onChange={handleChange}
       />
     </>
   );
+};
+
+AuthInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  isInvalid: PropTypes.bool,
 };
 
 export default AuthInput;
