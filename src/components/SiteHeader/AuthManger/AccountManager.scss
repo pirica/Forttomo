@@ -13,7 +13,7 @@
   cursor: pointer;
 }
 
-.signin_dropdown {
+.dropdown {
   position: absolute;
   width: 100px;
   top: 100%;
@@ -21,14 +21,17 @@
   padding: 10px;
   background: $module-background-color;
   display: none;
+
+  .link {
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .logout_link {
+    color: #ff652f;
+  }
 }
 
 .droppeddown {
   display: block;
-}
-
-.signout_link {
-  text-align: center;
-  cursor: pointer;
-  color: #ff652f;
 }
