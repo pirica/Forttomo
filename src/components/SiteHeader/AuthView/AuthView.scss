@@ -5,12 +5,14 @@
   padding-top: 10px;
   background: $background-color;
   border-radius: 5px;
+  width: 280px;
 
   button {
     border: 0px;
     border-radius: 25px;
     height: 30px;
     text-transform: uppercase;
+    cursor: pointer;
   }
 }
 
@@ -29,7 +31,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 10px;
-  height: 260px;
+  height: 325px;
 
   > label {
     margin-top: 10px;
