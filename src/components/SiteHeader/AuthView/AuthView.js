@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import Modal from '../../Utility/Modal';
 import LoginView from './LoginView';
 import SignUpView from './SignUpView';
 
@@ -28,7 +29,7 @@ const AuthView = ({ onExit }) => {
   };
 
   return (
-    <div className='auth_container'>
+    <Modal handleClose={handleClose}>
       <div className='auth_window'>
         {isReturningUser ? (
           <LoginView onSuccess={handleClose} />
@@ -40,12 +41,8 @@ const AuthView = ({ onExit }) => {
             {isReturningUser ? 'New user?' : 'Returning user?'}
           </div>
         </div>
-        <div className='close_button' onClick={handleClose}>
-          <i className='far fa-times-circle'></i>
-        </div>
       </div>
-      <div className='modal_background' onClick={handleClose} />
-    </div>
+    </Modal>
   );
 };
 
