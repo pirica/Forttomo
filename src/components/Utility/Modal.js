@@ -32,8 +32,8 @@ const windowStyle = {
 const closeButtonStyle = {
   position: 'absolute',
   fontSize: '16pt',
-  top: '5px',
-  right: '5px',
+  top: '-10px',
+  right: '-10px',
   cursor: 'pointer',
 };
 
