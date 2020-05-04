@@ -33,10 +33,12 @@ const LoginView = () => {
 
   const updateEmail = value => {
     setEmail(value);
+    setIsEmailValid(true);
   };
 
   const updatePassword = value => {
     setPassword(value);
+    setIsPasswordValid(true);
   };
 
   return (
