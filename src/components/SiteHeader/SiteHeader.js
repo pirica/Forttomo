@@ -21,7 +21,7 @@ const SiteHeader = () => {
 
   return (
     <header>
-      <h1>Fortnite Timeline</h1>
+      <h1>FORTTOMO</h1>
       <div className='auth_region'>
         {isSignedIn ? (
           <AccountManager displayName={displayName} logout={logout} />
