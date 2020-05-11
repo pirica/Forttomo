@@ -1,15 +1,20 @@
 {
-  "name": "fortnite-vbuck-timeline",
+  "name": "forttomo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^7.14.1",
     "node-sass": "^4.13.0",
     "prismic-javascript": "^2.7.1",
+    "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-beautiful-dnd": "^12.1.1",
     "react-dom": "^16.11.0",
+    "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "uuidv4": "^5.0.1"
   },
   "scripts": {

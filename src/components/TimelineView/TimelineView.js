@@ -1,37 +1,25 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './TimelineView.scss';
 
 import DayView from './DayView/DayView';
 import Timeline from '../../model/Timeline';
 
-import InputContext from '../../context/InputContext';
-import OverviewContext from './../../context/OverviewContext';
-import DataContext from './../../context/DataContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { setOverview } from '../../store/actions/overviewActions';
 
 function TimelineView() {
-  const { input } = useContext(InputContext);
-
-  const {
-    setCurrentVbucks,
-    wishlistTotal,
-    setWishlistCompletionDate,
-    setPassCompletionDate,
-    setVbucksAtEndOfSeason,
-    setLevelAtEndOfSeason,
-  } = useContext(OverviewContext);
-
-  const { generalData, battlePass, loadingGeneral, loadingPass } = useContext(
-    DataContext
-  );
-
   const [timeline, setTimeline] = useState([]);
+
+  const input = useSelector(state => state.input);
+  const data = useSelector(state => state.data);
+  const wishlist = useSelector(state => state.wishlist);
+  const dispatch = useCallback(useDispatch(), []);
 
   useEffect(() => {
     const calculateTimeline = () => {
       const day = 1000 * 60 * 60 * 24;
-      const amountOfDays = Math.ceil(
-        (generalData.endOfSeason - new Date()) / day
-      );
+      // TODO: Fix miscounting after 8pm EST
+      const amountOfDays = Math.ceil((data.endOfSeason - new Date()) / day);
 
       const timelineData = {
         vbucks: +input.vbucks + +input.dailies + +input.alerts,
@@ -47,7 +35,7 @@ function TimelineView() {
         dailyAlertsStates: input.dailyAlertsStates,
         loginDayStates: input.loginDayStates,
         amountOfDays,
-        battlePass,
+        battlePass: data.battlePass,
       };
 
       const newTimeline = Timeline(timelineData);
@@ -56,7 +44,7 @@ function TimelineView() {
       let passDate = 'NA';
 
       for (const day of newTimeline) {
-        if (wishlistDate === 'NA' && day.vbucks >= wishlistTotal) {
+        if (wishlistDate === 'NA' && day.vbucks >= wishlist.total) {
           wishlistDate = day.date;
         }
         if (passDate === 'NA' && day.level >= 100) passDate = day.date;
@@ -67,26 +55,25 @@ function TimelineView() {
       let lastDay = newTimeline[newTimeline.length - 1];
 
       setTimeline(newTimeline);
-      setCurrentVbucks(newTimeline[0].vbucks);
-      setWishlistCompletionDate(wishlistDate);
-      setPassCompletionDate(passDate);
-      setVbucksAtEndOfSeason(lastDay.vbucks);
-      setLevelAtEndOfSeason(lastDay.level);
+      const overviewDetails = {
+        currentVbucks: newTimeline[0].vbucks,
+        wishlistCompletionDate: wishlistDate,
+        battlePassCompletionDate: passDate,
+        vbucksAtEndOfSeason: lastDay.vbucks,
+        levelAtEndOfSeason: lastDay.level,
+      };
+
+      dispatch(setOverview(overviewDetails));
     };
 
-    if (!loadingGeneral && !loadingPass) calculateTimeline();
+    if (!data.isLoading) calculateTimeline();
   }, [
+    dispatch,
     input,
-    wishlistTotal,
-    setCurrentVbucks,
-    setWishlistCompletionDate,
-    setPassCompletionDate,
-    setVbucksAtEndOfSeason,
-    setLevelAtEndOfSeason,
-    loadingGeneral,
-    loadingPass,
-    battlePass,
-    generalData.endOfSeason,
+    wishlist.total,
+    data.isLoading,
+    data.battlePass,
+    data.endOfSeason,
   ]);
 
   return (

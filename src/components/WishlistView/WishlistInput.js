@@ -1,33 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
-function DoubleClickInput({ value, onChange }) {
-  const textfieldRef = React.createRef();
+import DelayedInput from '../Utility/DelayedInput';
 
-  const handleChange = e => {
-    onChange(e.target.value);
+function WishlistInput({ value, onChange }) {
+  const ref = useRef();
+
+  const handleChange = change => {
+    onChange(change);
   };
 
   useEffect(() => {
-    const textfield = textfieldRef.current;
+    const textfield = ref.current;
 
-    const enterPress = function(e) {
+    const enterPress = function (e) {
       if (e.which === 13) this.blur();
     };
 
     textfield.addEventListener('keydown', enterPress);
 
     return () => textfield.removeEventListener('keydown', enterPress);
-  }, [textfieldRef]);
+  }, [ref]);
 
   return (
-    <input
+    <DelayedInput
       type='text'
-      ref={textfieldRef}
+      ref={ref}
       className='item_property item_input'
       value={value}
       onChange={handleChange}
-    ></input>
+    />
   );
 }
 
-export default DoubleClickInput;
+WishlistInput.propTypes = {
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+export default WishlistInput;

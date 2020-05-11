@@ -1,31 +1,26 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
 
-import InputView from './components/InputView/InputView';
-import WishlistView from './components/WishlistView/WishlistView';
-import OverviewView from './components/OverviewView/OverviewView';
-import TimelineView from './components/TimelineView/TimelineView';
-
-import ContextProviders from './components/ContextProviders/ContextProviders';
-import './App.scss';
 import SiteHeader from './components/SiteHeader/SiteHeader';
-
+import ControlPanel from './components/ControlPanel';
+import DataView from './components/DataView';
 import UserAgreement from './components/UserAgreement/UserAgreement';
+
+import './App.scss';
+import DataLoader from './components/DataLoader';
 
 function App() {
   return (
     <div className='App'>
-      <SiteHeader />
-      <ContextProviders>
-        <div className='control_panel section'>
-          <InputView />
-          <WishlistView />
-        </div>
-        <div className='right_panel section'>
-          <OverviewView />
-          <TimelineView />
-        </div>
-        <UserAgreement />
-      </ContextProviders>
+      <Provider store={store}>
+        <DataLoader>
+          <SiteHeader />
+          <ControlPanel />
+          <DataView />
+          <UserAgreement />
+        </DataLoader>
+      </Provider>
     </div>
   );
 }

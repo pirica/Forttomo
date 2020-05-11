@@ -1,0 +1,67 @@
+@import '../../../global.scss';
+
+.auth_window {
+  padding: 35px;
+  padding-top: 10px;
+  background: $background-color;
+  border-radius: 5px;
+  width: 280px;
+
+  button {
+    border: 0px;
+    border-radius: 25px;
+    height: 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}
+
+.login_view button {
+  background: $module-background-color;
+  color: $secondary-color;
+}
+
+.signup_view button {
+  background: $accent-color;
+  color: $background-color;
+}
+
+.login_view form,
+.signup_view form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  height: 325px;
+
+  > label {
+    margin-top: 10px;
+  }
+
+  button {
+    margin-top: auto;
+  }
+}
+
+.auth_input {
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+.invalid_input {
+  background: #ffa0a0;
+}
+
+.form_toggle {
+  cursor: pointer;
+  margin-top: 30px;
+  text-align: center;
+}
+
+@media screen and (max-width: 414px) {
+  .auth_window {
+    width: 100vw;
+    height: 100vh;
+  }
+}

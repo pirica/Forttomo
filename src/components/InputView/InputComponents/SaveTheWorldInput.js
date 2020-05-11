@@ -1,18 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import InputContext from '../../../context/InputContext';
 import StandardInput from './Inputs/StandardInput';
 import WeeklyInput from './Inputs/WeeklyInput';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { updateInput } from '../../../store/actions/actions';
+
 function SaveTheWorldInput() {
-  const { input, setInput } = useContext(InputContext);
+  const input = useSelector(state => state.input);
+  const dispatch = useDispatch();
+  const update = (value, inputName) => dispatch(updateInput(value, inputName));
 
   const updateState = (valueName, value) => {
     const sanitizedValue = Number.isInteger(parseInt(value)) ? +value : '';
-    const newInput = { ...input };
-    newInput[valueName] = sanitizedValue;
-
-    setInput(newInput);
+    update(sanitizedValue, valueName);
   };
 
   return (
@@ -20,34 +21,34 @@ function SaveTheWorldInput() {
       <StandardInput
         name='Vbucks'
         value={input.vbucks}
-        formType='text'
+        type='text'
         onChange={value => updateState('vbucks', value)}
       />
       <h3 className='mode_title'>Save the World</h3>
       <StandardInput
         name='Dailies'
         value={input.dailies}
-        formType='text'
+        type='text'
         infoBox='Amount of vbucks currently obtainable from daily challenges.'
         onChange={value => updateState('dailies', value)}
       />
       <StandardInput
         name='Mission Alerts'
         value={input.alerts}
-        formType='text'
+        type='text'
         infoBox='Amount of vbucks currently obtainable from storm alerts.'
         onChange={value => updateState('alerts', value)}
       />
       <StandardInput
         name='Login Day'
         value={input.loginDay}
-        formType='text'
+        type='text'
         onChange={value => updateState('loginDay', value)}
       />
       <StandardInput
         name='Average Alerts'
         value={input.averageAlerts}
-        formType='text'
+        type='text'
         infoBox={`Average vbucks you expect to get from mission alerts daily. 
         Usually 50 during Alert season and 30 in Storm season assuming you have access
         to all available missions.`}
@@ -59,19 +60,19 @@ function SaveTheWorldInput() {
         Since daily challenges don't need to be completed on the day of, you can use 
         it to count how many dailies you plan to do a week in total.`}
         states={input.dailySTWStates}
-        setStates={value => setInput({ ...input, dailySTWStates: value })}
+        setStates={value => update(value, 'dailySTWStates')}
       />
       <WeeklyInput
         label='Mission Alert Days'
         infoBox={'Days of the week you plan on doing available mission alerts.'}
         states={input.dailyAlertsStates}
-        setStates={value => setInput({ ...input, dailyAlertsStates: value })}
+        setStates={value => update(value, 'dailyAlertsStates')}
       />
       <WeeklyInput
         label='Login Days'
         infoBox='Days of the week you plan to redeem login rewards.'
         states={input.loginDayStates}
-        setStates={value => setInput({ ...input, loginDayStates: value })}
+        setStates={value => update(value, 'loginDayStates')}
       />
     </div>
   );

@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-#root {
+body {
   background-color: $background-color;
   font-family: $body-font;
 }
@@ -13,11 +13,10 @@
 .App {
   display: grid;
   grid-template-columns: $control-panel-width auto;
-  width: 1000px;
+  width: 900px;
   min-height: 100vh;
   margin: auto;
   color: $secondary-color;
-  position: relative;
 }
 
 .control_panel {

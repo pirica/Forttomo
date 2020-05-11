@@ -1,18 +1,40 @@
-import React, { useContext } from 'react';
-
-import WantedItem from './WantedItem';
-
-import WishlistContext from './../../context/WishlistContext';
-import WishlistList from './WishlistList';
+import React, { useEffect, useCallback } from 'react';
 import uuidv4 from 'uuidv4';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { addWishlistItem } from '../../store/actions/wishlistActions';
+import { setOverview } from '../../store/actions/overviewActions';
+
+import Firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+
+import WishlistList from './WishlistList';
 import './WishlistView.scss';
 
 function WishlistView() {
-  const { wishlist, setWishlist } = useContext(WishlistContext);
+  const { items, total, isLoading } = useSelector(state => state.wishlist);
+  const dispatch = useCallback(useDispatch(), []);
+  const addItem = item => dispatch(addWishlistItem(item));
+
+  useEffect(() => {
+    // #TODO: Fix save on first load
+    if (!isLoading) {
+      const userID = Firebase.auth().currentUser.uid;
+
+      if (userID) {
+        const path = 'users/' + userID + '/wishlist';
+        Firebase.database().ref(path).set(items);
+      }
+    }
+  }, [items, isLoading]);
+
+  useEffect(() => {
+    dispatch(setOverview({ wishlistTotal: total }));
+  }, [total, dispatch]);
 
   const addNewItem = () => {
-    setWishlist([...wishlist, new WantedItem('ITEM NAME', '0', uuidv4())]);
+    addItem({ name: 'ITEM NAME', price: 0, id: uuidv4() });
   };
 
   return (

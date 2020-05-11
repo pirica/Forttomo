@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import DataContext from '../../context/DataContext';
+import { useSelector } from 'react-redux';
 
-function SeasonProgressBar() {
+const SeasonProgressBar = () => {
   const [percentage, setPercentage] = useState(0);
-  const { generalData, loadingGeneral } = useContext(DataContext);
   const barWidth = { width: `${percentage}%` };
+  const data = useSelector(state => state.data);
 
   useEffect(() => {
-    if (!loadingGeneral) {
-      const { startOfSeason, endOfSeason } = generalData;
+    if (!data.isLoading) {
+      const { startOfSeason, endOfSeason } = data;
       const currentDate = new Date();
       const seasonDuration = endOfSeason - startOfSeason;
       const seasonProgress = currentDate - startOfSeason;
@@ -24,7 +24,7 @@ function SeasonProgressBar() {
 
       setPercentage(newPercentage);
     }
-  }, [generalData, loadingGeneral]);
+  }, [data, data.isLoading]);
 
   return (
     <div className='progress_bar'>
@@ -32,6 +32,6 @@ function SeasonProgressBar() {
       <div className='progress_text'>{`${percentage}% Completed`}</div>
     </div>
   );
-}
+};
 
 export default SeasonProgressBar;

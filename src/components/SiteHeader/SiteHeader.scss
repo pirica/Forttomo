@@ -2,6 +2,7 @@
 
 header {
   grid-column: 1 / -1;
+  display: flex;
 
   h1 {
     text-transform: uppercase;
@@ -9,12 +10,36 @@ header {
     font-family: $title-font;
     font-size: 40px;
     margin-top: 20px;
+    flex-grow: 1;
+  }
+
+  .login_link {
+    cursor: pointer;
   }
 }
 
+.auth_region {
+  display: flex;
+  align-items: center;
+}
+
 @media screen and (max-width: 414px) {
-  header h1 {
-    font-size: 30px;
-    text-align: center;
+  header {
+    width: 90%;
+    margin: 0 auto;
+
+    h1 {
+      font-size: 30px;
+    }
+  }
+
+  .auth_region {
+    height: 35px;
+    align-self: flex-end;
+  }
+
+  .close_button {
+    top: 10px !important;
+    right: 10px !important;
   }
 }

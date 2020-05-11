@@ -1,9 +1,10 @@
 import LoginVbucks from './../data/LoginVbucks';
 import KnownChallenges from './../data/KnownChallenges';
 
-export const vbucksFromLogin = (loginDay) => {
+export const vbucksFromLogin = loginDay => {
   let vbucks = 0;
-  loginDay = loginDay % 336;
+  // Login day ranges from 1 to 336
+  loginDay = ((loginDay - 1) % 336) + 1;
 
   for (const entry of LoginVbucks) {
     if (entry.day === loginDay) vbucks = entry.vbucks;
@@ -12,7 +13,7 @@ export const vbucksFromLogin = (loginDay) => {
   return vbucks;
 };
 
-export const expectedXPOnDay = (date) => {
+export const expectedXPOnDay = date => {
   const year = date.getUTCFullYear();
   const month = parseInt(date.getUTCMonth()) + 1;
   const day = date.getUTCDate();
