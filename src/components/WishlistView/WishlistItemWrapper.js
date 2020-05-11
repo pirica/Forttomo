@@ -30,7 +30,6 @@ WishlistItemWrapper.propTypes = {
     price: PropTypes.number,
     id: PropTypes.string,
   }).isRequired,
-  position: PropTypes.number.isRequired,
   provided: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   removeItem: PropTypes.func.isRequired,

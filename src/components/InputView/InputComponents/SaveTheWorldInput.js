@@ -1,18 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import InputContext from '../../../context/InputContext';
 import StandardInput from './Inputs/StandardInput';
 import WeeklyInput from './Inputs/WeeklyInput';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { updateInput } from '../../../store/actions/actions';
+
 function SaveTheWorldInput() {
-  const { input, setInput } = useContext(InputContext);
+  const input = useSelector(state => state.input);
+  const dispatch = useDispatch();
+  const update = (value, inputName) => dispatch(updateInput(value, inputName));
 
   const updateState = (valueName, value) => {
     const sanitizedValue = Number.isInteger(parseInt(value)) ? +value : '';
-    const newInput = { ...input };
-    newInput[valueName] = sanitizedValue;
-
-    setInput(newInput);
+    update(sanitizedValue, valueName);
   };
 
   return (
@@ -59,19 +60,19 @@ function SaveTheWorldInput() {
         Since daily challenges don't need to be completed on the day of, you can use 
         it to count how many dailies you plan to do a week in total.`}
         states={input.dailySTWStates}
-        setStates={value => setInput({ ...input, dailySTWStates: value })}
+        setStates={value => update(value, 'dailySTWStates')}
       />
       <WeeklyInput
         label='Mission Alert Days'
         infoBox={'Days of the week you plan on doing available mission alerts.'}
         states={input.dailyAlertsStates}
-        setStates={value => setInput({ ...input, dailyAlertsStates: value })}
+        setStates={value => update(value, 'dailyAlertsStates')}
       />
       <WeeklyInput
         label='Login Days'
         infoBox='Days of the week you plan to redeem login rewards.'
         states={input.loginDayStates}
-        setStates={value => setInput({ ...input, loginDayStates: value })}
+        setStates={value => update(value, 'loginDayStates')}
       />
     </div>
   );

@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import SeasonProgressBar from './SeasonProgressBar';
 
-import DataContext from '../../context/DataContext';
+import { useSelector } from 'react-redux';
 
 const EOFCountdown = () => {
   const [remainingDays, setRemainingDays] = useState(0);
   const [dateString, setDateString] = useState('');
-  const { generalData, loadingGeneral } = useContext(DataContext);
+  const data = useSelector(state => state.data);
 
   useEffect(() => {
-    if (!loadingGeneral) {
-      const { endOfSeason } = generalData;
+    if (!data.isLoading) {
+      const { endOfSeason } = data;
       // Servers usually go live at 5am
       endOfSeason.setUTCHours(5, 0, 0);
       const dateDiff = endOfSeason - new Date().setUTCHours(0, 0, 0);
@@ -26,7 +26,7 @@ const EOFCountdown = () => {
       const newDateString = endOfSeason.toLocaleString('en-US', dateFormat);
       setDateString(newDateString);
     }
-  }, [generalData, loadingGeneral]);
+  }, [data, data.isLoading]);
 
   return (
     <div className='countdown'>

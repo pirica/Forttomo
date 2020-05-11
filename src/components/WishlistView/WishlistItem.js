@@ -1,11 +1,10 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import WantedItem from './WantedItem';
 import WishlistInput from './WishlistInput';
 
 const WishlistItem = props => {
-  const { id, position, removeItem, onChange } = props;
+  const { id, removeItem, onChange } = props;
   const [name, setName] = useState(props.name || 'ITEM NAME');
   const [price, setPrice] = useState(props.price || '0');
   const itemRef = useRef();
@@ -13,11 +12,11 @@ const WishlistItem = props => {
   const updateItem = (newName, newPrice) => {
     const sanitizedPrice = Number.isInteger(+newPrice) ? +newPrice : 0;
 
-    const updatedItem = new WantedItem(newName, sanitizedPrice, id);
+    const updatedItem = { name: newName, price: sanitizedPrice, id: id };
 
     setName(newName);
     setPrice(newPrice);
-    onChange(position, updatedItem);
+    onChange(updatedItem);
   };
 
   const updatePrice = newPrice => {
@@ -29,7 +28,7 @@ const WishlistItem = props => {
   };
 
   const handleRemove = () => {
-    removeItem(position);
+    removeItem(id);
   };
 
   return (
@@ -50,7 +49,6 @@ WishlistItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  position: PropTypes.number.isRequired,
   removeItem: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
 };

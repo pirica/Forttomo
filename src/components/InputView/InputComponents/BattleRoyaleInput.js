@@ -1,18 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import InputContext from '../../../context/InputContext';
 import StandardInput from './Inputs/StandardInput';
 import WeeklyInput from './Inputs/WeeklyInput';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { updateInput } from '../../../store/actions/actions';
+
 function BattleRoyaleInput() {
-  const { input, setInput } = useContext(InputContext);
+  const input = useSelector(state => state.input);
+  const dispatch = useDispatch();
+  const update = (value, inputName) => dispatch(updateInput(value, inputName));
 
   const updateState = (valueName, value) => {
     const sanitizedValue = Number.isInteger(parseInt(value)) ? +value : '';
-    const newInput = { ...input };
-    newInput[valueName] = sanitizedValue;
-
-    setInput(newInput);
+    update(sanitizedValue, valueName);
   };
 
   return (
@@ -48,7 +49,7 @@ function BattleRoyaleInput() {
         label='Punch Card Days'
         infoBox='Days you plan on completing your daily medal punch card.'
         states={input.punchCardStates}
-        setStates={value => setInput({ ...input, punchCardStates: value })}
+        setStates={value => update(value, 'punchCardStates')}
       />
       <WeeklyInput
         label='Daily Challenge Days'
@@ -56,7 +57,7 @@ function BattleRoyaleInput() {
           daily challenges don't need to be completed on the day of, you
           can use it to count how many dailies you plan to do a week in total.`}
         states={input.dailyBRStates}
-        setStates={value => setInput({ ...input, dailyBRStates: value })}
+        setStates={value => update(value, 'dailyBRStates')}
       />
     </div>
   );

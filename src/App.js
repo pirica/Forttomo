@@ -1,6 +1,6 @@
 import React from 'react';
-
-import ContextProviders from './components/ContextProviders/ContextProviders';
+import { Provider } from 'react-redux';
+import store from './store';
 
 import SiteHeader from './components/SiteHeader/SiteHeader';
 import ControlPanel from './components/ControlPanel';
@@ -8,16 +8,19 @@ import DataView from './components/DataView';
 import UserAgreement from './components/UserAgreement/UserAgreement';
 
 import './App.scss';
+import DataLoader from './components/DataLoader';
 
 function App() {
   return (
     <div className='App'>
-      <ContextProviders>
-        <SiteHeader />
-        <ControlPanel />
-        <DataView />
-        <UserAgreement />
-      </ContextProviders>
+      <Provider store={store}>
+        <DataLoader>
+          <SiteHeader />
+          <ControlPanel />
+          <DataView />
+          <UserAgreement />
+        </DataLoader>
+      </Provider>
     </div>
   );
 }
