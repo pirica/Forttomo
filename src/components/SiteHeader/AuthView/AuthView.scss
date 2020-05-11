@@ -46,6 +46,7 @@
   height: 35px;
   border-radius: 5px;
   border: none;
+  font-size: 16px;
 }
 
 .invalid_input {
@@ -56,4 +57,11 @@
   cursor: pointer;
   margin-top: 30px;
   text-align: center;
+}
+
+@media screen and (max-width: 414px) {
+  .auth_window {
+    width: 100vw;
+    height: 100vh;
+  }
 }

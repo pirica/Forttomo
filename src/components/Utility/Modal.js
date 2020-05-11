@@ -2,14 +2,22 @@ import React from 'react';
 
 const Modal = ({ handleClose, children }) => {
   return (
-    <div style={containerStyle}>
-      <div style={windowStyle}>
+    <div className='modal_container' style={containerStyle}>
+      <div className='modal' style={windowStyle}>
         {children}
-        <div style={closeButtonStyle} onClick={handleClose}>
+        <div
+          className='close_button'
+          style={closeButtonStyle}
+          onClick={handleClose}
+        >
           <i className='far fa-times-circle' />
         </div>
       </div>
-      <div style={backgroundStyle} onClick={handleClose} />
+      <div
+        className='modal_background'
+        style={backgroundStyle}
+        onClick={handleClose}
+      />
     </div>
   );
 };
