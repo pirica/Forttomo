@@ -4,15 +4,13 @@ import AuthView from './AuthView/AuthView';
 import AccountManager from './AuthManger/AccountManager';
 import UnregisteredManager from './AuthManger/UnregisteredManager';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../store/actions/actions';
+import { useSelector } from 'react-redux';
 
 import './SiteHeader.scss';
 
 const SiteHeader = () => {
   const [isAuthWindowOpen, setIsAuthWindowOpen] = useState(false);
   const { displayName } = useSelector(state => state.auth);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     // When the user authenticates, the window should close
@@ -26,10 +24,7 @@ const SiteHeader = () => {
       <h1>FORTTOMO</h1>
       <div className='auth_region'>
         {isSignedIn ? (
-          <AccountManager
-            displayName={displayName}
-            logout={() => dispatch(logout())}
-          />
+          <AccountManager displayName={displayName} />
         ) : (
           <UnregisteredManager onClick={setIsAuthWindowOpen} />
         )}

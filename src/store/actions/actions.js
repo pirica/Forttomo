@@ -1,4 +1,4 @@
-import { LOAD_INPUT, UPDATE_INPUT, SET_USER, LOGOUT } from './types';
+import { LOAD_INPUT, SET_INPUT, UPDATE_INPUT } from './types';
 
 import Firebase from 'firebase/app';
 import 'firebase/auth';
@@ -22,14 +22,9 @@ export const loadInput = () => {
   };
 };
 
+export const setInput = value => ({ type: SET_INPUT, payload: value });
+
 export const updateInput = (value, inputName) => ({
   type: UPDATE_INPUT,
   payload: { [inputName]: value },
 });
-
-export const setUser = (userID, displayName) => ({
-  type: SET_USER,
-  payload: { userID, displayName },
-});
-
-export const logout = () => ({ type: LOGOUT });

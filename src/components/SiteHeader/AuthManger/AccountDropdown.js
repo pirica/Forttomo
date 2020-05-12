@@ -1,6 +1,10 @@
 import React, { useRef } from 'react';
 
-const AccountDropdown = ({ logout }) => {
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../store/actions/authActions';
+
+const AccountDropdown = () => {
+  const dispatch = useDispatch();
   const dropdownRef = useRef();
 
   const toggleDropDown = () => {
@@ -12,7 +16,7 @@ const AccountDropdown = ({ logout }) => {
       <i className='fas fa-sort-down' onClick={toggleDropDown} />
       <div className='dropdown' ref={dropdownRef}>
         <div className='link'>Preferences</div>
-        <div className='link logout_link' onClick={logout}>
+        <div className='link logout_link' onClick={() => dispatch(logout())}>
           Sign Out
         </div>
       </div>
