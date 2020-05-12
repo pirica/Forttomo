@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 
 import Firebase from 'firebase/app';
-import 'firebase/auth';
 import 'firebase/database';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,13 +14,15 @@ const ControlPanel = () => {
   const { userID } = useSelector(state => state.auth);
   const dispatch = useCallback(useDispatch(), []);
 
+  // Initial load
   useEffect(() => {
     const dataString = localStorage.getItem('input');
     const data = JSON.parse(dataString);
 
-    dispatch(setInput(data));
+    if (data) dispatch(setInput(data));
   }, [dispatch]);
 
+  // User change
   useEffect(() => {
     const fetchUserData = async () => {
       if (userID) {
@@ -38,6 +39,7 @@ const ControlPanel = () => {
     fetchUserData();
   }, [userID, dispatch]);
 
+  // Input update
   useEffect(() => {
     const saveData = { ...input };
     delete saveData.loaded;
