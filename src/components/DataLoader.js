@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setUser, loadInput } from '../store/actions/actions';
+import { setUser } from '../store/actions/authActions';
 import { fetchData } from '../store/actions/dataActions';
 import { loadWishlist } from '../store/actions/wishlistActions';
 
@@ -28,7 +28,6 @@ const DataLoader = ({ children }) => {
 
   useEffect(() => {
     if (userID) {
-      dispatch(loadInput());
       dispatch(loadWishlist());
     }
   }, [userID, dispatch]);

@@ -1,8 +1,4 @@
-import { LOAD_INPUT, UPDATE_INPUT } from '../actions/types';
-
-import Firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
+import { NEW_INPUT, SET_INPUT, UPDATE_INPUT } from '../actions/types';
 
 const initialState = {
   vbucks: 0,
@@ -20,7 +16,7 @@ const initialState = {
   dailyAlertsStates: new Array(7).fill(true),
   loginDayStates: new Array(7).fill(true),
   syncDate: new Date().getTime(),
-  isLoading: true,
+  loaded: false,
 };
 
 const updateLoginDay = (currentLoginDay, startTimeStamp, loginDayStates) => {
@@ -46,35 +42,32 @@ const updateLoginDay = (currentLoginDay, startTimeStamp, loginDayStates) => {
   return currentLoginDay + newLogins;
 };
 
-const saveToFirebase = (data, id) => {
-  const path = 'users/' + id + '/input';
-
-  Firebase.database().ref(path).set(data);
-};
-
 export default (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_INPUT:
+    case NEW_INPUT:
       const { loginDay, syncDate, loginDayStates } = action.payload;
       const newLoginDay = updateLoginDay(loginDay, syncDate, loginDayStates);
 
       return {
+        ...state,
         ...action.payload,
         loginDay: newLoginDay,
         syncDate: new Date().getTime(),
-        isLoading: false,
+        loaded: true,
       };
-    case UPDATE_INPUT:
-      const data = {
+    case SET_INPUT:
+      return {
         ...state,
-        syncDate: new Date().getTime(),
         ...action.payload,
+        syncDate: new Date().getTime(),
       };
-      const userID = Firebase.auth().currentUser.uid;
 
-      if (userID) saveToFirebase(data, userID);
-
-      return data;
+    case UPDATE_INPUT:
+      return {
+        ...state,
+        ...action.payload,
+        syncDate: new Date().getTime(),
+      };
     default:
       return state;
   }

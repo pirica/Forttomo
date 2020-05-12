@@ -4,7 +4,7 @@ import StandardInput from './Inputs/StandardInput';
 import WeeklyInput from './Inputs/WeeklyInput';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { updateInput } from '../../../store/actions/actions';
+import { updateInput } from '../../../store/actions/inputActions';
 
 function BattleRoyaleInput() {
   const input = useSelector(state => state.input);

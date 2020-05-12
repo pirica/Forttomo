@@ -1,5 +1,6 @@
 // INPUT TYPES
-export const LOAD_INPUT = 'LOAD_INPUT';
+export const NEW_INPUT = 'NEW_INPUT';
+export const SET_INPUT = 'SET_INPUT';
 export const UPDATE_INPUT = 'UPDATE_INPUT';
 
 // AUTH TYPES
