@@ -4,7 +4,7 @@ import StandardInput from './Inputs/StandardInput';
 import WeeklyInput from './Inputs/WeeklyInput';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { updateInput } from '../../../store/actions/actions';
+import { updateInput } from '../../../store/actions/inputActions';
 
 function BattleRoyaleInput() {
   const input = useSelector(state => state.input);
@@ -32,7 +32,7 @@ function BattleRoyaleInput() {
         onChange={value => updateState('experience', value)}
       />
       <StandardInput
-        name='Extra XP'
+        name='Playtime XP'
         value={input.playtimeXP}
         type='text'
         infoBox='Average amount of xp you plan on gaining daily outside punch card, daily, and weekly challenges.'

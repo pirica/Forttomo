@@ -2,32 +2,61 @@ import React, { useEffect, useCallback } from 'react';
 import uuidv4 from 'uuidv4';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { addWishlistItem } from '../../store/actions/wishlistActions';
+import {
+  setWishlist,
+  newWishlist,
+  addWishlistItem,
+} from '../../store/actions/wishlistActions';
 import { setOverview } from '../../store/actions/overviewActions';
 
 import Firebase from 'firebase/app';
-import 'firebase/auth';
 import 'firebase/database';
 
 import WishlistList from './WishlistList';
 import './WishlistView.scss';
 
 function WishlistView() {
-  const { items, total, isLoading } = useSelector(state => state.wishlist);
+  const { items, total, shouldSave } = useSelector(state => state.wishlist);
+  const { userID } = useSelector(state => state.auth);
+
   const dispatch = useCallback(useDispatch(), []);
   const addItem = item => dispatch(addWishlistItem(item));
 
+  // Initial load
   useEffect(() => {
-    // #TODO: Fix save on first load
-    if (!isLoading) {
-      const userID = Firebase.auth().currentUser.uid;
+    const dataString = localStorage.getItem('wishlist');
+    const data = JSON.parse(dataString);
 
+    if (data) dispatch(setWishlist(data));
+  }, [dispatch]);
+
+  // User change
+  useEffect(() => {
+    const fetchUserData = async () => {
       if (userID) {
-        const path = 'users/' + userID + '/wishlist';
-        Firebase.database().ref(path).set(items);
+        const path = `users/${userID}/wishlist`;
+        const response = await Firebase.database().ref(path).once('value');
+
+        if (response) {
+          const data = response.val();
+          dispatch(newWishlist(data));
+        }
       }
+    };
+
+    fetchUserData();
+  }, [userID, dispatch]);
+
+  // Wishlist update
+  useEffect(() => {
+    if (userID && shouldSave) {
+      const path = 'users/' + userID + '/wishlist';
+      Firebase.database().ref(path).set(items);
     }
-  }, [items, isLoading]);
+
+    const stringified = JSON.stringify(items);
+    localStorage.setItem('wishlist', stringified);
+  }, [items, userID, shouldSave]);
 
   useEffect(() => {
     dispatch(setOverview({ wishlistTotal: total }));

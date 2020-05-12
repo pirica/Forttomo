@@ -1,33 +1,15 @@
 import {
-  LOAD_WISHLIST,
+  NEW_WISHLIST,
+  SET_WISHLIST,
   ADD_WISHLIST_ITEM,
   REMOVE_WISHLIST_ITEM,
   UPDATE_WISHLIST_ITEM,
   MOVE_WISHLIST_ITEM,
 } from './types';
 
-import Firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
+export const newWishlist = list => ({ type: NEW_WISHLIST, payload: list });
 
-export const loadWishlist = () => {
-  return async dispatch => {
-    const userID = Firebase.auth().currentUser.uid;
-    let data = {};
-
-    if (userID) {
-      const path = 'users/' + userID + '/wishlist';
-
-      const response = await Firebase.database().ref(path).once('value');
-
-      if (response) {
-        data = response.val();
-      }
-    }
-
-    return dispatch({ type: LOAD_WISHLIST, payload: data });
-  };
-};
+export const setWishlist = list => ({ type: SET_WISHLIST, payload: list });
 
 export const updateWishlistItem = item => ({
   type: UPDATE_WISHLIST_ITEM,

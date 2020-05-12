@@ -5,19 +5,18 @@ import AccountDropdown from './AccountDropdown';
 
 import './AccountManager.scss';
 
-const AccountManager = ({ displayName, logout }) => {
+const AccountManager = ({ displayName }) => {
   return (
     <div className='account_manager'>
       <i className='fas fa-user-circle' />
       <div className='username_label'>{displayName}</div>
-      <AccountDropdown logout={logout} />
+      <AccountDropdown />
     </div>
   );
 };
 
 AccountManager.propTypes = {
   displayName: PropTypes.string.isRequired,
-  logout: PropTypes.func.isRequired,
 };
 
 export default AccountManager;
